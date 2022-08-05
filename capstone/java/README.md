@@ -98,4 +98,4 @@ The authentication controller uses the `JdbcUserDao` to read and write data from
 
 `com.techelevator.dao.JdbUserDaoTests` has been provided for you as an example for writing your own DAO integration tests.
 
-Remember that when testing, you're using a copy of the real database. The schema and data for the test database are defined within `/src/test/resources/test-data.sql`.
+Remember that when testing, you're using a copy of the real database. The schema for the test database is defined in the same schema script for the real database, `database/schema.sql`. The data for the test database is defined separately within `/src/test/resources/test-data.sql`.
