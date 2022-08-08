@@ -22,7 +22,7 @@ CREATE TABLE recipe_plan (
     plan_id int,
     recipe_id int,
     time_of_day varchar (20),
-    CONSTRAINT 
+    CONSTRAINT PK_recipe_plan PRIMARY KEY (plan_id)
 );
 
 CREATE TABLE recipe (
@@ -31,7 +31,25 @@ CREATE TABLE recipe (
     ingredient int,
     diet_type varchar,
     instruction text
+	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
+
+CREATE TABLE user_recipe (
+	user_id SERIAL,
+	recipe_id int,
+	isCreated boolean,
+	isfavorite boolean
+	CONSTRAINT PK_user_recipe PRIMARY KEY (user_id)
+);
+
+CREATE TABLE  ingredient (
+	ingredient_id SERIAL,
+	name varchar(50),
+	quantity int,
+	unit varchar(20)
+	CONSTRAINT PK_ingredient_id PRIMARY KEY (ingredient_id)
+)
+
 
 
 
