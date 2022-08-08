@@ -28,8 +28,8 @@ CREATE TABLE recipe_plan (
 CREATE TABLE recipe (
     recipe_id SERIAL,
     name varchar,
-    ingredient int,
-    diet_type varchar,
+    ingredient_id int,
+    diet_type varchar(50),
     instruction text
 	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
@@ -38,7 +38,7 @@ CREATE TABLE user_recipe (
 	user_id SERIAL,
 	recipe_id int,
 	isCreated boolean,
-	isfavorite boolean
+	isFavorite boolean
 	CONSTRAINT PK_user_recipe PRIMARY KEY (user_id)
 );
 
