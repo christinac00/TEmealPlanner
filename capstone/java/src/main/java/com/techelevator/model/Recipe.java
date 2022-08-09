@@ -4,16 +4,23 @@ public class Recipe {
 
     private int recipeId;
     private int ingredient_id;
-    private char recipeName;
+    private String recipeName;
     private String dietType;
     private String instructions; // I thought she didn't want to have cooking instructions?
+    private char foodLocation;
 
-    public Recipe(int recipeId, int ingredient_id, char recipeName, String dietType, String instructions) {
+
+    public Recipe(int recipeId, int ingredient_id, String recipeName, String dietType, String instructions) {
         this.recipeId = recipeId;
         this.ingredient_id = ingredient_id;
-        this.recipeName = recipeName;
+        this.recipeName = String.valueOf(recipeName);
         this.dietType = dietType;
         this.instructions = instructions;
+
+    }
+
+    public Recipe() {
+
     }
 
     public int getRecipeId() {
@@ -32,11 +39,11 @@ public class Recipe {
         this.ingredient_id = ingredient_id;
     }
 
-    public char getRecipeName() {
+    public String getRecipeName() {
         return recipeName;
     }
 
-    public void setRecipeName(char recipeName) {
+    public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
 
@@ -55,4 +62,7 @@ public class Recipe {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+
+
+
 }

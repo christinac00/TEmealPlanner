@@ -14,11 +14,9 @@ public interface RecipeDao {
 
     Recipe getByDietType(String dietType);
 
-    Recipe getByIngredientsId(int ingredientsId);
+    Recipe getByIngredientId(int ingredientId);
 
-    boolean create(int recipeId, String recipeName, String dietType, int ingredientId);
-
-
+    int create(int recipeId, String recipeName, String dietType, int ingredientId);
 
 
 
