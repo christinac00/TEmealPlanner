@@ -22,7 +22,7 @@ CREATE TABLE recipe_plan (
     plan_id int,
     recipe_id int,
     time_of_day varchar (20),
-    CONSTRAINT 
+    CONSTRAINT
 );
 
 CREATE TABLE recipe (
