@@ -85,16 +85,23 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public int create(int recipeId, String recipeName, String dietType, int ingredientId) {
-        String insertRecipeSql = "INSERT INTO user_recipe (recipe_id, recipe_name, diet_type, ingredient_id;)";
+    public boolean create(String recipeName, String dietType, int ingredientId) {
+        String insertRecipeSql = "INSERT INTO user_recipe (recipe_name, diet_type, ingredient_id;)";
         return jdbcTemplate.update(insertRecipeSql);
+        //this is wanting an int but it's a boolean. does it have to be an int?
     }
 
+    @Override
+    public boolean updateMyRecipe(String recipeName, String dietType, int ingredientId) {
+        String sql = "UPDATE user_recipe SET recipe WHERE recipe_id = ?;";
+      //userRecipe is red because the users part isn't created yet
+        return jdbcTemplate.update(sql, userRecipe.getRecipe(), userRecipe.getUserId());
+    }
 
     private Recipe mapRowToUser(SqlRowSet results) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(Integer.parseInt("recipe_id"));
-        recipe.setIngredient_id(Integer.parseInt("ingredient_id"));
+        recipe.setIngredientId(Integer.parseInt("ingredient_id"));
         recipe.setRecipeName("recipe_name");
         recipe.setDietType("diet_type");
         recipe.setInstructions("instructions");
