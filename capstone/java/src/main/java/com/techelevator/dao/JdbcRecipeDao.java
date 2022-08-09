@@ -21,7 +21,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public List<Recipe> listAll() {
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "select * from recipes;";
+        String sql = "SELECT * FROM recipes;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -86,7 +86,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public int create(int recipeId, String recipeName, String dietType, int ingredientId) {
-        String insertRecipeSql = "insert into recipes (recipe_id, recipe_name, diet_type, ingredient_id;)";
+        String insertRecipeSql = "INSERT INTO recipes (recipe_id, recipe_name, diet_type, ingredient_id;)";
         return jdbcTemplate.update(insertRecipeSql);
     }
 
