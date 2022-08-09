@@ -21,7 +21,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public List<Recipe> listAll() {
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "SELECT * FROM recipes;";
+        String sql = "SELECT * FROM recipe;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -48,7 +48,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public Recipe getByRecipeName(String recipeName) {
-        String sql = "SELECT * FROM recipes WHERE recipe_name = ?;";
+        String sql = "SELECT * FROM recipe WHERE recipe_name = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeName);
         if(results.next()) {
@@ -61,7 +61,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public Recipe getByDietType(String dietType) {
-        String sql = "SELECT recipes FROM recipe WHERE diet_type = ?;";
+        String sql = "SELECT * FROM recipe WHERE diet_type = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, dietType);
         if(results.next()) {
@@ -73,7 +73,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public Recipe getByIngredientId(int ingredientId) {
-        String sql = "SELECT recipe WHERE ingredient_id = ?;";
+        String sql = "SELECT * FROM recipe WHERE ingredient_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ingredientId);
         if(results.next()) {
@@ -86,7 +86,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public int create(int recipeId, String recipeName, String dietType, int ingredientId) {
-        String insertRecipeSql = "INSERT INTO recipes (recipe_id, recipe_name, diet_type, ingredient_id;)";
+        String insertRecipeSql = "INSERT INTO user_recipe (recipe_id, recipe_name, diet_type, ingredient_id;)";
         return jdbcTemplate.update(insertRecipeSql);
     }
 
