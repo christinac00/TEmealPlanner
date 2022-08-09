@@ -34,7 +34,7 @@ CREATE TABLE  ingredient (
 
 CREATE TABLE recipe (
     recipe_id SERIAL,
-    name String NOT NULL,
+    name varchar(50) NOT NULL,
     ingredient_id int NOT NULL,
     diet_type varchar(50) ,
     instruction text,
