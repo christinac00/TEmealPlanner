@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/recipes")
+@RequestMapping("/recipes/v2")
 
 
 public class RecipeController {
@@ -28,14 +28,16 @@ public class RecipeController {
         this.userDao = UserDao;
         this.recipeDao = RecipeDao;
     }
-    //i'm not sure if this is going to pull for sql or api. if api it nees different end point
+    //i'm not sure if this is going to pull for sql or api. if api it needs different end point i believe
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Recipe> getAllRecipes() {
         return recipeDao.listAll();
     }
-    //not sure why it doesn't like the recipeId
+    //not sure why recipeId is red. I'm suspecting it may be because it doesn't mad the {id}
     @RequestMapping(path = "recipes/v2/{id}", method = RequestMethod.GET)
     public Recipe getById(PathVariable int recipeId) {
        return recipeDao.getById(getById().getRecipeId());
     }
+
+
 }
