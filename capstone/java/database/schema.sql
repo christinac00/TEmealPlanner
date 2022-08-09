@@ -22,9 +22,13 @@ CREATE TABLE recipe_plan (
     plan_id int,
     meal_id int,
     time_of_day varchar (20),
+<<<<<<< HEAD
+    CONSTRAINT
+=======
     CONSTRAINT PK_recipe_plan PRIMARY KEY (plan_id, meal_id),
 	CONSTRAINT FK_recipe_plan_plan FOREIGN KEY (plan_id) REFERENCES plan(plan_id),
 	CONSTRAINT FK_recipe_plan_recipe FOREIGN KEY (meal_id) REFERENCES recipe(meal_id)
+>>>>>>> 1ad27cd4fc65b802bb42c3d2b7b9eb61639b5d99
 );
 
 CREATE TABLE recipe (
