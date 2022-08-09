@@ -20,18 +20,45 @@ CREATE TABLE plan (
 
 CREATE TABLE recipe_plan (
     plan_id int,
-    recipe_id int,
+    meal_id int,
     time_of_day varchar (20),
+<<<<<<< HEAD
     CONSTRAINT
+=======
+    CONSTRAINT PK_recipe_plan PRIMARY KEY (plan_id, meal_id),
+	CONSTRAINT FK_recipe_plan_plan FOREIGN KEY (plan_id) REFERENCES plan(plan_id),
+	CONSTRAINT FK_recipe_plan_recipe FOREIGN KEY (meal_id) REFERENCES recipe(meal_id)
+>>>>>>> 1ad27cd4fc65b802bb42c3d2b7b9eb61639b5d99
 );
 
 CREATE TABLE recipe (
-    recipe_id SERIAL,
+    meal_id SERIAL,
     name varchar,
-    ingredient int,
-    diet_type varchar,
+    ingredient_id int,
+    diet_type varchar(50),
     instruction text
+	CONSTRAINT PK_recipe PRIMARY KEY (meal_id),
+	CONSTRAINT FK_ingredient_recipe FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id)
+	
 );
+
+CREATE TABLE user_recipe (
+	user_id SERIAL,
+	recipe_id int,
+	isCreated boolean,
+	isFavorite boolean
+	CONSTRAINT PK_user_recipe PRIMARY KEY (user_id),
+	CONSTRAINT FK_recipe_user_recipe FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id)
+);
+
+CREATE TABLE  ingredient (
+	ingredient_id SERIAL,
+	name varchar(50),
+	quantity int,
+	unit varchar(20)
+	CONSTRAINT PK_ingredient_id PRIMARY KEY (ingredient_id)
+)
+
 
 
 
