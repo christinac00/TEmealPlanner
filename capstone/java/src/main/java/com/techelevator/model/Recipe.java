@@ -3,17 +3,24 @@ package com.techelevator.model;
 public class Recipe {
 
     private int recipeId;
-    private int ingredient_id;
-    private char recipeName;
+    private int ingredientId;
+    private String recipeName;
     private String dietType;
     private String instructions; // I thought she didn't want to have cooking instructions?
+    private char foodLocation;
 
-    public Recipe(int recipeId, int ingredient_id, char recipeName, String dietType, String instructions) {
+
+    public Recipe(int recipeId, int ingredientId, String recipeName, String dietType, String instructions) {
         this.recipeId = recipeId;
-        this.ingredient_id = ingredient_id;
-        this.recipeName = recipeName;
+        this.ingredientId = ingredientId;
+        this.recipeName = String.valueOf(recipeName);
         this.dietType = dietType;
         this.instructions = instructions;
+
+    }
+
+    public Recipe() {
+
     }
 
     public int getRecipeId() {
@@ -24,19 +31,19 @@ public class Recipe {
         this.recipeId = recipeId;
     }
 
-    public int getIngredient_id() {
-        return ingredient_id;
+    public int getIngredientId() {
+        return ingredientId;
     }
 
-    public void setIngredient_id(int ingredient_id) {
-        this.ingredient_id = ingredient_id;
+    public void setIngredientId(int ingredient_id) {
+        this.ingredientId = ingredient_id;
     }
 
-    public char getRecipeName() {
+    public String getRecipeName() {
         return recipeName;
     }
 
-    public void setRecipeName(char recipeName) {
+    public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
 
@@ -55,4 +62,7 @@ public class Recipe {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+
+
+
 }

@@ -23,9 +23,9 @@ CREATE TABLE plan (
 
 CREATE TABLE  ingredient (
 	ingredient_id SERIAL,
-	name varchar(50) NOT NULL,
+	name varchar(50) NOT NULL UNIQUE,
 	quantity int NOT NULL,
-	unit varchar(20) NOT NULL,
+	unit varchar(50) NOT NULL,
 	category varchar (50) NOT NULL,
 
 	CONSTRAINT PK_ingredient PRIMARY KEY (ingredient_id)
@@ -34,15 +34,22 @@ CREATE TABLE  ingredient (
 
 CREATE TABLE recipe (
     recipe_id SERIAL,
-    name varchar NOT NULL,
-    ingredient_id int NOT NULL,
+    name varchar(50) NOT NULL,
     diet_type varchar(50) ,
     instruction text,
-	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id),
-	CONSTRAINT FK_ingredient_recipe FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id)
+	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 
 );
 
+CREATE TABLE recipe_ingredient (
+    recipe_id int NOT NULL,
+    ingredient_id int NOT NULL,
+
+    CONSTRAINT PK_recipe_ingredient PRIMARY KEY (recipe_id, ingredient_id),
+    CONSTRAINT FK_recipe_ingredient_recipe FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
+    CONSTRAINT FK_recipe_ingredient_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id)
+
+);
 
 CREATE TABLE recipe_plan (
     plan_id int NOT NULL,
