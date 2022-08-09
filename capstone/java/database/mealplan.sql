@@ -8,7 +8,6 @@ INSERT INTO ingredient (name, quantity, unit, category) VALUES ('romaine lettuce
 INSERT INTO ingredient (name, quantity, unit, category) VALUES ('caesar dressing', 1, 'tbsp', 'condiment');
 
 
-INSERT INTO plan (name, day_of_week) VALUES ('Monday Lunch', 'Monday');
 
 
 COMMIT TRANSACTION;
