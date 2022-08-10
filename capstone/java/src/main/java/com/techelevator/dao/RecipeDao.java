@@ -8,9 +8,9 @@ public interface RecipeDao {
 
     List<Recipe> listAll();
 
-    Recipe getById(int recipeId);
-
     Recipe getByName(String name);
+
+    Recipe getDetails(int recipeId);
 
     boolean create(String name, String dietType, String instructions, Recipe recipe);
 

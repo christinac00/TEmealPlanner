@@ -33,9 +33,9 @@ public class JdbcRecipeDao implements RecipeDao {
 
 
     @Override
-    public Recipe getById(int recipeId) {
+    public Recipe getDetails(int recipeId) {
         Recipe recipe = new Recipe();
-        String sql = "SELECT * FROM recipe WHERE recipe_id = ?;";
+        String sql = "SELECT r.recipe_id, r.name, r.instructions FROM recipe r JOIN recipe_ingredients ri ON ri.recipe_id JOIN ingredient i ON i.ingredient_id WHERE recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
@@ -57,7 +57,6 @@ public class JdbcRecipeDao implements RecipeDao {
         }
         return recipe;
         }
-
 
 
     @Override
