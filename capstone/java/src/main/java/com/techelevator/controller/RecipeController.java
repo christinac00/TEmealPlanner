@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.exception.RecipeNotFoundException;
 import com.techelevator.model.Recipe;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "/{recipeId}", method = RequestMethod.GET)
-    public Recipe getById(@PathVariable int recipeId) {
+    public Recipe getById(@PathVariable int recipeId) throws RecipeNotFoundException {
         return recipeDao.getById(recipeId);
     }
 
