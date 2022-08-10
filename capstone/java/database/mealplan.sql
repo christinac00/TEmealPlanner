@@ -77,27 +77,10 @@ INSERT INTO ingredient(name, quantity, unit, category) VALUES ('Pecan', 1, 'lb',
 INSERT INTO ingredient(name, quantity, unit, category) VALUES ('Walnut', 1, 'lb', 'nut');
 
 
---adding data to recipes
-INSERT INTO recipe(name, diet_type, instruction) VALUES ('Strawberry Banana Smoothie', 'vegetarian', 'Add ice and blend together!');
-INSERT INTO recipe(name, diet_type, instruction) VALUES ('Chicken Salad', 'low-carb', 'Chop chop and mix well.');
 
--- attaching ingredients to recipe
---Strawberry Banana Smootie
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 1, 20);
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 1, 35);
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 1, 43);
-
---Chicken Salad
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 2, 6);
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 2, 41);
-INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES ( 2, 47);
 
 
 COMMIT TRANSACTION;
 
 --SELECT * FROM ingredient;
 
---SELECT i.name FROM recipe r
---JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id
---JOIN ingredient i ON i.ingredient_id = ri.ingredient_id
---WHERE r.name='Strawberry Banana Smoothie'

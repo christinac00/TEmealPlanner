@@ -12,8 +12,6 @@ public interface RecipeDao {
 
     Recipe getByName(String name);
 
-    Recipe getByDietType(String dietType);
-
     boolean create(String name, String dietType, String instructions, Recipe recipe);
 
     boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);

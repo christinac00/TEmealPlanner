@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/recipe")
-
-
+@RequestMapping("/recipes")
 public class RecipeController {
 
     private final UserDao userDao;
