@@ -35,15 +35,11 @@ public class RecipeController {
         return recipeDao.getById(recipeId);
     }
 
-    @RequestMapping(path = "/name", method = RequestMethod.GET)
-    public Recipe getName(@PathVariable String name) {
-        return recipeDao.getByName(name);
-    }
+//    @RequestMapping(path = "/name", method = RequestMethod.GET)
+//    public Recipe getName(@PathVariable String name) {
+//        return recipeDao.getByName(name);
+//    }
 
-    @RequestMapping(path = "dietType", method = RequestMethod.GET)
-    public Recipe getByDiet(@PathVariable String dietType) {
-        return recipeDao.getByDietType(dietType);
-    }
 
 //    @RequestMapping(path = "create", method = RequestMethod.POST)
 //    public Recipe create(@PathVariable boolean create {
