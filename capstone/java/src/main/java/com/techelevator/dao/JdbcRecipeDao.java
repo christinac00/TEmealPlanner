@@ -58,29 +58,18 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipe;
         }
 
-
-    @Override
-    public Recipe getByDietType(String dietType) {
-        String sql = "SELECT * FROM recipe WHERE diet_type = ?;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, dietType);
-        if(results.next()) {
-            return mapRowToUser(results);
-        } else {
-            return null;
-        }
-    }
+        
 
     @Override
     public boolean create(String name, String dietType, String instructions, Recipe recipe) {
-        String insertRecipeSql = "INSERT INTO recipe (name, diet_type, instructions) VALUES ?, ?, ?;";
+        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES ?, ?, ?;";
         return jdbcTemplate.update(insertRecipeSql, recipe.getName(), recipe.getDietType(), recipe.getInstructions()) == 1;
         //should we have this return the new id?
     }
 
     @Override
     public boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe) {
-        String sql = "UPDATE recipe SET recipe_name = ?, diet_type = ?, instructions = ? WHERE recipe_id = ?;";
+        String sql = "UPDATE recipe SET recipe_name = ?, instructions = ? WHERE recipe_id = ?;";
         return jdbcTemplate.update(sql, recipe.getName(), recipe.getDietType(), recipe.getInstructions()) == 1;
 
         }
@@ -95,8 +84,7 @@ public class JdbcRecipeDao implements RecipeDao {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(results.getInt("recipe_id"));
         recipe.setName(results.getString("name"));
-        recipe.setDietType(results.getString("diet_type"));
-        recipe.setInstructions(results.getString("instruction"));
+        recipe.setInstructions(results.getString("instructions"));
         return recipe;
     }
 

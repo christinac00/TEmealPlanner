@@ -32,8 +32,8 @@ CREATE TABLE  ingredient (
 
 CREATE TABLE recipe (
     recipe_id SERIAL,
-    name varchar(50) NOT NULL,
-    instruction text,
+    name varchar(100) NOT NULL,
+    instructions text,
 	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 
 );
