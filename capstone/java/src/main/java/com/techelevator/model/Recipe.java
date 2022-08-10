@@ -7,10 +7,6 @@ public class Recipe {
     private String instructions;
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 30112fc743e0504fd602442b52fd5d778b331c27
     public Recipe(int recipeId, String name, String instructions) {
         this.recipeId = recipeId;
         this.name = name;
@@ -38,10 +34,6 @@ public class Recipe {
         this.name = name;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 30112fc743e0504fd602442b52fd5d778b331c27
     public String getInstructions() {
         return instructions;
     }

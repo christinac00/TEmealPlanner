@@ -31,8 +31,8 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "/{recipeId}", method = RequestMethod.GET)
-    public Recipe getById(@PathVariable int recipeId) throws RecipeNotFoundException {
-        return recipeDao.getById(recipeId);
+    public Recipe getDetails(@PathVariable int recipeId) throws RecipeNotFoundException {
+        return recipeDao.getDetails(recipeId);
     }
 
 //    @RequestMapping(path = "/name", method = RequestMethod.GET)
