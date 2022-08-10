@@ -36,7 +36,7 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
 
 
     @Override
-    public boolean modifyRecipe(int recipeId, UserRecipe modifiedRecipe){
+    public boolean modifyRecipe(UserRecipe modifiedRecipe){
         String sql = "UPDATE user_recipe SET user_id = ? , recipe_id = ? , isCreated = ? , isFavorite = ? ";
         return jdbcTemplate.update(sql, modifiedRecipe.getUser_id(), modifiedRecipe.getRecipe_id(), false, true)==1;
     }
