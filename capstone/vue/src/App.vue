@@ -19,9 +19,19 @@
       
    
     <header>THE TE MEAL PLANNER</header>
-    <div class="recent-recipes">Recent Recipes</div>
-    <div class="flashback-recipes">Flashback Recipes</div>
-    <div class="popular-recipes">Popular Recipes</div>
+    <div class="recipes">Recent Recipes</div>
+    <div class="recipes">Flashback Recipes</div>
+    <div class="recipes">Popular Recipes</div>
+
+    <footer>
+      <ul class="social-icons">
+        <li><a href="#"><i class="fab fa-facebook fa-3x"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram fa-3x"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter fa-3x"></i></a></li>
+        <li><a href="#"><i class="fab fa-pinterest fa-3x"></i></a></li>
+        <li><a href="#"><i class="fab fa-behance fa-3x"></i></a></li>
+      </ul>
+    </footer>
     <router-view />
   </div>
 </template>
@@ -86,6 +96,21 @@ width: 814px;
 height: 198px;
 left: 537px;
 top: 791px;
+}
+.recipes{
+  padding: 40px 55px;
+  margin: 15px 0;
+  background-color: #00AFEF;
+  color: #fff;
+  border: solid 1px #777;
+
+}
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 20px 20px;
+  padding: 0;
 }
 </style>
 

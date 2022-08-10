@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, plan, recipe_plan, user_recipe, recipe, ingredient CASCADE;
+DROP TABLE IF EXISTS recipe_plan, recipe_ingredient, recipe_tag, user_recipe, tag, recipe, ingredient, plan, users CASCADE;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -49,7 +49,7 @@ CREATE TABLE tag (
 CREATE TABLE recipe_tag(
     recipe_id int NOT NULL,
     tag_id int NOT NULL,
-    CONSTRAINT PK_recipe_tag PRIMARY (recipe_id, tag_id),
+    CONSTRAINT PK_recipe_tag PRIMARY KEY (recipe_id, tag_id),
     CONSTRAINT FK_recipe_tag_recipe FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
     CONSTRAINT FK_recipe_tag_tag FOREIGN KEY (tag_id) REFERENCES tag(tag_id)
 );
