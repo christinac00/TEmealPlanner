@@ -6,7 +6,7 @@ public class Recipe {
     private String name;
     private String dietType;
     private String instructions;
-    private char foodLocation;
+
 
 
     public Recipe(int recipeId, String name, String dietType, String instructions) {

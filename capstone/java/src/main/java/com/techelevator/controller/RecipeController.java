@@ -41,7 +41,7 @@ public class RecipeController {
         return recipeDao.getByName(name);
     }
 
-    @RequestMapping(path = "dietType", method = RequestMethod.GET)
+    @RequestMapping(path = "/dietType", method = RequestMethod.GET)
     public Recipe getByDiet(@PathVariable String dietType) {
         return recipeDao.getByDietType(dietType);
     }
