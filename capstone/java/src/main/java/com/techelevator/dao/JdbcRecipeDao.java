@@ -25,8 +25,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            Recipe recipe = mapRowToUser(results);
-            recipes.add(recipe);
+            recipes.add(mapRowToUser(results));
         }
 
         return recipes;
@@ -35,27 +34,28 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public Recipe getById(int recipeId) {
+        Recipe recipe = new Recipe();
         String sql = "SELECT * FROM recipe WHERE recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
-            return mapRowToUser(results);
-        } else {
-            return null;
+            recipe= mapRowToUser(results);
         }
+            return recipe;
+
 
     }
 
     @Override
     public Recipe getByName(String name) {
+        Recipe recipe = new Recipe();
         String sql = "SELECT * FROM recipe WHERE name = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
         if(results.next()) {
-            return mapRowToUser(results);
-            } else {
-                return null;
-            }
+            recipe = mapRowToUser(results);
+        }
+        return recipe;
         }
 
 
@@ -93,10 +93,10 @@ public class JdbcRecipeDao implements RecipeDao {
 
     private Recipe mapRowToUser(SqlRowSet results) {
         Recipe recipe = new Recipe();
-        recipe.setRecipeId(Integer.parseInt("recipe_id"));
-        recipe.setName("name");
-        recipe.setDietType("diet_type");
-        recipe.setInstructions("instructions");
+        recipe.setRecipeId(results.getInt("recipe_id"));
+        recipe.setName(results.getString("name"));
+        recipe.setDietType(results.getString("diet_type"));
+        recipe.setInstructions(results.getString("instruction"));
         return recipe;
     }
 
