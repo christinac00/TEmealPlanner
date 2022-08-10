@@ -58,19 +58,19 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipe;
         }
 
-        
+
 
     @Override
     public boolean create(String name, String dietType, String instructions, Recipe recipe) {
         String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES ?, ?, ?;";
-        return jdbcTemplate.update(insertRecipeSql, recipe.getName(), recipe.getDietType(), recipe.getInstructions()) == 1;
+        return jdbcTemplate.update(insertRecipeSql, recipe.getName(), recipe.getInstructions()) == 1;
         //should we have this return the new id?
     }
 
     @Override
     public boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe) {
         String sql = "UPDATE recipe SET recipe_name = ?, instructions = ? WHERE recipe_id = ?;";
-        return jdbcTemplate.update(sql, recipe.getName(), recipe.getDietType(), recipe.getInstructions()) == 1;
+        return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions()) == 1;
 
         }
 
