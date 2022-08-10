@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Recipe;
+import com.techelevator.model.RecipeDetail;
+import com.techelevator.model.RecipeIngredient;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -25,23 +27,29 @@ public class JdbcRecipeDao implements RecipeDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            recipes.add(mapRowToUser(results));
+            Recipe recipe = new Recipe();
+            mapRowToRecipe(results, recipe);
+            recipes.add(recipe);
         }
 
         return recipes;
     }
 
-
     @Override
     public Recipe getDetails(int recipeId) {
-        Recipe recipe = new Recipe();
-        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id JOIN ingredient i ON i.ingredient_id WHERE recipe_id = ?;";
+        RecipeDetail recipeDetail = new RecipeDetail();
+        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name iname, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
-            recipe= mapRowToUser(results);
+            mapRowToRecipe(results, recipeDetail);
+
+            mapRowToRecipeIngredient(results, recipeDetail);
+            while (results.next()) {
+                mapRowToRecipeIngredient(results, recipeDetail);
+            }
         }
-            return recipe;
+            return recipeDetail;
 
 
     }
@@ -53,7 +61,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
         if(results.next()) {
-            recipe = mapRowToUser(results);
+            mapRowToRecipe(results, recipe);
         }
         return recipe;
         }
@@ -79,12 +87,19 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
 
-    private Recipe mapRowToUser(SqlRowSet results) {
-        Recipe recipe = new Recipe();
+    private void mapRowToRecipe(SqlRowSet results, Recipe recipe) {
         recipe.setRecipeId(results.getInt("recipe_id"));
         recipe.setName(results.getString("name"));
         recipe.setInstructions(results.getString("instructions"));
-        return recipe;
+
+    }
+    private void mapRowToRecipeIngredient(SqlRowSet results, RecipeDetail recipeDetail) {
+        RecipeIngredient ingredient = new RecipeIngredient();
+        ingredient.setAmount(results.getInt("quantity"));
+        ingredient.setName(results.getString("iname"));
+        ingredient.setUnit(results.getString("unit"));
+        recipeDetail.getIngredients().add(ingredient);
+
     }
 
 
