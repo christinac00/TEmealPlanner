@@ -12,6 +12,7 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
+      <br>
       <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
@@ -22,6 +23,8 @@
         required
         autofocus
       />
+      <br>
+      <br>
       <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
@@ -31,7 +34,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account? </router-link>
+      <router-link :to="{ name: 'register' }"> Need an account? </router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -74,3 +77,15 @@ export default {
   }
 };
 </script>
+<style>
+.text-center{
+ position: absolute;
+width: 600px;
+height: 200px;
+right: 0px;
+top: 0px;
+text-align: center;
+ 
+background:#9c425d;
+}
+</style>
