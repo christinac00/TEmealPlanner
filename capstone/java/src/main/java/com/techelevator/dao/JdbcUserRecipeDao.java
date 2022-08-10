@@ -4,10 +4,12 @@ import com.techelevator.model.Recipe;
 import com.techelevator.model.UserRecipe;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcUserRecipeDao implements UserRecipeDao{
 
     private JdbcTemplate jdbcTemplate;
