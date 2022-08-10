@@ -84,7 +84,3 @@ COMMIT TRANSACTION;
 
 --SELECT * FROM ingredient;
 
---SELECT i.name FROM recipe r
---JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id
---JOIN ingredient i ON i.ingredient_id = ri.ingredient_id
---WHERE r.name='Strawberry Banana Smoothie'
