@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JdbcIngredientDao implements IngredientDao{
@@ -59,10 +60,13 @@ public class JdbcIngredientDao implements IngredientDao{
 
     @Override
     public List<Ingredient> list() {
-        Ingredient ingredient = null;
-        String sql = "SELECT FROM ingredient;";
+        List<Ingredient> ingredients = new ArrayList<>();
+        String sql = "SELECT * FROM ingredient;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        return null;
+        while (results.next()) {
+            ingredients.add(mapRowToIngredient(results));
+        }
+        return ingredients;
     }
 
     private Ingredient mapRowToIngredient(SqlRowSet results){
