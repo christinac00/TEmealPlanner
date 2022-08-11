@@ -130,7 +130,13 @@ const router = new Router({
       path: "/users/:id/recipes",
       name: "my-recipes",
       component: MyRecipes
-    }
+    },
+
+    // {
+    //   path: "/recipes",
+    //   name: "recipes",
+    //   component: Recipes
+    // }
   ]
 })
 
