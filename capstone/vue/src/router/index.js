@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import MyRecipes from '../views/MyRecipes.vue'
 
 Vue.use(Router)
 
@@ -126,9 +127,9 @@ const router = new Router({
       }
     },
     {
-      path: "/recipes",
-      name: "recipes",
-      component: Register
+      path: "/users/:id/recipes",
+      name: "my-recipes",
+      component: MyRecipes
     }
   ]
 })

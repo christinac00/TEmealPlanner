@@ -15,6 +15,7 @@ import java.util.List;
 
 //@RequestMapping("/users/{id}/recipes")
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 public class UserRecipeController {
 
 
