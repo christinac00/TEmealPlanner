@@ -33,11 +33,15 @@ public class RecipeController {
         return recipeDao.getDetails(recipeId);
     }
 
-//    @RequestMapping(path = "/name", method = RequestMethod.GET)
-//    public Recipe getName(@PathVariable String name) {
-//        return recipeDao.getByName(name);
-//    }
+    @RequestMapping(path = "/tag", method = RequestMethod.GET)
+    public Recipe getTag(@PathVariable String name) {
+        return recipeDao.getByTagName(name);
+    }
 
+    @RequestMapping(path = "/ingredient", method = RequestMethod.GET)
+    public Recipe getIngredient(@PathVariable String name) {
+        return recipeDao.getByIngredientName(name);
+    }
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public Recipe create(@RequestBody Recipe recipe) {
