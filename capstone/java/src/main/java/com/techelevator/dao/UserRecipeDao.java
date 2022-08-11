@@ -1,12 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Recipe;
 import com.techelevator.model.UserRecipe;
 
 import java.util.List;
 
 public interface UserRecipeDao {
 
-    List<UserRecipe> myRecipesList (int user_id);
+    List<Recipe> myRecipesList (int user_id);
 
     UserRecipe addUserRecipe(UserRecipe userRecipe);
 

@@ -16,23 +16,35 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
     public JdbcUserRecipeDao(JdbcTemplate jdbcTemplate){this.jdbcTemplate=jdbcTemplate;}
 
     @Override
-    public List<UserRecipe> myRecipesList(int user_id){
-        List<UserRecipe> result = new ArrayList<>();
+    public List<Recipe> myRecipesList(int user_id){
+        List<Recipe> result = new ArrayList<>();
 
         String sql = "SELECT * FROM recipe r JOIN user_recipe ur ON r.recipe_id = ur.recipe_id WHERE ur.user_id = ?; ";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, user_id);
         while(rowSet.next()){
-            UserRecipe userRecipe = mapRowToRecipe(rowSet);
-            userRecipe.setUser_id(userRecipe.getUser_id());
-            result.add(userRecipe);
+
+            Recipe recipe = new Recipe();
+            mapRowToRecipe(rowSet, recipe);
+            result.add(recipe);
+
+
+
+//            UserRecipe userRecipe = mapRowToRecipe(rowSet);
+//            userRecipe.setUser_id(userRecipe.getUser_id());
+//            result.add(userRecipe);
         }
         return result;
     }
 
     @Override
     public UserRecipe addUserRecipe(UserRecipe userRecipe){
-        String sql = "INSERT into user_recipe (user_id, recipe_id, isCreated, isFavorite) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO user_recipe (user_id, recipe_id, isCreated, isFavorite) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, userRecipe.getUser_id(), userRecipe.getRecipe_id(), true, true);
+
+        Recipe recipe = new Recipe();
+        recipe.setRecipeId(userRecipe.getRecipe_id());
+        String editSql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?";
+
         return userRecipe;
     }
 
@@ -54,6 +66,13 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
 
     }
 
+
+    private void mapRowToRecipe(SqlRowSet results, Recipe recipe) {
+        recipe.setRecipeId(results.getInt("recipe_id"));
+        recipe.setName(results.getString("name"));
+        recipe.setInstructions(results.getString("instructions"));
+
+    }
 
 
 }
