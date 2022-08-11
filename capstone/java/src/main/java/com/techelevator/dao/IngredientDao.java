@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.IngredientNotFoundException;
 import com.techelevator.model.Ingredient;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface IngredientDao {
     void updateIngredient(Ingredient updatedIngredient);
 
     //delete an ingredient
-    void removeIngredient(int ingredientId);
+    void removeIngredient(int ingredientId) throws IngredientNotFoundException;
 
     //search by ingredient
     List<Ingredient> searchByIngredientName(String name_like);
