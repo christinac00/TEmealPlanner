@@ -38,7 +38,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public Recipe getDetails(int recipeId) {
         RecipeDetail recipeDetail = new RecipeDetail();
-        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
+        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name iname, i.category, ri.quantity, ri.unit FROM recipe r LEFT OUTER JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id LEFT OUTER JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
@@ -71,9 +71,28 @@ public class JdbcRecipeDao implements RecipeDao {
         Recipe recipes = new Recipe();
         String sql = "SELECT * FROM recipe r. JOIN recipe_tag rt. ON rt.recipe_id = r.recipe_id JOIN tag t. ON t.tag_id = rt.tag_id WHERE t.keyword = ?;";
 
+<<<<<<< HEAD
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
         if(results.next()) {
             mapRowToRecipe(results, recipes);
+=======
+    @Override
+    //this method should return a Recipe object
+    public Recipe create(Recipe newRecipe) {
+        //the ? should be inside of parantheses () to match sql syntax for INSERT
+        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES (?, ?) RETURNING recipe_id;";
+        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getName(), newRecipe.getInstructions());
+        return getDetails(newId);
+        //should we have this return the new id?
+        //this should return a Recipe object based on the getDetails method
+    }
+
+    @Override
+    public Recipe updateRecipe(Recipe recipe) {
+        String sql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?;";
+        return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions(), recipe.getRecipeId()) ==1?getDetails(recipe.getRecipeId()):null;
+
+>>>>>>> 3253bea1d15fb55066a3a41f882e71c09d06d2de
         }
         return recipes;
    }
@@ -111,11 +130,17 @@ public class JdbcRecipeDao implements RecipeDao {
 
     }
     private void mapRowToRecipeIngredient(SqlRowSet results, RecipeDetail recipeDetail) {
-        RecipeIngredient ingredient = new RecipeIngredient();
-        ingredient.setAmount(results.getInt("quantity"));
-        ingredient.setName(results.getString("iname"));
-        ingredient.setUnit(results.getString("unit"));
-        recipeDetail.getIngredients().add(ingredient);
+        String name = results.getString("iname");
+
+        if(name != null){
+            RecipeIngredient ingredient = new RecipeIngredient();
+            ingredient.setAmount(results.getInt("quantity"));
+            ingredient.setName(name);
+            ingredient.setUnit(results.getString("unit"));
+            recipeDetail.getIngredients().add(ingredient);
+
+        }
+
 
     }
 
