@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserRecipeDao;
 import com.techelevator.exception.RecipeNotFoundException;
+import com.techelevator.model.Recipe;
 import com.techelevator.model.UserRecipe;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class UserRecipeController {
 
 
     @GetMapping("/users/{id}/recipes")
-    public List<UserRecipe> getMyRecipes(@PathVariable int id) throws RecipeNotFoundException{
+    public List<Recipe> getMyRecipes(@PathVariable int id) throws RecipeNotFoundException{
         UserRecipe userRecipe= new UserRecipe();
                 userRecipe.setUser_id(id);
 //        if(id == Integer.parseInt(null)){
@@ -48,7 +49,7 @@ public class UserRecipeController {
     }
 
 
-    @PostMapping("")
+    @PostMapping("/users/{id}/recipes")
     @ResponseStatus(HttpStatus.CREATED)
     public UserRecipe createRecipe (@RequestBody UserRecipe newRecipe){
         return userRecipeDao.addUserRecipe(newRecipe);
