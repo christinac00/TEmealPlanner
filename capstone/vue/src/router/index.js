@@ -128,7 +128,7 @@ const router = new Router({
     {
       path: "/recipes",
       name: "recipes",
-      component: Recipes
+      component: Register
     }
   ]
 })
