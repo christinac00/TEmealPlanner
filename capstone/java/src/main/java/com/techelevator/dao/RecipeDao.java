@@ -10,8 +10,7 @@ public interface RecipeDao {
 
     Recipe getByIngredientName(String ingredientName);
 
-    Recipe getByTagName(String tagName);
-
+    Recipe getByTagName(String keyword);
 
     Recipe getDetails(int recipeId);
 
