@@ -33,7 +33,7 @@ public class RecipeController {
         return recipeDao.getDetails(recipeId);
     }
 
-    @RequestMapping(path = "/tag/{keyword}", method = RequestMethod.GET)
+    @RequestMapping(path = "/tag/keyword", method = RequestMethod.GET)
     public Recipe getTag(@PathVariable String keyword) {
         return recipeDao.getByTagName(keyword);
     }
