@@ -36,7 +36,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe getByIngredientName(String ingredientName) {
+    public Recipe getByIngredientName(String name) {
         Recipe recipes = new Recipe();
         String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE i.name = ?;";
 
@@ -51,7 +51,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
 
     @Override
-    public Recipe getByTagName(String tagName) {
+    public Recipe getByTagName(String keyword) {
         Recipe recipes = new Recipe();
         String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_tag JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
 
