@@ -10,17 +10,15 @@ public interface RecipeDao {
 
     Recipe getByIngredientName(String ingredientName);
 
-    Recipe getByTagName(String tagName);
+    Recipe getByTagName(String keyword);
 
-<<<<<<< HEAD
     Recipe getDetails(int recipeId);
-=======
-    Recipe updateRecipe(Recipe recipe);
->>>>>>> 3253bea1d15fb55066a3a41f882e71c09d06d2de
 
-//    Recipe create(Recipe newRecipe);
-//
-//    boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);
+    Recipe updateRecipe(Recipe recipe);
+
+    Recipe create(Recipe newRecipe);
+
+
 //
 //    boolean deleteRecipe(int recipeId);
 

@@ -1,9 +1,27 @@
 package com.techelevator.model;
 
 public class RecipeIngredient {
+     int userId;
+     int recipeId;
      int amount;
      String unit;
      String name;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
+    }
 
     public int getAmount() {
         return amount;
