@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div class="navbar">
+    <!-- <div class="navbar">
     <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; 
     <router-link id="login-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''">Login</router-link>
     <router-link id="logout-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
-       <nav class="nav">
+       <nav class="left-panel">
       <ul class="nav-links">
         <li><router-link id="browse-my-recipes" v-bind:to="{ name: 'my-recipes' }">My Recipes</router-link></li>
         <li><router-link id="browse-saved" v-bind:to="{ name: 'saved' }">Saved Recipes</router-link></li>
@@ -19,9 +19,15 @@
       
    
     <header>THE TE MEAL PLANNER</header>
-    <div class="recipes">Recent Recipes</div>
-    <div class="recipes">Flashback Recipes</div>
-    <div class="recipes">Popular Recipes</div>
+    <div class="recipes">Recent Recipes
+      <p>Here are some recipes you've recently viewed or added to your Meal Plan</p>
+    </div>
+    <div class="recipes">Recommended Recipes
+      <p>Give some of these recipes a try! </p>
+    </div>
+    <div class="recipes">Popular Recipes
+      <p>Expand your horizons by checking out these Meal Planner favorites!</p>
+    </div>
 
     <footer>
       <ul class="social-icons">
@@ -31,8 +37,8 @@
         <li><a href="#"><i class="fab fa-pinterest fa-3x"></i></a></li>
         <li><a href="#"><i class="fab fa-behance fa-3x"></i></a></li>
       </ul>
-    </footer>
-    <router-view />
+    </footer> -->
+    <router-view class="view"/>
   </div>
 </template>
 
@@ -44,8 +50,10 @@ export default {
 </script>
 <style>
 
-nav {
-position: absolute;
+.left-panel {
+display: flex;
+flex-basis: 35%;
+flex-direction: column;
 width: 448px;
 height: 1029px;
 left: 0px;
@@ -76,33 +84,14 @@ text-align: center;
  
 background: #FFE473;
 }
-.recent-recipes{
-  position: absolute;
-width: 814px;
-height: 198px;
-left: 537px;
-top: 321px;
-}
-.flashback-recipes{
-  position: absolute;
-width: 814px;
-height: 199px;
-left: 537px;
-top: 555px;
-}
-.popular-recipes{
-  position: absolute;
-width: 814px;
-height: 198px;
-left: 537px;
-top: 791px;
-}
+
 .recipes{
   padding: 40px 55px;
   margin: 15px 0;
   background-color: #00AFEF;
   color: #fff;
   border: solid 1px #777;
+  display: flex;
 
 }
 .social-icons {
@@ -111,6 +100,13 @@ top: 791px;
   list-style-type: none;
   margin: 20px 20px;
   padding: 0;
+}
+.app{
+  display: grid;
+  grid-template-areas: 'app';
+}
+.view {
+grid-area: app;
 }
 </style>
 
