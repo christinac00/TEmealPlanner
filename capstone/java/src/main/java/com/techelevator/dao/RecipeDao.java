@@ -14,7 +14,7 @@ public interface RecipeDao {
 
     Recipe create(Recipe newRecipe);
 
-    boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);
+    Recipe updateRecipe(Recipe recipe);
 
     boolean deleteRecipe(int recipeId);
 
