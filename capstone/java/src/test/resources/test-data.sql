@@ -35,6 +35,4 @@ INSERT INTO recipe_tag (recipe_id, tag_id) VALUES ((SELECT recipe_id FROM recipe
 INSERT INTO recipe_tag (recipe_id, tag_id) VALUES ((SELECT recipe_id FROM recipe WHERE name ='Perfect 10 Rice'),(SELECT tag_id FROM tag WHERE keyword ='Vegan'));
 INSERT INTO recipe_tag (recipe_id, tag_id) VALUES ((SELECT recipe_id FROM recipe WHERE name ='Strawberry Peanut Butter Breakfast Smoothie'),(SELECT tag_id FROM tag WHERE keyword ='Breakfast'));
 
-
-
 COMMIT TRANSACTION;
