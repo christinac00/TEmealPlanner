@@ -55,41 +55,54 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe getByName(String name) {
+    public Recipe getByIngredientName(String ingredient) {
         Recipe recipe = new Recipe();
-        String sql = "SELECT * FROM recipe WHERE name = ?;";
+        String sql = "SELECT * FROM ingredient WHERE name = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ingredient);
         if(results.next()) {
             mapRowToRecipe(results, recipe);
         }
         return recipe;
         }
 
+   @Override
+   public Recipe getByTagName(String tagName) {
+        Recipe recipes = new Recipe();
+        String sql = "SELECT * FROM recipe r. JOIN recipe_tag rt. ON rt.recipe_id = r.recipe_id JOIN tag t. ON t.tag_id = rt.tag_id WHERE t.keyword = ?;";
 
-    @Override
-    //this method should return a Recipe object
-    public Recipe create(Recipe newRecipe) {
-        //the ? should be inside of parantheses () to match sql syntax for INSERT
-        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES (?, ?) RETURNING recipe_id;";
-        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getRecipeId(), newRecipe.getName(), newRecipe.getInstructions());
-        return getDetails(newId);
-        //should we have this return the new id?
-        //this should return a Recipe object based on the getDetails method
-    }
-
-    @Override
-    public boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe) {
-        String sql = "UPDATE recipe SET recipe_name = ?, instructions = ? WHERE recipe_id = ?;";
-        return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions()) == 1;
-
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
+        if(results.next()) {
+            mapRowToRecipe(results, recipes);
         }
+        return recipes;
+   }
 
-    @Override
-    public boolean deleteRecipe(int recipeId) {
-        return false;
-    }
 
+
+//    @Override
+//    //this method should return a Recipe object
+//    public Recipe create(Recipe newRecipe) {
+//        //the ? should be inside of parantheses () to match sql syntax for INSERT
+//        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES (?, ?) RETURNING recipe_id;";
+//        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getRecipeId(), newRecipe.getName(), newRecipe.getInstructions());
+//        return getDetails(newId);
+//        //should we have this return the new id?
+//        //this should return a Recipe object based on the getDetails method
+//    }
+
+//    @Override
+//    public boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe) {
+//        String sql = "UPDATE recipe SET recipe_name = ?, instructions = ? WHERE recipe_id = ?;";
+//        return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions()) == 1;
+//
+//        }
+//
+//    @Override
+//    public boolean deleteRecipe(int recipeId) {
+//        return false;
+//    }
+//
 
     private void mapRowToRecipe(SqlRowSet results, Recipe recipe) {
         recipe.setRecipeId(results.getInt("recipe_id"));
@@ -105,6 +118,11 @@ public class JdbcRecipeDao implements RecipeDao {
         recipeDetail.getIngredients().add(ingredient);
 
     }
+
+    private void mapRowToRecipeTag(SqlRowSet results, RecipeTagList recipeTagList) {
+
+    }
+
 
 
 }

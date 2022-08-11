@@ -125,6 +125,11 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/recipes",
+      name: "recipes",
+      component: Recipes
+    }
   ]
 })
 

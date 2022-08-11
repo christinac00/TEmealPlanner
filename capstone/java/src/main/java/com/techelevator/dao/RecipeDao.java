@@ -8,15 +8,17 @@ public interface RecipeDao {
 
     List<Recipe> listAll();
 
-    Recipe getByName(String name);
+    Recipe getByIngredientName(String ingredientName);
+
+    Recipe getByTagName(String tagName);
 
     Recipe getDetails(int recipeId);
 
-    Recipe create(Recipe newRecipe);
-
-    boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);
-
-    boolean deleteRecipe(int recipeId);
+//    Recipe create(Recipe newRecipe);
+//
+//    boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);
+//
+//    boolean deleteRecipe(int recipeId);
 
 
 
