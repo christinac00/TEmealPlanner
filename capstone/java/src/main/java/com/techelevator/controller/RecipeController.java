@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recipes")
+@CrossOrigin(origins = "http://localhost:8080")
 public class RecipeController {
 
     private final UserDao userDao;
@@ -33,7 +34,7 @@ public class RecipeController {
         return recipeDao.getDetails(recipeId);
     }
 
-    @RequestMapping(path = "/tag/{keyword}", method = RequestMethod.GET)
+    @RequestMapping(path = "/tag/keyword", method = RequestMethod.GET)
     public Recipe getTag(@PathVariable String keyword) {
         return recipeDao.getByTagName(keyword);
     }

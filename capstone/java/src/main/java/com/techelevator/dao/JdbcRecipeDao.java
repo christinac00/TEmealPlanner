@@ -53,7 +53,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public Recipe getByTagName(String keyword) {
         Recipe recipes = new Recipe();
-        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_tag JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
+        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_id JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
         if(results.next()) {
