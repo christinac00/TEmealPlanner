@@ -52,7 +52,79 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: "/saved-recipes",
+      name: "saved-recipes",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/shared-recipes",
+      name: "shared-recipes",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/my-meal-plans",
+      name: "my-meal-plans",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/ingredients",
+      name: "ingredients",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/shopping-list",
+      name: "shopping-list",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/recent",
+      name: "recent",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/flashback",
+      name: "flashback",
+      component: Register,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/popular",
+      name: "popular",
+      component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
