@@ -4,10 +4,8 @@ import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.RecipeNotFoundException;
 import com.techelevator.model.Recipe;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.coyote.Request;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,12 +39,16 @@ public class RecipeController {
 //    }
 
 
-//    @RequestMapping(path = "create", method = RequestMethod.POST)
-//    public Recipe create(@PathVariable boolean create {
-//        Recipe recipe = null;
-//        return recipeDao.create(recipe);
-//    }
+    @RequestMapping(path = "", method = RequestMethod.POST)
+    public Recipe create(@RequestBody Recipe recipe) {
+        return recipeDao.create(recipe);
+    }
 
+    @RequestMapping(path = "/{recipeId}", method = RequestMethod.PUT)
+    public Recipe update(@PathVariable int recipeId, @RequestBody Recipe recipe) {
+        recipe.setRecipeId(recipeId);
+        return recipeDao.updateRecipe(recipe);
+    }
 
 
 
