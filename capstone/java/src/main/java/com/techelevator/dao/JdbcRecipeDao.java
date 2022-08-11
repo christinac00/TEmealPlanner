@@ -38,7 +38,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public Recipe getDetails(int recipeId) {
         RecipeDetail recipeDetail = new RecipeDetail();
-        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
+        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name iname, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
