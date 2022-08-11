@@ -113,7 +113,9 @@ public class JdbcRecipeDao implements RecipeDao {
 
         if(name != null){
             RecipeIngredient ingredient = new RecipeIngredient();
-            ingredient.setAmount(results.getInt("quantity"));
+//            ingredient.setUserId(results.getInt("user_id"));
+//            ingredient.setRecipeId(results.getInt("recipe_id"));
+            ingredient.setQuantity(results.getInt("quantity"));
             ingredient.setName(name);
             ingredient.setUnit(results.getString("unit"));
             recipeDetail.getIngredients().add(ingredient);

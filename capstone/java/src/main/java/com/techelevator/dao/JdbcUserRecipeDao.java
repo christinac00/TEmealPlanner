@@ -56,13 +56,13 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
     }
 
 
-    private UserRecipe mapRowToRecipe(SqlRowSet rowSet){
+    private void mapRowToUserRecipe(SqlRowSet rowSet){
         UserRecipe result = new UserRecipe();
         result.setUser_id(rowSet.getInt("user_id"));
         result.setRecipe_id(rowSet.getInt("recipe_id"));
         result.setCreated(rowSet.getBoolean("isCreated"));
         result.setFavorite(rowSet.getBoolean("isFavorite"));
-        return result;
+
 
     }
 
