@@ -1,19 +1,25 @@
 package com.techelevator.model;
 
 public class RecipeIngredient {
-     int userId;
      int recipeId;
-     int amount;
+     int ingredientId;
+     int quantity;
      String unit;
      String name;
 
-    public int getUserId() {
-        return userId;
+
+    public RecipeIngredient(int userId, int recipeId, int quantity, String unit) {
+        this.recipeId = recipeId;
+        this.ingredientId = ingredientId;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.name = name;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public RecipeIngredient() {
+
     }
+
 
     public int getRecipeId() {
         return recipeId;
@@ -23,12 +29,20 @@ public class RecipeIngredient {
         this.recipeId = recipeId;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getIngredientId() {
+        return ingredientId;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setIngredientId(int ingredientId) {
+        this.ingredientId = ingredientId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getUnit() {

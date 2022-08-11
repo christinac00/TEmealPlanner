@@ -1,11 +1,14 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Ingredient;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-
+import java.util.List;
+@Component
 public class JdbcIngredientDao implements IngredientDao{
     private final JdbcTemplate jdbcTemplate;
 
@@ -24,8 +27,6 @@ public class JdbcIngredientDao implements IngredientDao{
     public void updateIngredient(Ingredient updatedIngredient) {
         String sql = "UPDATE ingredient SET name = ?, category = ? WHERE ingredient_id = ?;";
         jdbcTemplate.update(sql, updatedIngredient.getName(), updatedIngredient.getCategory(), updatedIngredient.getIngredientId());
-
-
     }
 
     @Override
@@ -35,7 +36,18 @@ public class JdbcIngredientDao implements IngredientDao{
     }
 
     @Override
-    public Ingredient getIngredientById(Integer ingredientId) {
+    public List<Ingredient> searchByIngredientName(String name_like) {
+        String sql = "SELECT name, category FROM ingredient WHERE name ILIKE '?%' ORDER BY name;";
+        return null;
+    }
+
+    @Override
+    public List<Ingredient> searchByCategory(String category_like) {
+        return null;
+    }
+
+    @Override
+    public Ingredient getIngredientById(int ingredientId) {
         Ingredient ingredient = null;
         String sql = "SELECT * FROM ingredient WHERE ingredient_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ingredientId);
@@ -43,6 +55,14 @@ public class JdbcIngredientDao implements IngredientDao{
             ingredient = mapRowToIngredient(results);
         }
         return ingredient;
+    }
+
+    @Override
+    public List<Ingredient> list() {
+        Ingredient ingredient = null;
+        String sql = "SELECT FROM ingredient;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        return null;
     }
 
     private Ingredient mapRowToIngredient(SqlRowSet results){

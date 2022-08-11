@@ -2,15 +2,29 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Ingredient;
 
+import java.util.List;
+
 public interface IngredientDao {
+    //list all ingredients
+    List<Ingredient> list();
 
-    public Ingredient createIngredient(Ingredient newIngredient);
+    //create a new ingredient
+    Ingredient createIngredient(Ingredient newIngredient);
 
-    public void updateIngredient(Ingredient updatedIngredient);
+    //get ingredient by id
+    Ingredient getIngredientById(int ingredientId);
 
-    public void removeIngredient(int ingredientId);
+    //update existing ingredient
+    void updateIngredient(Ingredient updatedIngredient);
 
-    public Ingredient getIngredientById(Integer ingredientId);
+    //delete an ingredient
+    void removeIngredient(int ingredientId);
+
+    //search by ingredient
+    List<Ingredient> searchByIngredientName(String name_like);
+
+    //search by category
+    List<Ingredient> searchByCategory(String category_like);
 
 
 }
