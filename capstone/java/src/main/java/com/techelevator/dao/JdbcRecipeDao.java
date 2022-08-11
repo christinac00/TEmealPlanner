@@ -71,11 +71,11 @@ public class JdbcRecipeDao implements RecipeDao {
         Recipe recipes = new Recipe();
         String sql = "SELECT * FROM recipe r. JOIN recipe_tag rt. ON rt.recipe_id = r.recipe_id JOIN tag t. ON t.tag_id = rt.tag_id WHERE t.keyword = ?;";
 
-<<<<<<< HEAD
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
         if(results.next()) {
             mapRowToRecipe(results, recipes);
-=======
+
     @Override
     //this method should return a Recipe object
     public Recipe create(Recipe newRecipe) {
@@ -92,7 +92,7 @@ public class JdbcRecipeDao implements RecipeDao {
         String sql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?;";
         return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions(), recipe.getRecipeId()) ==1?getDetails(recipe.getRecipeId()):null;
 
->>>>>>> 3253bea1d15fb55066a3a41f882e71c09d06d2de
+
         }
         return recipes;
    }
