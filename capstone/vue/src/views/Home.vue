@@ -7,7 +7,7 @@
       </div>
        <nav class="left-panel">
       <ul class="nav-links">
-        <li><router-link id="browse-my-recipes" v-bind:to="{ name: 'my-recipes' }">My Recipes</router-link></li>
+        <li><router-link id="browse-my-recipes" v-bind:to="{ name: 'my-recipes', params: {id: $store.state.user.id}  }">My Recipes</router-link></li>
         <li><router-link id="browse-saved" v-bind:to="{ name: 'saved' }">Saved Recipes</router-link></li>
         <li><router-link id="browse-shared" v-bind:to="{ name: 'shared' }">Shared Recipes</router-link></li>
         <li><router-link id="meal-plans" v-bind:to="{ name: 'meals' }">My Meal Plans</router-link></li>
