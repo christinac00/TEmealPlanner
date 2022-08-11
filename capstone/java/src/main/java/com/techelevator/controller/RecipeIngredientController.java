@@ -22,7 +22,10 @@ public class RecipeIngredientController {
 
 
     @RequestMapping(path = "/recipes/{id}/ingredient", method = RequestMethod.PUT)
-    public RecipeIngredient updateQuantity(@PathVariable int recipeId, @RequestBody)
+    public int update(@PathVariable int recipeId, @RequestBody RecipeIngredient recipeIngredient){
+        recipeIngredient.setRecipeId(recipeId);
+        return recipeIngredientDao.updateQuantity(recipeIngredient);
+    }
 
 
 }
