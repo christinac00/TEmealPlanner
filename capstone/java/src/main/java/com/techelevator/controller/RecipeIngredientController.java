@@ -20,10 +20,11 @@ public class RecipeIngredientController {
         this.recipeIngredientDao = recipeIngredientDao;
     }
 
-
-    @RequestMapping(path = "/recipes/{id}/ingredient", method = RequestMethod.PUT)
-    public int update(@PathVariable int recipeId, @RequestBody RecipeIngredient recipeIngredient){
+    //update ingredient QUANTITY
+    @RequestMapping(path = "/recipes/{id}/ingredient/{ingredientId}", method = RequestMethod.PUT)
+    public int update(@PathVariable int recipeId, @PathVariable int ingredientId, @RequestBody RecipeIngredient recipeIngredient){
         recipeIngredient.setRecipeId(recipeId);
+        recipeIngredient.setIngredientId(ingredientId);
         return recipeIngredientDao.updateQuantity(recipeIngredient);
     }
 

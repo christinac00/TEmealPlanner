@@ -22,8 +22,8 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
     @Override
     public int updateQuantity(RecipeIngredient updatedRecipe) {
 
-        String sql = "UPDATE recipe_ingredient SET quantity= ?, unit = ? WHERE ingredient_id = ?;";
-        return jdbcTemplate.update(sql, updatedRecipe.getQuantity(), updatedRecipe.getUnit(), updatedRecipe.getIngredientId()) ==1? updatedRecipe.getQuantity():null;
+        String sql = "UPDATE recipe_ingredient SET quantity= ?, unit = ? WHERE recipe_id=? AND ingredient_id = ? ;";
+        return jdbcTemplate.update(sql, updatedRecipe.getQuantity(), updatedRecipe.getUnit(), updatedRecipe.getRecipeId(), updatedRecipe.getIngredientId()) ==1? updatedRecipe.getQuantity():null;
     }
 
     @Override
