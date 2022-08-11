@@ -236,5 +236,12 @@ INSERT INTO ingredient(name, category) VALUES ('White Vinegar', 'Condiments');
 INSERT INTO ingredient(name, category) VALUES ('White Wine', 'Condiments');
 INSERT INTO ingredient(name, category) VALUES ('Worcestershire', 'Condiments');
 
+--liquids
+INSERT INTO ingredient(name, category) VALUES ('Beef Broth', 'Liquid');
+INSERT INTO ingredient(name, category) VALUES ('Chicken Broth', 'Liquid');
+INSERT INTO ingredient(name, category) VALUES ('Juice', 'Liquid');
+INSERT INTO ingredient(name, category) VALUES ('Vegetable Broth', 'Liquid');
+INSERT INTO ingredient(name, category) VALUES ('Water', 'Liquid');
+
 --commit changes
 COMMIT;

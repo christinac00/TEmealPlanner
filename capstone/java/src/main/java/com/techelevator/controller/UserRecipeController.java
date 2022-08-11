@@ -11,15 +11,16 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
+
+//@RequestMapping("/users/{id}/recipes")
 @RestController
-@RequestMapping("/users/{id}/recipes")
 public class UserRecipeController {
 
 
     private final UserRecipeDao userRecipeDao;
     private final RecipeDao recipeDao;
 
-    private UserRecipe userRecipe;
+
 
 
     public UserRecipeController(UserRecipeDao userRecipeDao, RecipeDao recipeDao) {
@@ -28,9 +29,21 @@ public class UserRecipeController {
     }
 
 
-    @GetMapping("")
-    public List<UserRecipe> getMyRecipes(int userId){
-        return userRecipeDao.myRecipesList(userRecipe.getUser_id());
+    @GetMapping("/users/{id}/recipes")
+    public List<UserRecipe> getMyRecipes(@PathVariable int id) throws RecipeNotFoundException{
+        UserRecipe userRecipe= new UserRecipe();
+                userRecipe.setUser_id(id);
+//        if(id == Integer.parseInt(null)){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No recipes under this user.");
+//        }
+
+
+        if(id == userRecipe.getUser_id()){
+            return userRecipeDao.myRecipesList(id);
+        } else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No recipes under this user.");
+        }
+
 
     }
 

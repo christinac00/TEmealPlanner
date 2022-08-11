@@ -12,7 +12,7 @@ public interface RecipeDao {
 
     Recipe getDetails(int recipeId);
 
-    boolean create(String name, String dietType, String instructions, Recipe recipe);
+    Recipe create(Recipe newRecipe);
 
     boolean updateRecipe(String name, String dietType, String instructions, Recipe recipe);
 

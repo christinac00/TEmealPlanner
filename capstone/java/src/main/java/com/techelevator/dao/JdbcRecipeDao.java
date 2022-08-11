@@ -38,7 +38,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public Recipe getDetails(int recipeId) {
         RecipeDetail recipeDetail = new RecipeDetail();
-        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name iname, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
+        String sql = "SELECT r.recipe_id, r.name, r.instructions, i.name, i.category, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if (results.next()) {
@@ -68,10 +68,14 @@ public class JdbcRecipeDao implements RecipeDao {
 
 
     @Override
-    public boolean create(String name, String dietType, String instructions, Recipe recipe) {
-        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES ?, ?, ?;";
-        return jdbcTemplate.update(insertRecipeSql, recipe.getName(), recipe.getInstructions()) == 1;
+    //this method should return a Recipe object
+    public Recipe create(Recipe newRecipe) {
+        //the ? should be inside of parantheses () to match sql syntax for INSERT
+        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES (?, ?) RETURNING recipe_id;";
+        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getRecipeId(), newRecipe.getName(), newRecipe.getInstructions());
+        return getDetails(newId);
         //should we have this return the new id?
+        //this should return a Recipe object based on the getDetails method
     }
 
     @Override
