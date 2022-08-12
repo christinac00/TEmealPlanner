@@ -33,7 +33,7 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
         return result;
     }
 
-    //adding recipe to user: make copy of existing recipe
+    //adding recipe to user
     @Override
     public Recipe addUserRecipe(int userId, int recipeId) {
         String sql = "INSERT INTO user_recipe (user_id, recipe_id, isCreated, isFavorite) VALUES (?, ?, ?, ?)";
@@ -43,14 +43,14 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
     }
 
 
-    @Override
-    public boolean modifyRecipe(int userId, RecipeDetail recipeDetail){
-        UserRecipe userRecipe = new UserRecipe();
-        userRecipe.setUser_id(userId);
-
-        String sql = "UPDATE recipe SET name = ? , instructions = ? WHERE recipe_id = ?";
-        return jdbcTemplate.update(sql, userId, recipeDetail.getRecipeId(), false, true)==1;
-    }
+//    @Override
+//    public boolean modifyRecipe(int userId, RecipeDetail recipeDetail){
+//        UserRecipe userRecipe = new UserRecipe();
+//        userRecipe.setUser_id(userId);
+//
+//        String sql = "UPDATE recipe SET name = ? , instructions = ? WHERE recipe_id = ?";
+//        return jdbcTemplate.update(sql, userId, recipeDetail.getRecipeId(), false, true)==1;
+//    }
 
     @Override
     public void deleteRecipe(int userId, int recipeId){

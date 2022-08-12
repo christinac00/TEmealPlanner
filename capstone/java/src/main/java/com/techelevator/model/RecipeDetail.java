@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RecipeDetail extends Recipe{
 
-    List<RecipeIngredient> ingredients = new ArrayList<>();
+    List<RecipeIngredientDetail> ingredients = new ArrayList<>();
 
-    public List<RecipeIngredient> getIngredients() {
+    public List<RecipeIngredientDetail> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<RecipeIngredient> ingredients) {
+    public void setIngredients(List<RecipeIngredientDetail> ingredients) {
         this.ingredients = ingredients;
     }
 }

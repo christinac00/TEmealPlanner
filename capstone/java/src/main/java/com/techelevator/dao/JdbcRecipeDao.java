@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.RecipeDetail;
 import com.techelevator.model.RecipeIngredient;
+import com.techelevator.model.RecipeIngredientDetail;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -53,7 +54,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public Recipe getByTagName(String keyword) {
         Recipe recipes = new Recipe();
-        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_id JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
+        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_tag JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
         if(results.next()) {
@@ -112,7 +113,7 @@ public class JdbcRecipeDao implements RecipeDao {
         String name = results.getString("iname");
 
         if(name != null){
-            RecipeIngredient ingredient = new RecipeIngredient();
+            RecipeIngredientDetail ingredient = new RecipeIngredientDetail();
 //            ingredient.setUserId(results.getInt("user_id"));
 //            ingredient.setRecipeId(results.getInt("recipe_id"));
             ingredient.setQuantity(results.getInt("quantity"));
