@@ -14,10 +14,12 @@ CREATE TABLE users (
 
 CREATE TABLE plan (
     plan_id SERIAL ,
+	user_id int NOT NULL,
     name varchar(50) NOT NULL,
     day_of_week varchar(20) NOT NULL,
 
-    CONSTRAINT PK_plan PRIMARY KEY (plan_id)
+    CONSTRAINT PK_plan PRIMARY KEY (plan_id),
+	CONSTRAINT FK_plan_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 
