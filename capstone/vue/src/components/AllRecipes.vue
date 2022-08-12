@@ -3,7 +3,7 @@
        <div class="recipe-header">
           <h1>Recipe Library</h1>  
     </div> 
-    <div class="recipe-row" v-for="recipe in recipe" v-bind:key="recipe.name">
+    <div class="recipe-row" v-for="recipe in allRecipes" v-bind:key="recipe.name">
        <p>  {{ recipe.recipeId }} </p>
        <p>  {{ recipe.name }} </p>
        <p>  {{ recipe.instructions }} </p>
@@ -14,27 +14,27 @@
 </template>
 
 <script>
-import { applicationServices } from '@/services/ApplicationServices';
+import  applicationServices  from '@/services/ApplicationServices';
 
 export default {
 
-    name: "recipes",
+    name: "all-recipes",
     data() {
         return {
-            recipes: [],
+            allRecipes: [],
             isLoading: true,
         }
         
     },
     created() {
-        this.retrieveRecipes();
+        this.retrieveAllRecipes();
     },
 
     methods:{
-        retrieveRecipes() {
+        retrieveAllRecipes() {
 
-            applicationServices.getRecipes(this.$route.params.id).then(response => {
-                this.recipes = response.data
+            applicationServices.getAllRecipes(this.$route.params.name).then(response => {
+                this.allRecipes = response.data
                 this.isLoading = false;
             })
         }
