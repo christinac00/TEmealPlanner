@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import { applicationServices } from '@/services/ApplicationServices';
+import  applicationServices  from '@/services/ApplicationServices';
 
 export default {
 
-    name: "all-Recipes",
+    name: "all-recipes",
     data() {
         return {
             allRecipes: [],
