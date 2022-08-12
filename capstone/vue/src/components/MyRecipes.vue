@@ -7,19 +7,25 @@
       <div class="recipe-header">
           <h1>My Recipe Library</h1>
       </div>
-      <div class="recipe-row"  v-for="recipe in myRecipes" v-bind:key="recipe.name" >
+      <recipe-card v-for="recipe in myRecipes" v-bind:key="recipe.name"
+      v-bind:recipe="recipe"
+      />
+      <!-- <div class="recipe-row"  v-for="recipe in myRecipes" v-bind:key="recipe.name" >
           <p> Recipes: {{ recipe.name }}</p>
           <p> Instructions: {{ recipe.instructions }}</p>
-      </div>
+      </div> -->
+
   </div>
   
 </template>
 
 <script>
+import RecipeCard from "@/components/RecipeCard.vue";
 import applicationServices from "@/services/ApplicationServices";
 export default {
 
 name: "my-recipes",
+components: { RecipeCard },
 data() {
     return {
         myRecipes: [],

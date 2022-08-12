@@ -73,6 +73,8 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
     private void mapRowToRecipe(SqlRowSet results, Recipe recipe) {
         recipe.setRecipeId(results.getInt("recipe_id"));
         recipe.setName(results.getString("name"));
+        recipe.setImage(results.getString("image"));
+        recipe.setDescription(results.getString("description"));
         recipe.setInstructions(results.getString("instructions"));
 
     }

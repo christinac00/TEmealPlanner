@@ -13,8 +13,8 @@
 <div>
   
     <h2>Ingredients</h2>  
-    <router-link><button class="edit button"> Edit Recipe </button>
-</router-link>
+    <!-- <router-link><button class="edit button"> Edit Recipe </button>
+</router-link> -->
 </div>
   </div>
   
@@ -26,7 +26,7 @@ export default {
     name: "my-recipe-details",
     data () {
         return {
-            getDetails: [],
+            recipe: {},
             isLoading: true,
         }
     },
@@ -36,7 +36,7 @@ export default {
     methods: {
     retrieveDetails() {
         applicationServices.getDetails(this.$route.params.recipeId).then(response =>{
-            this.getDetails = response.data
+            this.recipe = response.data
             this.isLoading = false;
         })
     }

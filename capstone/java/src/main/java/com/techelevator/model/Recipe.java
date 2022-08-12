@@ -4,12 +4,19 @@ public class Recipe {
 
     private int recipeId;
     private String name;
+
+
+
+    private String image;
+    private String description;
     private String instructions;
 
 
-    public Recipe(int recipeId, String name, String instructions) {
+    public Recipe(int recipeId, String name, String image, String description, String instructions) {
         this.recipeId = recipeId;
         this.name = name;
+        this.image = image;
+        this.description = description;
         this.instructions = instructions;
 
     }
@@ -41,7 +48,21 @@ public class Recipe {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
 }
