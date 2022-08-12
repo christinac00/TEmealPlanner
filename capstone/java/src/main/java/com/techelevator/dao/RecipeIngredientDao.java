@@ -3,15 +3,16 @@ package com.techelevator.dao;
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.RecipeIngredient;
+import com.techelevator.model.RecipeIngredientDetail;
 
 public interface RecipeIngredientDao {
 
-    int updateQuantity(RecipeIngredient updatedRecipe);
+    int update(RecipeIngredient updatedRecipe);
 
-    Recipe addIngredientToRecipe(RecipeIngredient recipe);
+    RecipeIngredient addIngredientToRecipe(RecipeIngredient addedIngredient);
 
-    Ingredient updateIngredients(Ingredient ingredient);
+//    boolean updateIngredients(Ingredient ingredient);
 
-    public void removeIngredient(int id);
+    public void removeIngredient(int recipeId, int ingredientId);
 
 }

@@ -42,22 +42,22 @@ public class UserRecipeController {
 
 
 
-    @PostMapping("/users/{id}/recipes/{recipeId}")
+    @PostMapping("/users/{userId}/recipes/{recipeId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Recipe createRecipe (@PathVariable int userId, int recipeId){
+    public Recipe createRecipe (@PathVariable int userId,@PathVariable int recipeId){
         return userRecipeDao.addUserRecipe(userId, recipeId);
     }
 
-    @PutMapping("/{id}")
-    public boolean updateRecipe (@PathVariable int id, @RequestBody RecipeDetail recipeDetail){
+//    @PutMapping("/{id}")
+//    public boolean updateRecipe (@PathVariable int id, @RequestBody RecipeDetail recipeDetail){
+//
+//        return userRecipeDao.modifyRecipe(id, recipeDetail);
+//
+//    }
 
-        return userRecipeDao.modifyRecipe(id, recipeDetail);
 
-    }
-
-
-    @RequestMapping(path = "/users/{id}/recipes/{recipeId}", method = RequestMethod.DELETE)
-    public void deleteRecipe (@PathVariable int userId, int recipeId) throws RecipeNotFoundException{
+    @RequestMapping(path = "/users/{userId}/recipes/{recipeId}", method = RequestMethod.DELETE)
+    public void deleteRecipe (@PathVariable int userId, @PathVariable int recipeId) throws RecipeNotFoundException{
         userRecipeDao.deleteRecipe(userId, recipeId);
     }
 
