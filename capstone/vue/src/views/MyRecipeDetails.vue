@@ -1,4 +1,4 @@
-<!--- <template>
+ <template>
   <my-recipe-details />
 </template>
 
@@ -12,4 +12,3 @@ components: { MyRecipeDetails },
 <style>
 
 </style>
----!>

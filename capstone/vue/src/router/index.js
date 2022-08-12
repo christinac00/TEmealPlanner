@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyRecipes from '../views/MyRecipes.vue'
 import AllRecipes from '../views/AllRecipes.vue'
-// import MyRecipeDetails from '../views/MyRecipeDetails.vue'
+ import MyRecipeDetails from '../views/MyRecipeDetails.vue'
 
 Vue.use(Router)
 
@@ -29,7 +29,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -139,10 +139,10 @@ const router = new Router({
        name: "all-recipes",
        component: AllRecipes
      },
-    //  {path: "/recipes/recipeId",
-    //  name: "my-recipe-details",
-    //  component: MyRecipeDetails
-    // },
+      {path: "/recipes/recipeId",
+       name: "my-recipe-details",
+      component: MyRecipeDetails
+     },
   ]
 })
 

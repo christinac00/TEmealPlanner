@@ -38,7 +38,7 @@ public class JdbcIngredientDao implements IngredientDao{
 
     @Override
     public List<Ingredient> searchByIngredientName(String name_like) {
-        String sql = "SELECT name, category FROM ingredient WHERE name ILIKE '?%' ORDER BY name;";
+        String sql = "SELECT name, category FROM ingredient WHERE name ILIKE ?% ORDER BY name;";
         return null;
     }
 

@@ -1,4 +1,4 @@
-<!---<template>
+<template>
   <div class="recipe-details-body">
       <div class="loading" v-if="isLoading">
     <img src="../assets/ping_pong_loader.gif" />
@@ -48,4 +48,3 @@ export default {
 
 
 </style>
----!>
