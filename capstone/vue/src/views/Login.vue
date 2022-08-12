@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center container">
     <div id="login" class="text-center login">
       <form class="form-signin" @submit.prevent="login">
         <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
@@ -40,6 +40,9 @@
         <button type="submit">Sign in</button>
       </form>
     </div>
+    <footer>
+      The TE Meal Planner 
+    </footer>
   </div>
 </template>
 
@@ -91,6 +94,7 @@ export default {
 
   background: #9c425d;
 }
+
 .container {
   display: grid;
   grid-template-rows: 40px calc(100vh - 80px) 40px;
@@ -100,7 +104,14 @@ export default {
     "space login space"
     "space space space";
 }
+
 .login{
   grid-area: login;
 }
+
+#login{
+  background: #429698;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 </style>
