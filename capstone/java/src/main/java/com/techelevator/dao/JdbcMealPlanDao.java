@@ -59,8 +59,8 @@ public class JdbcMealPlanDao implements MealPlanDao{
 
     @Override
     public void updateMealPlan(MealPlan updatedMealPlan, int planId) {
-        String sql = "UPDATE plan SET name = ?, day_of_week =?;";
-        jdbcTemplate.update(sql, updatedMealPlan.getPlanName(), updatedMealPlan.getDayOfWeek());
+        String sql = "UPDATE plan SET name = ?, day_of_week =? WHERE plan_id = ?;";
+        jdbcTemplate.update(sql, updatedMealPlan.getPlanName(), updatedMealPlan.getDayOfWeek(), planId);
     }
 
     @Override
