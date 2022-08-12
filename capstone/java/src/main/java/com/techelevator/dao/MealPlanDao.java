@@ -14,6 +14,9 @@ public interface MealPlanDao {
     //get a meal plan by name
     MealPlan getMealPlanByName(String planName);
 
+    //get a meal plan by id
+    MealPlan getMealPlanById(int planId);
+
     //update a meal plan
     void updateMealPlan(MealPlan updatedMealPlan);
 
