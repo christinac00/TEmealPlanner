@@ -8,9 +8,8 @@
           <h1>My Recipe Library</h1>
       </div>
       <div class="recipe-row"  v-for="recipe in myRecipes" v-bind:key="recipe.name" >
-          <p> {{ recipe.recipeId }}</p>
-          <p> {{ recipe.name }}</p>
-          <p> {{ recipe.instructions }}</p>
+          <p> Recipes: {{ recipe.name }}</p>
+          <p> Instructions: {{ recipe.instructions }}</p>
       </div>
   </div>
   
@@ -45,56 +44,28 @@ methods:{
 </script>
 
 <style>
-.recipe-family-container {
-  width: 90%;
+.my-recipes{
+    width: 90%;
   margin: 50px auto;
+  background: lightcoral;
 }
-.recipe-header {
-  text-align: center;
+
+.recipe-header{
+     text-align: center;
   font-size: 20px;
-  color: rgb(148, 30, 30);
+  color: rgb(168, 64, 64);
   margin-bottom: 40px;
 }
-.recipe-row {
-  display: flex;
+.recipe-row{
+    display: flex;
   flex-direction: row;
   justify-content: flex-start;
   gap: 3px;
   flex-flow: wrap;
   margin-left: 40px;
 }
-.my-recipe-card {
-  width: 20%;
-  margin: 50px 10px;
-  transition: 0.3;
-  padding: 30px 20px;
-  box-shadow: 0 0 20px 0 rgba(240, 25, 25, 0.2), 0 5px 5px 0 rgba(0,0,0,0.24);
-  border-radius: 10px;
-}
-.recipe-header {
-  text-align: center;
-  padding: 50px 10px;
-  
-}
-.recipe-button {
-  display: block;
-  text-align: center;
-  outline: 0;
-  text-transform: uppercase;
-  font-weight: bold;
-  outline: 0;
-  border-radius: 5px;
-  background: purple;
-  border: 0;
-  padding: 10px;
-  color: #fff;
-  font-size: 13px;
-  margin-bottom: 10px;
-  text-decoration: none;
-}
-.recipe-button:hover {
-  background-color: gray;
-  transition: all 1s ease 0s;
+.recipe-row #p{
+    border-bottom: 10px, solid ;
 }
 
 </style>

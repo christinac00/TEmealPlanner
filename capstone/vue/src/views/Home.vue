@@ -53,7 +53,7 @@ height: 1029px;
 left: 0px;
 top: 0px;
  
-background: #7e2d73;
+background: #cf9ac8;
 }
 .navbar {
   position: absolute;

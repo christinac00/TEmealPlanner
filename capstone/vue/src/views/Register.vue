@@ -5,7 +5,8 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <div id="form">
+      <h2><label for="username" class="sr-only">Username</label> </h2>
       <input
         type="text"
         id="username"
@@ -15,7 +16,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <h2><label for="password" class="sr-only">Password</label> </h2>
       <input
         type="password"
         id="password"
@@ -36,6 +37,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      </div>
     </form>
   </div>
 </template>
@@ -90,4 +92,23 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+#register {
+  display:flex;
+  justify-content: center;
+}
+.form-register {
+  border: black 3px solid;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #9e456f;
+}
+label{
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-weight: lighter;
+}</style>
