@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/user/{id}/meal-plans")
+@RequestMapping("/users/{id}/meal-plans")
 public class MealPlanController {
     //instance variable
     private MealPlanDao dao;
@@ -29,16 +29,16 @@ public class MealPlanController {
     //list all meal plans
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
-    public List<MealPlan> getAllMealPlans() {
-        return dao.list();
+    public List<MealPlan> getAllMealPlans(@PathVariable int id) {
+        return dao.list(id);
     }
 
     //update a meal plan
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{planId}", method = RequestMethod.PUT)
     public void updateMealPlan(@PathVariable int planId, @RequestBody MealPlan updatedMealPlan) {
         updatedMealPlan.setPlanId(planId);
-        dao.updateMealPlan(updatedMealPlan);
+        dao.updateMealPlan(updatedMealPlan, planId);
     }
 
 }

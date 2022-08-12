@@ -14,15 +14,14 @@ import java.util.List;
 public class JdbcMealPlanDao implements MealPlanDao{
     private final JdbcTemplate jdbcTemplate;
     private UserDao userDao;
-    private Principal currentUser;
     public JdbcMealPlanDao(DataSource dataSource) {this.jdbcTemplate = new JdbcTemplate(dataSource);}
 
     @Override
     //lists all meal plans for current user
-    public List<MealPlan> list() {
+    public List<MealPlan> list(int userId) {
         List<MealPlan> mealPlans = new ArrayList<>();
         String sql = "SELECT * FROM plan WHERE user_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userDao.findIdByUsername(currentUser.getName()));
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             mealPlans.add(mapRowToMealPlan(results));
         }
@@ -33,13 +32,13 @@ public class JdbcMealPlanDao implements MealPlanDao{
     //creates new meal plan
     public MealPlan createMealPlan(MealPlan newMealPlan) {
         String sql = "INSERT INTO plan (user_id, name, day_of_week) VALUES (?, ?, ?) RETURNING plan_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, userDao.findIdByUsername(currentUser.getName()), newMealPlan.getPlanName(),newMealPlan.getDayOfWeek());
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newMealPlan.getUserId(), newMealPlan.getPlanName(),newMealPlan.getDayOfWeek());
         return getMealPlanById(newId);
     }
 
     @Override
     public MealPlan getMealPlanById(int planId) {
-        String sql = "SELECT plan_id, name, day_of_week FROM plan WHERE plan_id = ?;";
+        String sql = "SELECT * FROM plan WHERE plan_id = ?;";
         MealPlan mealPlan = null;
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planId);
         if (results.next()) {
@@ -48,10 +47,10 @@ public class JdbcMealPlanDao implements MealPlanDao{
         return mealPlan;
     }
     @Override
-    public MealPlan getMealPlanByName(String planName) {
+    public MealPlan getMealPlanByName(String planName, int userId) {
         MealPlan mealPlan = null;
         String sql = "SELECT plan_id, name, day_of_week FROM plan WHERE name = ? AND user_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planName, userDao.findIdByUsername(currentUser.getName()));
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planName, userId);
         if (results.next()) {
             mealPlan = mapRowToMealPlan(results);
         }
@@ -59,7 +58,7 @@ public class JdbcMealPlanDao implements MealPlanDao{
     }
 
     @Override
-    public void updateMealPlan(MealPlan updatedMealPlan) {
+    public void updateMealPlan(MealPlan updatedMealPlan, int planId) {
         String sql = "UPDATE plan SET name = ?, day_of_week =?;";
         jdbcTemplate.update(sql, updatedMealPlan.getPlanName(), updatedMealPlan.getDayOfWeek());
     }
