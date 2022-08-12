@@ -53,7 +53,7 @@ public class JdbcGroceryList implements GroceryListDao {
     @Override
     public GroceryList getRecipeGroceryList(int recipeId) {
         String sql = "SELECT r.name, i.name, i.category, rp.plan_id, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id JOIN recipe_plan rp ON ri.recipe_id = rp.recipe_id WHERE r.recipe_id = ?;";
-        GroceryList groceryList = null;
+        GroceryList groceryList = new GroceryList();
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if(results.next()) {
