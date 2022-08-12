@@ -35,9 +35,10 @@ CREATE TABLE  ingredient (
 CREATE TABLE recipe (
     recipe_id SERIAL,
     name varchar(100) NOT NULL,
+    image varchar(100),
+    description varchar(250),
     instructions text,
 	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
-
 );
 
 
