@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyRecipes from '../views/MyRecipes.vue'
-import AllRecipes from '../views/AllRecipes.Vue'
+import AllRecipes from '../views/AllRecipes.vue'
 
 Vue.use(Router)
 
@@ -135,7 +135,7 @@ const router = new Router({
 
      {
        path: "/recipes",
-       name: "all-Recipes",
+       name: "all-recipes",
        component: AllRecipes
      }
   ]
