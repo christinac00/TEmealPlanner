@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
+import com.techelevator.model.RecipeDetail;
 import com.techelevator.model.UserRecipe;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -27,32 +29,34 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
             mapRowToRecipe(rowSet, recipe);
             result.add(recipe);
 
-
-
-//            UserRecipe userRecipe = mapRowToRecipe(rowSet);
-//            userRecipe.setUser_id(userRecipe.getUser_id());
-//            result.add(userRecipe);
         }
         return result;
     }
 
+    //adding recipe to user: make copy of existing recipe and adds updates per user
     @Override
-    public UserRecipe addUserRecipe(UserRecipe userRecipe){
+    public Recipe addUserRecipe(int userId, Recipe recipe) {
         String sql = "INSERT INTO user_recipe (user_id, recipe_id, isCreated, isFavorite) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, userRecipe.getUser_id(), userRecipe.getRecipe_id(), true, true);
+        jdbcTemplate.update(sql, userId, recipe.getRecipeId(), true, true);
 
-        Recipe recipe = new Recipe();
-        recipe.setRecipeId(userRecipe.getRecipe_id());
+
+
+        UserRecipe userRecipe= new UserRecipe();
+        userRecipe.setUser_id(userId);
         String editSql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?";
+        jdbcTemplate.queryForRowSet(editSql, recipe.getName(), recipe.getInstructions(), recipe.getRecipeId());
 
-        return userRecipe;
+        return recipe;
     }
 
 
     @Override
-    public boolean modifyRecipe(UserRecipe modifiedRecipe){
-        String sql = "UPDATE user_recipe SET user_id = ? , recipe_id = ? , isCreated = ? , isFavorite = ? ";
-        return jdbcTemplate.update(sql, modifiedRecipe.getUser_id(), modifiedRecipe.getRecipe_id(), false, true)==1;
+    public boolean modifyRecipe(int userId, RecipeDetail recipeDetail){
+        UserRecipe userRecipe = new UserRecipe();
+        userRecipe.setUser_id(userId);
+
+        String sql = "UPDATE recipe SET name = ? , instructions = ? WHERE recipe_id = ?";
+        return jdbcTemplate.update(sql, userId, recipeDetail.getRecipeId(), false, true)==1;
     }
 
 

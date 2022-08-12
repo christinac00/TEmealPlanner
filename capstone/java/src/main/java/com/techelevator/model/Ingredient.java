@@ -41,4 +41,6 @@ public class Ingredient {
     public void setIngredientId(int ingredientId) {
         this.ingredientId = ingredientId;
     }
+
+
 }
