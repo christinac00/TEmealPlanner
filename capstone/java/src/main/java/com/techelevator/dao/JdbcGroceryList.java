@@ -52,40 +52,39 @@ public class JdbcGroceryList implements GroceryListDao {
 
     @Override
     public GroceryList getRecipeGroceryList(int recipeId) {
+        GroceryList groceryList = null;
         String sql = "SELECT r.name, i.name, i.category, rp.plan_id, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id JOIN recipe_plan rp ON ri.recipe_id = rp.recipe_id WHERE r.recipe_id = ?;";
-        GroceryList groceryList = new GroceryList();
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if(results.next()) {
-            groceryList = mapRowToGroceryList(results);
+           groceryList =  mapRowToGroceryList(results);
         }
 
         return groceryList;
     }
 
+
     @Override
     public GroceryList getGroceryListByPlanId(int planId) {
-
+        GroceryList groceryList = null;
             String sql = "SELECT r.name, i.name, i.category, rp.plan_id, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id JOIN recipe_plan WHERE rp.plan_id = ?;";
-            GroceryList groceryList = null;
+
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planId);
             if(results.next()) {
                 groceryList = mapRowToGroceryList(results);
             }
-
             return groceryList;
         }
-
-
 
     @Override
     public GroceryList getGroceryListByUserId(int userId) {
         return null;
     }
 
+
     private GroceryList mapRowToGroceryList(SqlRowSet results) {
-       GroceryList groceryList = new GroceryList();
+        GroceryList groceryList = new GroceryList();
        groceryList.setGroceryListId(groceryList.getGroceryListId());
        groceryList.setTitle(groceryList.getTitle());
        groceryList.setPlanId(results.getInt("plan_id"));
@@ -94,6 +93,6 @@ public class JdbcGroceryList implements GroceryListDao {
        groceryList.setRecipeId(results.getInt("recipe_id"));
        groceryList.setName(results.getString("iname"));
        groceryList.setUserId(results.getInt("user_id"));
-       return groceryList;
+      return groceryList;
     }
 }

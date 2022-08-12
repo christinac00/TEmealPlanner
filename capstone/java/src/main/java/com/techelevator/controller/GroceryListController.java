@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/recipes/{recipeId}")
+@RequestMapping("/recipes")
 @CrossOrigin(origins = "http://localhost:8080")
 public class GroceryListController {
 
@@ -25,24 +25,29 @@ public class GroceryListController {
         this.groceryListDao = groceryListDao;
     }
 
-    @RequestMapping(path = "/grocery-list", method = RequestMethod.GET)
+    //getting a grocery list back by recipe id
+    @RequestMapping(path = "/{recipeId}/grocery-list", method = RequestMethod.GET)
     public GroceryList getRecipeGroceries(@PathVariable int recipeId) {
         return groceryListDao.getRecipeGroceryList(recipeId);
     }
 
-    @RequestMapping(path = "/{planId}", method = RequestMethod.GET)
+
+    //method below not being used yet.
+    @RequestMapping(path = "/grocery-list", method = RequestMethod.GET)
     public GroceryList getGroceriesByPlanId(@PathVariable int planId) {
         return groceryListDao.getGroceryListByPlanId(planId);
     }
 
+    //creating a grocery list
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/{planId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/grocery-list", method = RequestMethod.PUT)
     public GroceryList newGroceryList(@RequestBody GroceryList groceryList) {
         return groceryListDao.createGroceryList(groceryList);
     }
 
+    //updating a grocery list
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{recipeId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{recipeId}/grocery-list", method = RequestMethod.PUT)
     public GroceryList updateGroceryList(@RequestBody GroceryList groceryList) {
         return groceryListDao.updateGroceryList(groceryList);
     }
