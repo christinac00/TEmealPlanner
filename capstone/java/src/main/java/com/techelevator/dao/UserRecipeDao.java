@@ -11,8 +11,10 @@ public interface UserRecipeDao {
 
     List<Recipe> myRecipesList (int user_id);
 
-    Recipe addUserRecipe(int userId, Recipe recipe);
+    Recipe addUserRecipe(int userId, int recipeId);
 
     boolean modifyRecipe(int userId, RecipeDetail recipeDetail);
+
+    void deleteRecipe(int userId, int recipeId);
 
 }

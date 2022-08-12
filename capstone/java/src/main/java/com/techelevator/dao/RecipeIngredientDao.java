@@ -12,4 +12,6 @@ public interface RecipeIngredientDao {
 
     Ingredient updateIngredients(Ingredient ingredient);
 
+    public void removeIngredient(int id);
+
 }

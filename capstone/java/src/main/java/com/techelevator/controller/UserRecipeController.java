@@ -44,8 +44,8 @@ public class UserRecipeController {
 
     @PostMapping("/users/{id}/recipes")
     @ResponseStatus(HttpStatus.CREATED)
-    public Recipe createRecipe (@PathVariable int userId, @RequestBody Recipe newRecipe){
-        return userRecipeDao.addUserRecipe(userId, newRecipe);
+    public Recipe createRecipe (@PathVariable int userId, int recipeId){
+        return userRecipeDao.addUserRecipe(userId, recipeId);
     }
 
     @PutMapping("/{id}")
@@ -55,5 +55,10 @@ public class UserRecipeController {
 
     }
 
+
+    @RequestMapping(path = "/users/{id}/recipes/{recipeId}", method = RequestMethod.DELETE)
+    public void deleteRecipe (@PathVariable int userId, int recipeId) throws RecipeNotFoundException{
+        userRecipeDao.deleteRecipe(userId, recipeId);
+    }
 
 }
