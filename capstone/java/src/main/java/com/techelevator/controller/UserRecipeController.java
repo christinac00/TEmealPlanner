@@ -42,7 +42,7 @@ public class UserRecipeController {
 
 
 
-    @PostMapping("/users/{id}/recipes")
+    @PostMapping("/users/{id}/recipes/{recipeId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Recipe createRecipe (@PathVariable int userId, int recipeId){
         return userRecipeDao.addUserRecipe(userId, recipeId);
