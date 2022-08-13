@@ -7,12 +7,13 @@
     <h1 class="recipe-name">{{ recipe.name }}</h1>
 </div>
 <div>
-    <h2 class="instructions">instructions</h2>
+    <h2 class="instructions">Instructions</h2>
     <h3>{{ recipe.instructions }}</h3>
 </div>
 <div>
   
     <h2>Ingredients</h2>  
+    <h3>{{recipe.ingredients}}</h3>
     <!-- <router-link><button class="edit button"> Edit Recipe </button>
 </router-link> -->
 </div>
