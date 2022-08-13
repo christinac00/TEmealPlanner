@@ -22,6 +22,9 @@ export default {
     },
     createPlan(id) {
         return http.post(`users/${id}/plan`)
+    },
+    createUserRecipe(userId, recipeId){
+        return http.post(`users/${userId}/recipes/${recipeId}`)
     }
     
 }

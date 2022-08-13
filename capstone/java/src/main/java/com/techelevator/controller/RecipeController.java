@@ -5,6 +5,7 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.RecipeNotFoundException;
 import com.techelevator.model.Recipe;
 import org.apache.coyote.Request;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +45,9 @@ public class RecipeController {
         return recipeDao.getByIngredientName(name);
     }
 
+
     @RequestMapping(path = "", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public Recipe create(@RequestBody Recipe recipe) {
         return recipeDao.create(recipe);
     }

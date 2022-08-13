@@ -1,12 +1,15 @@
 <template>
 <div class="my-recipes">
 <div class="loading" v-if="isLoading">
-    <img src="../assets/ping_pong_loader.gif" />
+    <img src="../assets/your-food-is-being-prepared.gif" />
     </div>
   
       <div class="recipe-header">
           <h1>My Recipe Library</h1>
       </div>
+
+      <router-link tag="button" class="btn addNewRecipe" :to="{name:'add-recipe', params:{userId: $route.params.id}}" v-if="!isLoading" >Add New Recipe</router-link>
+
       <recipe-card v-for="recipe in myRecipes" v-bind:key="recipe.name"
       v-bind:recipe="recipe"
       />

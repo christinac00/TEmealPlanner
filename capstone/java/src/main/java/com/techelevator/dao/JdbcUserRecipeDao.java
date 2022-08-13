@@ -33,13 +33,15 @@ public class JdbcUserRecipeDao implements UserRecipeDao{
         return result;
     }
 
+
+
     //adding recipe to user
     @Override
-    public Recipe addUserRecipe(int userId, int recipeId) {
+    public Boolean addUserRecipe(int userId, int recipeId) {
         String sql = "INSERT INTO user_recipe (user_id, recipe_id, isCreated, isFavorite) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, userId, recipeId, true, true);
 
-        return myRecipesList(userId).get(recipeId);
+        return true;
     }
 
 

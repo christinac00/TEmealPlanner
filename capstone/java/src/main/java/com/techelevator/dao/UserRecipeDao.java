@@ -11,7 +11,8 @@ public interface UserRecipeDao {
 
     List<Recipe> myRecipesList (int user_id);
 
-    Recipe addUserRecipe(int userId, int recipeId);
+
+    Boolean addUserRecipe(int userId, int recipeId);
 
 //    boolean modifyRecipe(int userId, RecipeDetail recipeDetail);
 

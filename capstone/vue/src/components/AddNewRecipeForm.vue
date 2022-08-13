@@ -1,0 +1,73 @@
+<template>
+  <form v-on:submit.prevent>
+    <div class="field">
+      <label for="recipe-name">Recipe Name</label>
+      <input type="text" name="recipe-name" v-model="recipe.name" />
+    </div>
+
+    <div class="field">
+      <label for="instructions">Instructions</label>
+      <input type="text" name="instructions" v-model="recipe.instructions" />
+    </div>
+
+    <div class="actions">
+      <button type="submit" v-on:click.prevent="saveRecipe">Save Recipe</button>
+      <button
+        class="btn btn-cancel"
+        v-on:click.prevent="cancelForm"
+        type="cancel"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</template>
+
+<script>
+import applicationServices from "../services/ApplicationServices";
+
+export default {
+  name: "add-recipe",
+  data() {
+    return {
+      recipe: {
+        recipeId: 0,
+        name: "",
+        image: "",
+        description: "",
+        instructions: "",
+      },
+    };
+  },
+  methods: {
+    saveRecipe() {
+      applicationServices
+        .createRecipe(this.recipe)
+        .then((response) => {
+          if (response.status === 201) {
+            applicationServices
+              .createUserRecipe(this.$route.params.userId, response.data.recipeId)
+              .then((response) => {
+                if (response.status === 201) {
+                  this.recipe = {
+                    recipeId: 0,
+                    name: "",
+                    image: "",
+                    description: "",
+                    instructions: "",
+                  };
+                  this.$router.push({name:'my-recipes', params:{id: this.$route.params.userId}});
+                }
+              });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+};
+</script>
+
+<style>
+</style>
