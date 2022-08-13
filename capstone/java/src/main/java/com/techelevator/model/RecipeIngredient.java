@@ -3,11 +3,11 @@ package com.techelevator.model;
 public class RecipeIngredient {
      int recipeId;
      int ingredientId;
-     int quantity;
+     String quantity;
      String unit;
 
 
-    public RecipeIngredient(int userId, int recipeId, int quantity, String unit) {
+    public RecipeIngredient(int userId, int recipeId, String quantity, String unit) {
         this.recipeId = recipeId;
         this.ingredientId = ingredientId;
         this.quantity = quantity;
@@ -35,11 +35,11 @@ public class RecipeIngredient {
         this.ingredientId = ingredientId;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

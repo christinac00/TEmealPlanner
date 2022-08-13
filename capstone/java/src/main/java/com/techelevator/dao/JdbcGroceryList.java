@@ -88,7 +88,7 @@ public class JdbcGroceryList implements GroceryListDao {
        groceryList.setGroceryListId(groceryList.getGroceryListId());
        groceryList.setTitle(groceryList.getTitle());
        groceryList.setPlanId(results.getInt("plan_id"));
-       groceryList.setQuantity(results.getInt("quantity"));
+       groceryList.setQuantity(results.getString("quantity"));
        groceryList.setUnit(results.getInt("unit"));
        groceryList.setRecipeId(results.getInt("recipe_id"));
        groceryList.setName(results.getString("iname"));

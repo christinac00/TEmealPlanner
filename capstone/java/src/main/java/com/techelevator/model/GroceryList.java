@@ -8,10 +8,10 @@ public class GroceryList {
     int planId;
     int recipeId;
     int unit;
-    int quantity;
+    String quantity;
     String name;
 
-    public GroceryList(int groceryListId, String title, int userId, int recipeId, int unit, int quantity, int planId, String name) {
+    public GroceryList(int groceryListId, String title, int userId, int recipeId, int unit, String quantity, int planId, String name) {
         this.groceryListId = groceryListId;
         this.title = title;
         this.userId = userId;
@@ -34,11 +34,11 @@ public class GroceryList {
         this.unit = unit;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
