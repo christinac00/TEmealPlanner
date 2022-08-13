@@ -1,5 +1,5 @@
 <template>
- <router-link :to="{ name: 'my-recipe-details', params: {recipeId: 1}}"> 
+ <router-link :to="{ name: 'my-recipe-details', params: {recipeId: recipe.recipeId}}"> 
      <div class="card">
     <h2 class="recipe-name">{{ recipe.name }}</h2>
     <img v-if="recipe.image" v-bind:src="recipe.image" />
@@ -23,8 +23,8 @@ export default {
 .card {
     border: 2px solid black;
     border-radius: 10px;
-    width: 250px;
-    height: 550px;
+    width: 550px;
+    height: 250px;
     margin: 20px;
 }
 .card > img{

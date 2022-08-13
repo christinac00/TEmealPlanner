@@ -8,12 +8,36 @@
 </div>
 <div>
     <h2 class="instructions">Instructions</h2>
-    <h3>{{ recipe.instructions }}</h3>
+    <p class="instruction-body">{{ recipe.instructions }}</p>
 </div>
 <div>
   
     <h2>Ingredients</h2>  
-    <h3>{{recipe.ingredients}}</h3>
+    <table>
+        <tr>
+            <td>
+                amount:
+            </td>
+            <td>
+                units:
+            </td>
+            <td>
+                name:
+            </td>
+        </tr>
+        <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
+            <td>
+                {{ ingredient.quantity}}
+
+            </td>
+            <td>
+                {{ingredient.unit}}
+            </td>
+            <td>
+                {{ingredient.name}}
+            </td>
+        </tr>
+    </table>
     <!-- <router-link><button class="edit button"> Edit Recipe </button>
 </router-link> -->
 </div>
@@ -46,6 +70,15 @@ export default {
 }
 </script>
 <style>
+.instruction-body{
+    font-family: sans-serif;
+    white-space: pre;
+}
+
+table, tr, td {
+    border: 1px solid;
+}
+
 
 
 </style>
