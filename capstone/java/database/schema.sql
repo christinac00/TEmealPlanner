@@ -34,9 +34,9 @@ CREATE TABLE  ingredient (
 
 CREATE TABLE recipe (
     recipe_id SERIAL,
-    name varchar(100) NOT NULL,
-    image varchar(100),
-    description varchar(250),
+    name varchar(100) NOT NULL UNIQUE,
+    image varchar(200),
+    description varchar(500),
     instructions text,
 	CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
@@ -44,7 +44,7 @@ CREATE TABLE recipe (
 
 CREATE TABLE tag (
     tag_id SERIAL,
-    keyword varchar(100) NOT NULL,
+    keyword varchar(100) NOT NULL UNIQUE,
     CONSTRAINT PK_tag PRIMARY KEY (tag_id)
 );
 
@@ -59,12 +59,13 @@ CREATE TABLE recipe_tag(
 
 
 CREATE TABLE recipe_ingredient (
+    recipe_ingredient_id SERIAL,
     recipe_id int NOT NULL,
     ingredient_id int NOT NULL,
-    quantity int NOT NULL,
+    quantity varchar(10) NOT NULL,
     unit varchar(100) NOT NULL,
 
-    CONSTRAINT PK_recipe_ingredient PRIMARY KEY (recipe_id, ingredient_id),
+    CONSTRAINT PK_recipe_ingredient PRIMARY KEY (recipe_ingredient_id),
     CONSTRAINT FK_recipe_ingredient_recipe FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
     CONSTRAINT FK_recipe_ingredient_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id)
 
