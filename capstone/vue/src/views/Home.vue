@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <all-recipes />
 </template>
 
 <script>
-export default {
 
+import AllRecipes  from '../components/AllRecipes.vue'
+export default {
+  components: { AllRecipes },
 }
 </script>
 

@@ -90,6 +90,7 @@ nav > hr {
 
 #app > main {
   grid-area: main;
+   overflow: auto;
 }
 
 #app > footer {

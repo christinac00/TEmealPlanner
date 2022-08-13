@@ -7,18 +7,24 @@
           <h1>Recipe Library</h1> 
           <input class="search-bar" type="text" placeholder="Search by Ingedient"> 
     </div> 
-    <div class="recipe-row" v-for="recipe in allRecipes" v-bind:key="recipe.name">
+
+    <recipe-card v-for="recipe in allRecipes" v-bind:key="recipe.name"
+      v-bind:recipe="recipe"
+      />
+
+    <!-- <div class="recipe-row" v-for="recipe in allRecipes" v-bind:key="recipe.name">
        <p>  {{ recipe.recipeId }} </p>
        <p>  {{ recipe.name }} </p>
        <p>  {{ recipe.instructions }} </p>
 
 
-    </div>
+    </div> -->
     </div>
 </template>
 
 <script>
 import  applicationServices  from '@/services/ApplicationServices';
+import RecipeCard from "@/components/RecipeCard.vue";
 
 export default {
 
@@ -33,11 +39,12 @@ export default {
     created() {
         this.retrieveAllRecipes();
     },
+    components: { RecipeCard },
 
     methods:{
         retrieveAllRecipes() {
 
-            applicationServices.getAllRecipes(this.$route.params.name).then(response => {
+            applicationServices.getAllRecipes().then(response => {
                 this.allRecipes = response.data
                 this.isLoading = false;
             })
