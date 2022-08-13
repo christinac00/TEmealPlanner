@@ -1,8 +1,8 @@
 <template>
- <router-link :to="{ name: 'my-recipe-details', params: {recipeId: recipe.recipeId}}"> 
-     <div class="card">
-    <h2 class="recipe-name">{{ recipe.name }}</h2>
-    <img v-if="recipe.image" v-bind:src="recipe.image" />
+ <router-link class="card" :to="{ name: 'my-recipe-details', params: {recipeId: recipe.recipeId}}" tag="div"> 
+     <img v-if="recipe.image" v-bind:src="recipe.image" />
+     <div>
+     <h2 class="recipe-name">{{ recipe.name }}</h2>
     <p class="recipe-description">{{ recipe.description }}</p>
   </div>
   </router-link>
@@ -23,9 +23,10 @@ export default {
 .card {
     border: 2px solid black;
     border-radius: 10px;
-    width: 550px;
+    width: 95%;
     height: 250px;
     margin: 20px;
+    /* display: flex; */
 }
 .card > img{
 position:relative;

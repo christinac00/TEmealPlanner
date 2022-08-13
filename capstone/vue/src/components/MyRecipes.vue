@@ -57,6 +57,7 @@ methods:{
     width: 90%;
   margin: 50px auto;
   background: lightcoral;
+
 }
 
 .recipe-header{
