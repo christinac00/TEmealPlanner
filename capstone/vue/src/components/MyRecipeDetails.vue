@@ -1,7 +1,7 @@
 <template>
   <div class="recipe-details-body">
       <div class="loading" v-if="isLoading">
-    <img src="../assets/ping_pong_loader.gif" />
+    <img src="../assets/your-food-is-being-prepared.gif" />
     </div>
 <div class="recipe-details-card">
     <h1 class="recipe-name">{{ recipe.name }}</h1>

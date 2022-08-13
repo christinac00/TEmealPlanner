@@ -65,6 +65,11 @@ export default {
           console.error(error);
         });
     },
+    cancelForm(){
+        this.$router.push({name: 'my-recipes', params:{id: this.$route.params.userId}})
+    }
+
+
   },
 };
 </script>
