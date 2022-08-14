@@ -1,5 +1,5 @@
 <template>
- 
+    
   <div class="loading" v-if="isLoading">
     <img src="../assets/your-food-is-being-prepared.gif" />
     </div>
