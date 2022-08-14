@@ -3,11 +3,10 @@ package com.techelevator.model;
 public class RecipeIngredientDTO {
     //instance variables
     private String recipeName;
+    private String ingredientToUpdateName;
     private String ingredientName;
-    private int quantity;
+    private String quantity;
     private String unit;
-
-    //constructors
 
     //getters and setters
     public String getRecipeName() {
@@ -24,10 +23,10 @@ public class RecipeIngredientDTO {
         return ingredientName;
     }
 
-    public int getQuantity() {
+    public String  getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
@@ -36,5 +35,12 @@ public class RecipeIngredientDTO {
     }
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getIngredientToUpdateName() {
+        return ingredientToUpdateName;
+    }
+    public void setIngredientToUpdateName(String ingredientToUpdateName) {
+        this.ingredientToUpdateName = ingredientToUpdateName;
     }
 }

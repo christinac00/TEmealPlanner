@@ -4,10 +4,7 @@ import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.RecipeIngredientDao;
 import com.techelevator.exception.IngredientNotFoundException;
-import com.techelevator.model.Ingredient;
-import com.techelevator.model.Recipe;
-import com.techelevator.model.RecipeIngredient;
-import com.techelevator.model.RecipeIngredientDetail;
+import com.techelevator.model.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -46,4 +43,27 @@ public class RecipeIngredientController {
         recipeIngredientDao.removeIngredient(recipeId, ingredientId);
     }
 
+
+
+
+
+
+
+    //CRUD by name
+    @RequestMapping(path = "/recipe-ingredients", method = RequestMethod.PUT)
+    public Boolean updateByName(@RequestBody RecipeIngredientDTO updatedIngredient){
+        return recipeIngredientDao.updateRecipeIngredientsByName(updatedIngredient);
+    }
+
+    @RequestMapping(path = "/recipe-ingredients", method = RequestMethod.POST)
+    public Boolean addIngredientToRecipeByName (@RequestBody RecipeIngredientDTO addedIngredient){
+        return recipeIngredientDao.addIngredientToRecipeByName(addedIngredient);
+
+    }
+
+    //delete ingredient from user's recipe
+    @RequestMapping(path = "/recipe-ingredients", method = RequestMethod.DELETE)
+    public void removeIngredientByName(@RequestBody RecipeIngredientDTO deletedIngredient) throws IngredientNotFoundException{
+        recipeIngredientDao.deleteIngredientFromRecipeByName(deletedIngredient);
+    }
 }

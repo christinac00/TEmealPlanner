@@ -1,9 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Ingredient;
-import com.techelevator.model.Recipe;
-import com.techelevator.model.RecipeIngredient;
-import com.techelevator.model.RecipeIngredientDetail;
+import com.techelevator.model.*;
 
 public interface RecipeIngredientDao {
 
@@ -17,12 +14,11 @@ public interface RecipeIngredientDao {
     public void removeIngredient(int recipeId, int ingredientId);
 
     //CRUD operations by name
-    RecipeIngredient addIngredientToRecipeByName(String recipeName, String ingredientName);
+    //may add change to a boolean later
+    Boolean addIngredientToRecipeByName(RecipeIngredientDTO addedIngredient);
 
-    RecipeIngredient updateIngredientsByName(String recipeName, String ingredientName);
+    Boolean updateRecipeIngredientsByName(RecipeIngredientDTO updatedIngredient);
 
-    void deleteIngredientFromRecipeByName(String recipeName, String ingredientName);
-
-
+    Boolean deleteIngredientFromRecipeByName(RecipeIngredientDTO deletedIngredient);
 
 }
