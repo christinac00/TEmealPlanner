@@ -25,6 +25,7 @@
 <script>
 import RecipeCard from "@/components/RecipeCard.vue";
 import recipeService from "@/services/RecipeService";
+
 export default {
 
 name: "my-recipes",
