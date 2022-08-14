@@ -14,24 +14,32 @@ name: "my-meal-plans",
 components: {  },
 data() {
     return {
-        my: [],
+        myMealPlans: [],
       isLoading: true,
     }
 
 },  
 created() {
-    this.retrieveMyRecipes();
+    this.retrieveMyMealPlans();
+    this.newMealPlan()
 },
 
 methods:{ 
-    retrieveMyRecipes() {
+    retrieveMyMealPlans() {
         
-            MealService.getMyRecipes(this.$route.params.id).then(response => {
-                this.myRecipes = response.data
+            MealService.getAllMealPlans().then(response => {
+                this.myMealPlans = response.data
                 this.isLoading = false;
             })
+        },
+        newMealPlan(){
+        MealService.newMealPlan(this.$route.params.id).then(response => {
+            this.myMealPlans = response.data
+            this.isLoading = false;
+        })
+        
         }
-        }
+}
 };
 
 </script>
