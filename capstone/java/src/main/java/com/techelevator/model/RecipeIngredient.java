@@ -6,8 +6,7 @@ public class RecipeIngredient {
      String quantity;
      String unit;
 
-
-    public RecipeIngredient(int userId, int recipeId, String quantity, String unit) {
+    public RecipeIngredient(int recipeId, int ingredientId, String quantity, String unit) {
         this.recipeId = recipeId;
         this.ingredientId = ingredientId;
         this.quantity = quantity;
@@ -17,8 +16,7 @@ public class RecipeIngredient {
     public RecipeIngredient() {
 
     }
-
-
+    
     public int getRecipeId() {
         return recipeId;
     }

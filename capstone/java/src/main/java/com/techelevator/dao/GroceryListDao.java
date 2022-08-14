@@ -24,5 +24,7 @@ public interface GroceryListDao {
 
     GroceryList deleteGroceryList(GroceryList groceryList);
 
+    //should this be modified to include ways to get by name
+
 
 }

@@ -1,11 +1,13 @@
 package com.techelevator.model;
 
 public class GroceryList {
-
+    //not sure if this variable is necessary unless its to differentiate grocery lists of separate users --JH
     int groceryListId;
+    //why do we need a title? --JH
     String title;
     int userId;
     int planId;
+    //shold we include references to recipe and ingredient names? --JH
     int recipeId;
     int unit;
     String quantity;

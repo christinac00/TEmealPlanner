@@ -16,14 +16,13 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
-    @Override
-    public int update(RecipeIngredient updatedRecipe) {
+/*    @Override
+    public int updateIngredients(RecipeIngredient updatedRecipe) {
 
         String sql = "UPDATE recipe_ingredient SET quantity= ?, unit = ? WHERE recipe_id=? AND ingredient_id = ? ;";
         int response = jdbcTemplate.update(sql, updatedRecipe.getQuantity(), updatedRecipe.getUnit(), updatedRecipe.getRecipeId(), updatedRecipe.getIngredientId());
         return response;
-    }
+    }*/
 
     @Override
     public RecipeIngredient addIngredientToRecipe(RecipeIngredient addedIngredient) {
@@ -32,6 +31,11 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
 
         return addedIngredient;
 
+    }
+
+    @Override
+    public boolean updateIngredients(Ingredient ingredient) {
+        return false;
     }
 
 //    @Override
@@ -47,6 +51,21 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
         jdbcTemplate.update(sql,recipeId, ingredientId);
     }
 
+    //CRUD operations by name
+    @Override
+    public RecipeIngredient addIngredientToRecipeByName(String recipeName, String ingredientName) {
+        return null;
+    }
+
+    @Override
+    public RecipeIngredient updateIngredientsByName(String recipeName, String ingredientName) {
+        return null;
+    }
+
+    @Override
+    public void deleteIngredientFromRecipeByName(String recipeName, String ingredientName) {
+
+    }
 
 
     private void mapRowToRecipe(SqlRowSet results, Recipe recipe) {

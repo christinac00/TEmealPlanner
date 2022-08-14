@@ -7,12 +7,20 @@ import com.techelevator.model.RecipeIngredientDetail;
 
 public interface RecipeIngredientDao {
 
-    int update(RecipeIngredient updatedRecipe);
-
+    //CRUD operations by ID
     RecipeIngredient addIngredientToRecipe(RecipeIngredient addedIngredient);
 
-//    boolean updateIngredients(Ingredient ingredient);
+    boolean updateIngredients(Ingredient ingredient);
 
     public void removeIngredient(int recipeId, int ingredientId);
+
+    //CRUD operations by name
+    RecipeIngredient addIngredientToRecipeByName(String recipeName, String ingredientName);
+
+    RecipeIngredient updateIngredientsByName(String recipeName, String ingredientName);
+
+    void deleteIngredientFromRecipeByName(String recipeName, String ingredientName);
+
+
 
 }
