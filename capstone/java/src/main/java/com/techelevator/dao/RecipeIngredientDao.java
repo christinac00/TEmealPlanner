@@ -10,7 +10,9 @@ public interface RecipeIngredientDao {
     //CRUD operations by ID
     RecipeIngredient addIngredientToRecipe(RecipeIngredient addedIngredient);
 
-    boolean updateIngredients(Ingredient ingredient);
+//    boolean updateIngredients(Ingredient ingredient);
+
+    int updateIngredients(RecipeIngredient updatedRecipe);
 
     public void removeIngredient(int recipeId, int ingredientId);
 

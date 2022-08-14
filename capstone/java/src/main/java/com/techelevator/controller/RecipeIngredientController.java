@@ -29,7 +29,7 @@ public class RecipeIngredientController {
     public int update(@PathVariable int recipeId, @PathVariable int ingredientId, @RequestBody RecipeIngredient recipeIngredient){
         recipeIngredient.setRecipeId(recipeId);
         recipeIngredient.setIngredientId(ingredientId);
-        return recipeIngredientDao.update(recipeIngredient);
+        return recipeIngredientDao.updateIngredients(recipeIngredient);
     }
 
     @RequestMapping(path = "/recipes/{recipeId}/ingredient/{ingredientId}", method = RequestMethod.POST)

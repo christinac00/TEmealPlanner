@@ -16,13 +16,13 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-/*    @Override
+    @Override
     public int updateIngredients(RecipeIngredient updatedRecipe) {
 
         String sql = "UPDATE recipe_ingredient SET quantity= ?, unit = ? WHERE recipe_id=? AND ingredient_id = ? ;";
         int response = jdbcTemplate.update(sql, updatedRecipe.getQuantity(), updatedRecipe.getUnit(), updatedRecipe.getRecipeId(), updatedRecipe.getIngredientId());
         return response;
-    }*/
+    }
 
     @Override
     public RecipeIngredient addIngredientToRecipe(RecipeIngredient addedIngredient) {
@@ -33,10 +33,10 @@ public class JdbcRecipeIngredientDao implements RecipeIngredientDao{
 
     }
 
-    @Override
-    public boolean updateIngredients(Ingredient ingredient) {
-        return false;
-    }
+//    @Override
+//    public boolean updateIngredients(Ingredient ingredient) {
+//        return false;
+//    }
 
 //    @Override
 //    public boolean updateIngredients(Ingredient ingredient) {
