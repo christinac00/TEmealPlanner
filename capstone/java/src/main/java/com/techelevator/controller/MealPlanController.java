@@ -26,6 +26,13 @@ public class MealPlanController {
         return dao.createMealPlan(mealPlan);
     }
 
+    //get a meal plan by id
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/{planId}", method = RequestMethod.GET)
+    public MealPlan getPlanById(@PathVariable int planId) {
+        return dao.getMealPlanById(planId);
+    }
+
     //list all meal plans
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
@@ -41,4 +48,10 @@ public class MealPlanController {
         dao.updateMealPlan(updatedMealPlan, planId);
     }
 
+    //delete a meal plan
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{planId}", method = RequestMethod.DELETE)
+    public void  deleteMealPlan(@PathVariable int planId) {
+        dao.deleteMealPlan(planId);
+    }
 }

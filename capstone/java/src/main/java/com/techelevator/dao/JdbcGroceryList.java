@@ -20,7 +20,6 @@ public class JdbcGroceryList implements GroceryListDao {
 
     @Override
     public List<GroceryList> listAll() {
-
         return null;
     }
 
@@ -53,8 +52,7 @@ public class JdbcGroceryList implements GroceryListDao {
     @Override
     public GroceryList getRecipeGroceryList(int recipeId) {
         GroceryList groceryList = null;
-        String sql = "SELECT r.name, i.name, i.category, rp.plan_id, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id JOIN recipe_plan rp ON ri.recipe_id = rp.recipe_id WHERE r.recipe_id = ?;";
-
+        String sql = "SELECT r.name, i.name, ri.quantity, ri.unit FROM recipe_ingredient ri JOIN recipe r ON r.recipe_id = ri.recipe_id JOIN ingredient i on i.ingredient_id = ri.ingredient_id WHERE recipe_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
         if(results.next()) {
            groceryList =  mapRowToGroceryList(results);
@@ -67,15 +65,14 @@ public class JdbcGroceryList implements GroceryListDao {
     @Override
     public GroceryList getGroceryListByPlanId(int planId) {
         GroceryList groceryList = null;
-            String sql = "SELECT r.name, i.name, i.category, rp.plan_id, ri.quantity, ri.unit FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id JOIN recipe_plan WHERE rp.plan_id = ?;";
-
-
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planId);
-            if(results.next()) {
-                groceryList = mapRowToGroceryList(results);
-            }
-            return groceryList;
+        String sql = "SELECT r.name, i.name, ri.quantity, ri.unit FROM recipe_ingredient ri JOIN recipe r ON r.recipe_id = ri.recipe_id JOIN ingredient i on i.ingredient_id = ri.ingredient_id JOIN recipe_plan rp ON rp.recipe_id = r.recipe_id; WHERE rp.plan_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, planId);
+        if(results.next()) {
+            groceryList = mapRowToGroceryList(results);
         }
+
+        return groceryList;
+   }
 
     @Override
     public GroceryList getGroceryListByUserId(int userId) {
