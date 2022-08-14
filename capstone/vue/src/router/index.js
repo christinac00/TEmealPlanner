@@ -140,7 +140,7 @@ const router = new Router({
        name: "all-recipes",
        component: AllRecipes
      },
-      {path: "/recipes/recipeId",
+      {path: "/recipes/:recipeId",
        name: "my-recipe-details",
       component: MyRecipeDetails
      },
