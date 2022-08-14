@@ -28,6 +28,7 @@ public class GroceryListController {
     //getting a grocery list back by recipe id
     @RequestMapping(path = "/{recipeId}/grocery-list", method = RequestMethod.GET)
     public GroceryList getRecipeGroceries(@PathVariable int recipeId) {
+
         return groceryListDao.getRecipeGroceryList(recipeId);
     }
 
