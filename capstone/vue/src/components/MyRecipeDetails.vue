@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import applicationServices from '../services/ApplicationServices';
+import recipeService from '../services/RecipeService';
 export default {
     name: "my-recipe-details",
     data () {
@@ -60,7 +60,7 @@ export default {
     },
     methods: {
     retrieveDetails() {
-        applicationServices.getDetails(this.$route.params.recipeId).then(response =>{
+        recipeService.getDetails(this.$route.params.recipeId).then(response =>{
             this.recipe = response.data
             this.isLoading = false;
         })

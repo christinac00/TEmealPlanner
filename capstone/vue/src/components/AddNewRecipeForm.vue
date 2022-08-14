@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import applicationServices from "../services/ApplicationServices";
+import recipeService from "../services/RecipeService";
 
 export default {
   name: "add-recipe",
@@ -50,11 +50,11 @@ export default {
   },
   methods: {
     saveRecipe() {
-      applicationServices
+      recipeService
         .createRecipe(this.recipe)
         .then((response) => {
           if (response.status === 201) {
-            applicationServices
+            recipeService
               .createUserRecipe(this.$route.params.userId, response.data.recipeId)
               .then((response) => {
                 if (response.status === 201) {

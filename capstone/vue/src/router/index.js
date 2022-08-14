@@ -7,9 +7,8 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import MyRecipes from '../views/MyRecipes.vue'
 import AllRecipes from '../views/AllRecipes.vue'
-import MealPlan from '../views/MealPlan.vue'
  import MyRecipeDetails from '../views/MyRecipeDetails.vue'
- import AddNewRecipe from '../views/AddNewRecipe'
+ import MealPlan from '../views/MealPlan.vue'
 
 Vue.use(Router)
 
@@ -75,9 +74,9 @@ const router = new Router({
       }
     },
     {
-      path: "/my-meal-plans",
+      path: "/users/:id/meal-plans",
       name: "my-meal-plans",
-      component: MealPlan,
+      component: MealPlan ,
       meta: {
         requiresAuth: true
       }
@@ -141,19 +140,10 @@ const router = new Router({
        name: "all-recipes",
        component: AllRecipes
      },
-      {path: "/recipes/:recipeId",
+      {path: "/recipes/recipeId",
        name: "my-recipe-details",
       component: MyRecipeDetails
      },
-     {
-       path: "users/:userId/addrecipe",
-       name: "add-recipe",
-       component: AddNewRecipe,
-       meta: {
-        requiresAuth: true
-      }
-
-     }
   ]
 })
 

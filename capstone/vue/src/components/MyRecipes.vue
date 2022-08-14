@@ -24,7 +24,7 @@
 
 <script>
 import RecipeCard from "@/components/RecipeCard.vue";
-import applicationServices from "@/services/ApplicationServices";
+import recipeService from "@/services/RecipeService";
 export default {
 
 name: "my-recipes",
@@ -43,7 +43,7 @@ created() {
 methods:{ 
     retrieveMyRecipes() {
         
-            applicationServices.getMyRecipes(this.$route.params.id).then(response => {
+            recipeService.getMyRecipes(this.$route.params.id).then(response => {
                 this.myRecipes = response.data
                 this.isLoading = false;
             })

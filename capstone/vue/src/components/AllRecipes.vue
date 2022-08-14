@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import  applicationServices  from '@/services/ApplicationServices';
+import  recipeService  from '@/services/RecipeService';
 import RecipeCard from "@/components/RecipeCard.vue";
 
 export default {
@@ -44,7 +44,7 @@ export default {
     methods:{
         retrieveAllRecipes() {
 
-            applicationServices.getAllRecipes().then(response => {
+            recipeService.getAllRecipes().then(response => {
                 this.allRecipes = response.data
                 this.isLoading = false;
             })
