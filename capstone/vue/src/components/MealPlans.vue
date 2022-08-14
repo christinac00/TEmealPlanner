@@ -1,11 +1,12 @@
 <template>
- 
+ <div>
   <div class="loading" v-if="isLoading">
     <img src="../assets/your-food-is-being-prepared.gif" />
     </div>
     
     <meal-card v-for="plan in my-meal-plans" v-bind:key="plan.name"
       v-bind:plan="plan" />
+      </div>
 </template>
 
 <script>
