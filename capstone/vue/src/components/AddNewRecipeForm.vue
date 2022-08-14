@@ -4,10 +4,19 @@
       <label for="recipe-name">Recipe Name</label>
       <input type="text" name="recipe-name" v-model="recipe.name" />
     </div>
+    <div class="field">
+      <label for="Description">Description</label>
+      <input type="text" name="description" v-model="recipe.description" />
+    </div>
 
     <div class="field">
       <label for="instructions">Instructions</label>
       <input type="text" name="instructions" v-model="recipe.instructions" />
+    </div>
+
+    <div class="field">
+      <label for="image">Image URL</label>
+      <input type="text" name="image" v-bind:src="recipe.image"/>
     </div>
 
     <div class="actions">
