@@ -3,7 +3,7 @@
      <!-- <img v-if="recipe.image" v-bind:src="recipe.image" /> -->
      <div>
      <h2 class="plan-name">{{ plan.name }}</h2>
-    <p class="recipe-description">{{ plan.day_of_week }}</p>
+    <p class="plan-description">{{ plan.day_of_week }}</p>
   </div>
   </router-link>
 </template>
