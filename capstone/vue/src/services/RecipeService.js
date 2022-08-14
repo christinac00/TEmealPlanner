@@ -20,9 +20,6 @@ export default {
     getMyRecipes(id) {
         return http.get(`users/${id}/recipes`)
     },
-    createPlan(id) {
-        return http.post(`users/${id}/plan`)
-    },
     createUserRecipe(userId, recipeId){
         return http.post(`users/${userId}/recipes/${recipeId}`)
     }

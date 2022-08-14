@@ -4,14 +4,17 @@
     <img src="../assets/your-food-is-being-prepared.gif" />
     </div>
     
+    <meal-card v-for="plan in my-meal-plans" v-bind:key="plan.name"
+      v-bind:plan="plan" />
 </template>
 
 <script>
 import MealService from "@/services/MealService";
 // import AddPlan from "@/components/AddPlan.vue"
+import MealCard from "@/components/MealCard.vue"
 export default {
 name: "my-meal-plans",
-components: {  },
+components: { MealCard },
 data() {
     return {
         myMealPlans: [],
@@ -21,24 +24,19 @@ data() {
 },  
 created() {
     this.retrieveMyMealPlans();
-    this.newMealPlan()
+    
 },
 
 methods:{ 
     retrieveMyMealPlans() {
         
-            MealService.getAllMealPlans().then(response => {
+            MealService.getAllMealPlans(this.$route.params.id).then(response => {
                 this.myMealPlans = response.data
                 this.isLoading = false;
             })
         },
-        newMealPlan(){
-        MealService.newMealPlan(this.$route.params.id).then(response => {
-            this.myMealPlans = response.data
-            this.isLoading = false;
-        })
-        
-        }
+      
+    
 }
 };
 
