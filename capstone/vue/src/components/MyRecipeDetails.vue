@@ -6,6 +6,12 @@
 <div class="recipe-details-card">
     <h1 class="recipe-name">{{ recipe.name }}</h1>
 </div>
+
+<router-link tag="button" class="btn editRecipe" :to="{name:'add-recipe', params:{userId: $route.params.id}}" v-if="!isLoading" >Edit Recipe</router-link>
+<div>
+    <h2 class="description">Description</h2>
+    <p class="description">{{ recipe.description }}</p>
+</div>
 <div>
     <h2 class="instructions">Instructions</h2>
     <p class="instruction-body">{{ recipe.instructions }}</p>
