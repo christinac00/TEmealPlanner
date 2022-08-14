@@ -17,8 +17,8 @@
       <div class="nav-links">
         <router-link id="home" v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link id="browse-my-recipes" v-bind:to="{ name: 'my-recipes', params: {id: $store.state.user.id}  }">My Recipes</router-link>
-        <router-link id="browse-saved" v-bind:to="{ name: 'saved' }">Saved Recipes</router-link>
-        <router-link id="browse-shared" v-bind:to="{ name: 'shared' }">Shared Recipes</router-link>
+        <!-- <router-link id="browse-saved" v-bind:to="{ name: 'saved' }">Saved Recipes</router-link> -->
+        <!-- <router-link id="browse-shared" v-bind:to="{ name: 'shared' }">Shared Recipes</router-link> -->
         <router-link id="meal-plans" v-bind:to="{ name: 'my-meal-plans' }">My Meal Plans</router-link>
         <router-link id="ingredients" v-bind:to="{ name: 'ingredients' }">Ingredients</router-link>
         <router-link id="shopping-list" v-bind:to="{ name: 'shopping-list' }">Shopping List</router-link>

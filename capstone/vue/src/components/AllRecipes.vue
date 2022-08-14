@@ -5,7 +5,7 @@
     </div>
        <div class="recipe-header">
           <h1>Recipe Library</h1> 
-          <input class="search-bar" type="text" placeholder="Search by Ingedient"> 
+          <input class="search-bar" type="text" placeholder="Search by Ingredient"> 
     </div> 
 
     <recipe-card v-for="recipe in allRecipes" v-bind:key="recipe.name"
