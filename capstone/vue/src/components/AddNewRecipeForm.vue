@@ -68,6 +68,20 @@ export default {
                   this.$router.push({name:'my-recipes', params:{id: this.$route.params.userId}});
                 }
               });
+          } else{
+              recipeService.updateRecipe(this.$route.params.userId, response.data.recipeId).then((response)=>{
+                  if(response.status === 200){
+                    this.recipe = {
+                        recipeId: 0,
+                        name: "",
+                        image: "",
+                        description: "",
+                        instructions: "",
+                  };
+                      this.$router.push({name:'my-recipe-details', params: {recipeId: this.recipe.recipeId}})
+                  }
+              })
+
           }
         })
         .catch((error) => {
@@ -75,7 +89,7 @@ export default {
         });
     },
     cancelForm(){
-        this.$router.push({name: 'my-recipes', params:{id: this.$route.params.userId}})
+        this.$router.push({name:'my-recipes', params:{id: this.$route.params.userId}})
     }
 
 

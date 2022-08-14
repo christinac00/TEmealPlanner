@@ -88,8 +88,8 @@ public class JdbcRecipeDao implements RecipeDao {
     //this method should return a Recipe object
     public Recipe create(Recipe newRecipe) {
         //the ? should be inside of parantheses () to match sql syntax for INSERT
-        String insertRecipeSql = "INSERT INTO recipe (name, instructions) VALUES (?, ?) RETURNING recipe_id;";
-        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getName(), newRecipe.getInstructions());
+        String insertRecipeSql = "INSERT INTO recipe (name, image, description, instructions) VALUES (?, ?, ?, ?) RETURNING recipe_id;";
+        Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getName(), newRecipe.getImage(), newRecipe.getDescription(), newRecipe.getInstructions());
         return getDetails(newId);
         //should we have this return the new id?
         //this should return a Recipe object based on the getDetails method
