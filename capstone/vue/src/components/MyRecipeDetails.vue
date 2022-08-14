@@ -8,6 +8,8 @@
 </div>
 
 <router-link tag="button" class="btn editRecipe" :to="{name:'add-recipe', params:{userId: $route.params.id}}" v-if="!isLoading" >Edit Recipe</router-link>
+<img class="icon" v-if="recipe.image" v-bind:src="recipe.image" />
+
 <div>
     <h2 class="description">Description</h2>
     <p class="description">{{ recipe.description }}</p>
@@ -76,6 +78,11 @@ export default {
 }
 </script>
 <style>
+.icon{
+    width: 200px;
+    height: 200px;
+}
+
 .instruction-body{
     font-family: sans-serif;
     white-space: pre;
