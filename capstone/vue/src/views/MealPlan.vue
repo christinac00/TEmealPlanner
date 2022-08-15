@@ -1,7 +1,10 @@
 <template>
   <div>
      <meal-plans />
-     
+      <add-plan /> 
+      <!-- <router-link tag="div" :to="{name:'add-plan',params:{userId: $route.params.id}}">
+          
+      </router-link> -->
 
   </div>
 </template>

@@ -21,22 +21,22 @@ export default {
 
 <style>
 .card {
-    border: 2px solid black;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
     width: 95%;
     height: 150px;
     margin: 20px;
-    background-color: royalblue;
-    /* display: flex; */
+    background: lightcoral;
+    align-items: center;
 }
-.card > img{
-position:relative;
- right: -38%;
-  width: 100px;
-  border-radius: 60px;
+
+.card > img {
+  border-radius: 10px;
+  
 }
 .card .recipe-name {
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .card .recipe-description{

@@ -10,7 +10,7 @@ public class Ingredient {
     public Ingredient(){
 
     }
-    public Ingredient(String name, int ingredientId, String category){
+    public Ingredient(int ingredientId, String name, String category){
         this.name = name;
         this.ingredientId = ingredientId;
         this.category = category;
