@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.Objects;
+
 public class Recipe {
 
     private int recipeId;
@@ -64,5 +66,16 @@ public class Recipe {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return recipeId == recipe.recipeId && Objects.equals(name, recipe.name) && Objects.equals(image, recipe.image) && Objects.equals(description, recipe.description) && Objects.equals(instructions, recipe.instructions);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(recipeId, name, image, description, instructions);
+    }
 }
