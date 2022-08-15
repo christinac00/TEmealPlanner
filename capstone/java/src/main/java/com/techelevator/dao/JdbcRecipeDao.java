@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Recipe;
 import com.techelevator.model.RecipeDetail;
-import com.techelevator.model.RecipeIngredient;
 import com.techelevator.model.RecipeIngredientDetail;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -52,13 +51,16 @@ public class JdbcRecipeDao implements RecipeDao {
 
 
     @Override
-    public Recipe getByTagName(String keyword) {
+    public Recipe getByTagName(String keyword, int recipeId, String name) {
         Recipe recipes = new Recipe();
-        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_tag rt ON r.recipe_id = rt.recipe_tag JOIN tag t ON t.tag_id = rt.tag_id WHERE keyword = ?;";
+        String sql = "SELECT t.keyword, r.recipe_id, r.name FROM tag t" +
+                "JOIN recipe_tag rt ON t.tag_id = rt.tag_id" +
+                "JOIN recipe r ON r.recipe_id = rt.recipe_id" +
+                "WHERE keyword LIKE ANY(ARRAY['%Healthy%', '%Easy%', '%Vegan%']);";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword, recipeId, name);
         if(results.next()) {
-            mapRowToRecipe(results, recipes);
+            mapRowToRecipeTags(results, recipes);
         }
 
         return recipes;
@@ -96,6 +98,11 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
+    public Recipe getByTagName(String keyword) {
+        return null;
+    }
+
+    @Override
     public Recipe updateRecipe(Recipe recipe) {
         String sql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?;";
         return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions(), recipe.getRecipeId()) ==1?getDetails(recipe.getRecipeId()):null;
@@ -124,6 +131,11 @@ public class JdbcRecipeDao implements RecipeDao {
             recipeDetail.getIngredients().add(ingredient);
 
         }
+    }
+
+    private void mapRowToRecipeTags(SqlRowSet results, Recipe recipe) {
+        recipe.setRecipeId(recipe.getRecipeId());
+        recipe.setName(recipe.getName());
 
 
     }

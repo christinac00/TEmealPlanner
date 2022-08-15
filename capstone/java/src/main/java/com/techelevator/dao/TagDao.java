@@ -9,9 +9,12 @@ public interface TagDao {
 
     List<Tag> listAll();
 
-    Recipe getRecipesByTag(String keyword, String name);
-
-    Recipe getByTag(int tagId, int recipeId);
-
-
+//    Recipe getRecipesByTag(String keyword, String name);
+//
+////    Recipe getByTag(String Keyword, int recipeId);
+//
+//
+//    Recipe getByTag(String Keyword, int recipeId, Recipe name);
+//
+//    Tag getByTag(String Keyword, int recipeId, String name);
 }
