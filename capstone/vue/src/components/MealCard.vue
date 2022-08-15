@@ -2,15 +2,15 @@
  <router-link class="card" :to="{ name: 'my-meal-details', params: {planId: plan.planId}}" tag="div"> 
      <!-- <img v-if="recipe.image" v-bind:src="recipe.image" /> -->
      <div>
-     <h2 class="plan-name">{{ plan.name }}</h2>
-    <p class="plan-description">{{ plan.day_of_week }}</p>
+     <h2 class="plan-name">{{ plan.planName }}</h2>
+    <p class="plan-description">{{ plan.dayOfWeek }}</p>
   </div>
   </router-link>
 </template>
 
 <script>
 export default {
-    name: 'plan-card',
+    name: 'meal-card',
     props: {
         plan: Object
     },

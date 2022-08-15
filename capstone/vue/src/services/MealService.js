@@ -5,8 +5,8 @@ const http = axios.create({
 })
 
 export default {
-    newMealPlan(id) {
-        return http.post(`/users/${id}/meal-plans`, id)
+    newMealPlan(id, plan) {
+        return http.post(`/users/${id}/meal-plans`, plan)
     },
     getPlanById(id, planId) {
         return http.get(`/users/${id}/meal-plans/${planId}`)
