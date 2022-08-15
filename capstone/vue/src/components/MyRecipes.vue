@@ -57,7 +57,6 @@ methods:{
 .my-recipes{
     width: 90%;
   margin: 50px auto;
-  background: lightcoral;
 
 }
 
@@ -67,14 +66,14 @@ methods:{
   color: rgb(168, 64, 64);
   margin-bottom: 40px;
 }
-.recipe-row{
+/* .recipe-row{
     display: flex;
   flex-direction: row;
   justify-content: flex-start;
   gap: 3px;
   flex-flow: wrap;
   margin-left: 40px;
-}
+} */
 .recipe-row #p{
     border-bottom: 10px, solid ;
 }

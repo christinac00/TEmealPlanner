@@ -40,6 +40,7 @@ export default {
 };
 </script>
 <style>
+/* organizes the homepage */
 #app{
   display: grid;
   width: 100vw;
@@ -47,57 +48,85 @@ export default {
   grid-template-areas: 
     "nav head"
     "nav main"
-    "foot foot";
-  grid-template-rows: 150px 1fr 30px;
+    "nav foot";
+  grid-template-rows: 1fr 4fr 30px;
   grid-template-columns: 1fr 4fr;
-
 }
-#app > header {
-display: flex;
+
+/* styling for header */
+header {
 flex-direction: column;
-align-items: center;
+text-align: center;
 grid-area: head;
-background: #fcd949;
+background: #FCD949;
+box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25); 
 }
 
-#app > nav {
+/* styling for navigation bar */
+nav {
   display: flex;
-  flex-basis: 100%;
   flex-direction: column;
-
   grid-area: nav;
   background: #429698;
 }
 
-nav > hr {
-  width: 100%;
+/* styling for divider */
+hr {
+  width: 99%;
+  border: 1px solid #FFE473;
 }
 
+/* styling for login */
 .login {
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  font-size: 200%;
 }
 
+/* styling for nav links */
 .nav-links {
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-#app > main {
+main {
   grid-area: main;
    overflow: auto;
 }
 
-#app > footer {
+footer {
   grid-area: foot;
   background: #fcd949;
 }
+
+/* 
+header styling
+background: #FCD949;
+box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25); 
+
+nav styling
+background: #429698;
+
+recent recipes styling
+background: #F49494;
+filter: drop-shadow(7px 6px 8px rgba(0, 0, 0, 0.25));
+
+flashback recipes styling
+background: #4C635F;
+filter: drop-shadow(7px 6px 8px rgba(0, 0, 0, 0.25));
+
+popular recipes styling
+background: #5A1850;
+
+divider styling
+border: 3px solid #FFE473;
+*/
 
 </style>
 
