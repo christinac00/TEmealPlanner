@@ -15,11 +15,37 @@
   </select>
   <input id="submit" type="submit">
   </form>
+
+
+
 </template>
 
 <script>
+import mealService from "../services/MealService";
+
 export default {
-    name: "add-plan"
+    name: "add-plan",
+    data() {
+        return {
+            plan: {
+             planId:0, userId:0, name:"", dayOfWeek:""   
+            }
+        }
+    },
+    methods:{
+        submit(){
+            mealService.newMealPlan(this.$route.params.userId).then( (response)=>{
+                if(response.status === 201){
+                    this.plan = {
+                    plan: {
+                        planId:0, userId:0, name:"", dayOfWeek:""   
+                        }
+                    }
+                }
+            })
+            this.$router.push({name:'my-meal-plans', params:{id:this.$route.params.userId}})
+        }
+    }
 }
 </script>
 

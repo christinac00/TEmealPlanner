@@ -2,6 +2,9 @@
   <div>
      <meal-plans />
       <add-plan /> 
+      <router-link tag="add meal plan" :to="{name:'add-plan',params:{userId: $route.params.id}}">
+          
+      </router-link>
 
   </div>
 </template>
