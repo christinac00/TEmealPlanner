@@ -20,6 +20,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     }
 
+    //lists all recipes
     @Override
     public List<Recipe> listAll() {
         List<Recipe> recipes = new ArrayList<>();
@@ -35,37 +36,37 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipes;
     }
 
+    //lists recipes by ingredients
     @Override
-    public Recipe getByIngredientName(String name) {
-        Recipe recipes = new Recipe();
-        String sql = "SELECT r.name, r.instructions FROM recipe r JOIN recipe_ingredient ri ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE i.name = ?;";
+    public List<Recipe> searchByIngredientName(String ingredientName) {
+        List<Recipe> matchedRecipes = new ArrayList<>();
+        String sql = "SELECT * FROM recipe WHERE recipe_id IN (SELECT DISTINCT r.recipe_id FROM recipe_ingredient ri JOIN recipe r ON r.recipe_id = ri.recipe_id JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE i.name ILIKE ?);";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipes);
-        if(results.next()) {
-            mapRowToRecipe(results, recipes);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + ingredientName + "%");
+        while (results.next()) {
+            Recipe matchedRecipe = new Recipe();
+            mapRowToRecipe(results, matchedRecipe);
+            matchedRecipes.add(matchedRecipe);
         }
-
-        return recipes;
+        return matchedRecipes;
     }
 
-
-
+    //lists recipes by keyword (diet, meal type)
     @Override
-    public Recipe getByTagName(String keyword, int recipeId, String name) {
-        Recipe recipes = new Recipe();
-        String sql = "SELECT t.keyword, r.recipe_id, r.name FROM tag t" +
-                "JOIN recipe_tag rt ON t.tag_id = rt.tag_id" +
-                "JOIN recipe r ON r.recipe_id = rt.recipe_id" +
-                "WHERE keyword LIKE ANY(ARRAY['%Healthy%', '%Easy%', '%Vegan%']);";
+    public List<Recipe> searchByTagName(String keyword) {
+        List<Recipe> matchedRecipes = new ArrayList<>();
+        String sql = "SELECT * FROM recipe WHERE recipe_id IN (SELECT DISTINCT r.recipe_id FROM recipe_tag rt JOIN tag t ON t.tag_id = rt.tag_id JOIN recipe r ON r.recipe_id = rt.recipe_id WHERE t.keyword ILIKE ?);";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword, recipeId, name);
-        if(results.next()) {
-            mapRowToRecipeTags(results, recipes);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + keyword + "%");
+        while (results.next()) {
+            Recipe matchedRecipe = new Recipe();
+            mapRowToRecipe(results, matchedRecipe);
+            matchedRecipes.add(matchedRecipe);
         }
-
-        return recipes;
+        return matchedRecipes;
     }
 
+    //not quite clear on what this does
     @Override
     public Recipe getDetails(int recipeId) {
         RecipeDetail recipeDetail = new RecipeDetail();
@@ -86,21 +87,18 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
 
+    //CRUD operations
+
+    //creates a new recipe
+        //should be a transaction that creates the recipe and inserts it into the user_recipe with isCreated = true?
     @Override
-    //this method should return a Recipe object
     public Recipe create(Recipe newRecipe) {
-        //the ? should be inside of parantheses () to match sql syntax for INSERT
         String insertRecipeSql = "INSERT INTO recipe (name, image, description, instructions) VALUES (?, ?, ?, ?) RETURNING recipe_id;";
         Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getName(), newRecipe.getImage(), newRecipe.getDescription(), newRecipe.getInstructions());
         return getDetails(newId);
-        //should we have this return the new id?
-        //this should return a Recipe object based on the getDetails method
     }
 
-    @Override
-    public Recipe getByTagName(String keyword) {
-        return null;
-    }
+
 
     @Override
     public Recipe updateRecipe(Recipe recipe) {
@@ -123,21 +121,12 @@ public class JdbcRecipeDao implements RecipeDao {
 
         if(name != null){
             RecipeIngredientDetail ingredient = new RecipeIngredientDetail();
-//            ingredient.setUserId(results.getInt("user_id"));
-//            ingredient.setRecipeId(results.getInt("recipe_id"));
             ingredient.setQuantity(results.getString("quantity"));
             ingredient.setName(name);
             ingredient.setUnit(results.getString("unit"));
             recipeDetail.getIngredients().add(ingredient);
 
         }
-    }
-
-    private void mapRowToRecipeTags(SqlRowSet results, Recipe recipe) {
-        recipe.setRecipeId(recipe.getRecipeId());
-        recipe.setName(recipe.getName());
-
-
     }
 
 

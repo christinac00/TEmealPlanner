@@ -32,9 +32,6 @@ public class RecipeIngredientController {
     @RequestMapping(path = "/recipes/{recipeId}/ingredient/{ingredientId}", method = RequestMethod.POST)
     public RecipeIngredient addIngredientToRecipe (@RequestBody RecipeIngredient addedIngredient){
         return recipeIngredientDao.addIngredientToRecipe(addedIngredient);
-
-
-
     }
 
     //delete ingredient from user's recipe
