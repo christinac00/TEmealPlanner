@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: 'plan-card',
+    name: 'meal-card',
     props: {
         plan: Object
     },
