@@ -4,6 +4,7 @@
       <h1>
         The Te Meal Planner
       </h1>
+      <input class="search-bar" type="text" placeholder="Search by Ingredient" v-model="searchTerm"> 
     </header>
     <nav class="left-panel">
       <div class="login" v-if="Object.keys($store.state.user).length === 0">
@@ -25,7 +26,7 @@
       </div>
     </nav>
     <main>
-    <router-view class="view"/>  
+    <router-view class="view" v-bind:search="searchTerm"/>  
     </main>
     <footer>
 
@@ -36,7 +37,12 @@
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+  data () {
+    return{
+      searchTerm: '',
+    }
+  }
 };
 </script>
 <style>

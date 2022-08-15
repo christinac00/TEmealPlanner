@@ -5,7 +5,7 @@
     </div>
        <div class="recipe-header">
           <h1>Recipe Library</h1> 
-          <input class="search-bar" type="text" placeholder="Search by Ingredient"> 
+          
     </div> 
 
     <recipe-card v-for="recipe in allRecipes" v-bind:key="recipe.name"
@@ -26,6 +26,7 @@
 import  recipeService  from '@/services/RecipeService';
 import RecipeCard from "@/components/RecipeCard.vue";
 
+
 export default {
 
     name: "all-recipes",
@@ -40,16 +41,24 @@ export default {
         this.retrieveAllRecipes();
     },
     components: { RecipeCard },
-
+    props: ['search'],
     methods:{
         retrieveAllRecipes() {
 
-            recipeService.getAllRecipes().then(response => {
+            recipeService.getFilteredRecipes(this.search).then(response => {
                 this.allRecipes = response.data
                 this.isLoading = false;
             })
+        },
+
+    },
+    watch: {
+        search: function () {
+            console.log('searchChanged ' + this.search)
+             this.retrieveAllRecipes();
         }
-    }
+    },
+   
 }
 </script>
 

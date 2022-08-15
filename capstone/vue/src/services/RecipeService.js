@@ -22,6 +22,9 @@ export default {
     },
     createUserRecipe(userId, recipeId){
         return http.post(`users/${userId}/recipes/${recipeId}`)
-    }
+    },
+    getFilteredRecipes(search) {
+        return http.get(`/recipes?ingredient=${search}`);
+    },
     
 }
