@@ -35,11 +35,6 @@ public class RecipeController {
         return recipeDao.getDetails(recipeId);
     }
 
-    @RequestMapping(path = "/{recipeId}/keyword", method = RequestMethod.GET)
-    public Recipe getByTagName(@PathVariable String keyword) {
-        return recipeDao.getByTagName(keyword);
-    }
-
     @RequestMapping(path = "/ingredient/name", method = RequestMethod.GET)
     public Recipe getIngredient(@PathVariable String name) {
         return recipeDao.getByIngredientName(name);
