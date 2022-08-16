@@ -49,6 +49,7 @@
     </table>
     <!-- <router-link><button class="edit button"> Edit Recipe </button>
 </router-link> -->
+<button onclick="window.print();">Print</button>
 </div>
   </div>
   
@@ -75,7 +76,7 @@ export default {
             this.isLoading = false;
         })
     }
-    }
+    },
 
 }
 </script>
