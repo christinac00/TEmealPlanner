@@ -1,5 +1,6 @@
 <template>
   <form v-on:submit.prevent>
+    <h1>{{$route.params.userId}}  {{$route.params.recipeId}}</h1>
     <div class="field">
       <label for="recipe-name">Recipe Name</label>
       <input type="text" name="recipe-name" v-model="recipe.name" />
@@ -71,14 +72,7 @@ export default {
           } else{
               recipeService.updateRecipe(this.$route.params.userId, response.data.recipeId).then((response)=>{
                   if(response.status === 200){
-                    this.recipe = {
-                        recipeId: 0,
-                        name: "",
-                        image: "",
-                        description: "",
-                        instructions: "",
-                  };
-                      this.$router.push({name:'my-recipe-details', params: {recipeId: this.recipe.recipeId}})
+                      this.$router.push({name:'my-recipe-details', params:{userId: this.$route.query.userId, recipeId: this.recipe.recipeId}})
                   }
               })
 

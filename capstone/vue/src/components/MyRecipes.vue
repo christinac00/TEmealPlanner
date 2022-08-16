@@ -10,7 +10,7 @@
 
       <router-link tag="button" class="btn addNewRecipe" :to="{name:'add-recipe', params:{userId: $route.params.id}}" v-if="!isLoading" >Add New Recipe</router-link>
 
-      <recipe-card v-for="recipe in myRecipes" v-bind:key="recipe.name"
+      <recipe-card v-for="recipe in myRecipes" v-bind:userId="$route.params.id" v-bind:key="recipe.name"
       v-bind:recipe="recipe"
       />
       <!-- <div class="recipe-row"  v-for="recipe in myRecipes" v-bind:key="recipe.name" >

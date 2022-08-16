@@ -7,7 +7,7 @@
     <h1 class="recipe-name">{{ recipe.name }}</h1>
 </div>
 
-<router-link tag="button" class="btn editRecipe" :to="{name:'add-recipe', params:{userId: $route.params.id}}" v-if="!isLoading" >Edit Recipe</router-link>
+<router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="!isLoading" >Edit Recipe</router-link>
 
 <img class="icon" v-if="recipe.image" v-bind:src="recipe.image"/>
 
@@ -58,6 +58,7 @@
 import recipeService from '../services/RecipeService';
 export default {
     name: "my-recipe-details",
+    
     data () {
         return {
             recipe: {},

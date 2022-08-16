@@ -78,7 +78,7 @@ const router = new Router({
     {
       path: "/users/:id/meal-plans",
       name: "my-meal-plans",
-      component: MealPlan ,
+      component: MealPlan,
       meta: {
         requiresAuth: true
       }
@@ -137,23 +137,33 @@ const router = new Router({
       component: MyRecipes
     },
 
-     {
-       path: "/recipes",
-       name: "all-recipes",
-       component: AllRecipes
-     },
-      {path: "/recipes/:recipeId",
-       name: "my-recipe-details",
-      component: MyRecipeDetails
-     },
-     
-     {
+    {
+      path: "/recipes",
+      name: "all-recipes",
+      component: AllRecipes
+    },
+    {
+      path: "/recipes/:recipeId",
+      name: "my-recipe-details",
+      component: MyRecipeDetails,
+      props: true
+    },
+
+    {
       path: "users/:userId/addrecipe",
       name: "add-recipe",
       component: AddNewRecipe,
       meta: {
-       requiresAuth: true
-     }
+        requiresAuth: true
+      }
+    },
+    {
+      path: "users/:userId/editrecipe/:recipeId",
+      name: "edit-recipe",
+      component: AddNewRecipe,
+      meta: {
+        requiresAuth: true
+      }
     },
 
     {
@@ -161,8 +171,8 @@ const router = new Router({
       name: "add-plan",
       component: AddPlan,
       meta: {
-       requiresAuth: true
-     }
+        requiresAuth: true
+      }
     }
 
 
