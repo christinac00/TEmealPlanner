@@ -41,11 +41,11 @@ export default {
         this.retrieveAllRecipes();
     },
     components: { RecipeCard },
-    props: ['search'],
+    props: ['search', 'searchTag'],
     methods:{
         retrieveAllRecipes() {
 
-            recipeService.getFilteredRecipes(this.search).then(response => {
+            recipeService.getFilteredRecipes(this.search, this.searchTag).then(response => {
                 this.allRecipes = response.data
                 this.isLoading = false;
             })
@@ -54,9 +54,12 @@ export default {
     },
     watch: {
         search: function () {
-            console.log('searchChanged ' + this.search)
              this.retrieveAllRecipes();
+        },
+        searchTag: function() {
+            this.retrieveAllRecipes();
         }
+
     },
    
 }
