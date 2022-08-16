@@ -23,8 +23,15 @@ export default {
     createUserRecipe(userId, recipeId){
         return http.post(`users/${userId}/recipes/${recipeId}`)
     },
-    getFilteredRecipes(search) {
-        return http.get(`/recipes?ingredient=${search}`);
+    getFilteredRecipes(search, searchTag) {
+        if(search && searchTag) {
+            return http.get(`/recipes?ingredient=${search}&tag=${searchTag}`);
+        } else if(search) {
+            return http.get(`/recipes?ingredient=${search}`);
+        } else if(searchTag) {
+            return http.get(`/recipes?tag=${searchTag}`);
+        }
+        return http.get('/recipes');
     },
     deleteIngredient(recipeId, ingredientId){
         return http.delete(`/recipes/${recipeId}/ingredient/${ingredientId}`)
