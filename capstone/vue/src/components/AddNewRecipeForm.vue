@@ -20,36 +20,57 @@
       <input type="text" name="image" v-bind:src="recipe.image" />
     </div>
 
+    <div class="actions">
+      <button class="btn addIngredient" v-show="isHidden">
+        Add Ingredient
+      </button>
+      <button class="btn deleteIngredient" v-on:click="deleteIngredient">
+        Delete Selected Ingredient(s)
+      </button>
+    </div>
+    <form v-show="!isHidden">
+      <div class="field">
+        <label for="ingredient-amount">Amount</label>
+        <input type="text" name="ingredient-amount" />
+      </div>
+      <div class="field">
+        <label for="ingredient-unit">Units</label>
+        <input type="text" name="ingredient-unit" />
+      </div>
+      <div class="field">
+        <label for="ingredient-name">Ingredient Name</label>
+        <input type="text" name="ingredient-name" />
+      </div>
+    </form>
+
     <div>
       <table>
         <tr>
-            <td>
-                amount:
-            </td>
-            <td>
-                units:
-            </td>
-            <td>
-                name:
-            </td>
+          <td>Amount:</td>
+          <td>Units:</td>
+          <td>Name:</td>
+          <td>Delete?</td>
         </tr>
         <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
-            <td>
-                {{ ingredient.quantity}}
-
-            </td>
-            <td>
-                {{ingredient.unit}}
-            </td>
-            <td>
-                {{ingredient.name}}
-            </td>
+          <td>
+            {{ ingredient.quantity }}
+          </td>
+          <td>
+            {{ ingredient.unit }}
+          </td>
+          <td>
+            {{ ingredient.name }}
+          </td>
+          <td>
+            <input type="checkbox" />
+          </td>
         </tr>
-    </table>
+      </table>
     </div>
 
     <div class="actions">
       <button type="submit" v-on:click.prevent="saveRecipe">Save Recipe</button>
+
       <button
         class="btn btn-cancel"
         v-on:click.prevent="cancelForm"
@@ -66,8 +87,11 @@ import recipeService from "../services/RecipeService";
 
 export default {
   name: "add-recipe",
-  data() {
+  data() 
+  
+  {
     return {
+      isHidden: true,
       recipe: {
         recipeId: 0,
         name: "",
@@ -76,6 +100,7 @@ export default {
         instructions: "",
       },
     };
+    
   },
   created() {
     this.retrieveDetails();
@@ -147,6 +172,27 @@ export default {
         params: { id: this.$route.params.userId },
       });
     },
+    deleteIngredient(){
+      recipeService.deleteIngredient(this.recipe).then((response)=>{
+
+        if(response.staus ===200){
+          alert("Ingredient removed from recipe");
+          this.$router.push({
+                    name: "my-recipe-details",
+                    params: {
+                      recipeId: this.$route.params.recipeId,
+                    },
+                    query: {
+                      userId: this.$route.query.userId,
+                    }
+                  });
+        }
+      })
+      
+    },
+    addIngredient(){
+      
+    }
   },
 };
 </script>

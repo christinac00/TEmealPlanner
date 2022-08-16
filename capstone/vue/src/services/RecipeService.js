@@ -26,5 +26,11 @@ export default {
     getFilteredRecipes(search) {
         return http.get(`/recipes?ingredient=${search}`);
     },
+    deleteIngredient(recipeId, ingredientId){
+        return http.delete(`/recipes/${recipeId}/ingredient/${ingredientId}`)
+    },
+    addIngredientToRecipe(recipeId, ingredientId){
+        return http.post(`/recipes/${recipeId}/ingredient/${ingredientId}`)
+    }
     
 }
