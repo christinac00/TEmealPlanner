@@ -1,5 +1,5 @@
 <template>
- <router-link class="card"  :to="{ name: 'my-recipe-details', params: {recipeId: recipe.recipeId}, query:{userId:2}}" tag="div"> 
+ <router-link class="card"  :to="{ name: 'my-recipe-details', params: {recipeId: recipe.recipeId}, query:{userId:userId}}" tag="div"> 
      <img v-if="recipe.image" v-bind:src="recipe.image" />
      <div>
      <h2 class="recipe-name">{{ recipe.name }}</h2>

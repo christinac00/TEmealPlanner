@@ -15,7 +15,7 @@ export default {
         return http.post('/recipes', recipe);
     },
     updateRecipe(recipe) {
-        return http.put(`/recipes/${recipe.Id}`, recipe);
+        return http.put(`/recipes/${recipe.recipeId}`, recipe);
     },
     getMyRecipes(id) {
         return http.get(`users/${id}/recipes`)

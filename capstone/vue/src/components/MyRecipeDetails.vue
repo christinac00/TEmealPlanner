@@ -7,7 +7,7 @@
     <h1 class="recipe-name">{{ recipe.name }}</h1>
 </div>
 
-<router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="!isLoading" >Edit Recipe</router-link>
+<router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="$route.query.userId" >Edit Recipe</router-link>
 
 <img class="icon" v-if="recipe.image" v-bind:src="recipe.image"/>
 
