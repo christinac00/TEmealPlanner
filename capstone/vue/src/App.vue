@@ -12,8 +12,8 @@
         <router-link v-bind:to="{ name: 'login' }">Login</router-link>
       </div>
       <div class="login" v-else>
-        <router-link v-bind:to="{ name: 'logout' }">Logout</router-link>
-        Hello, {{ $store.state.user.username }}!
+        <router-link id="logout-setting" v-bind:to="{ name: 'logout' }">Logout</router-link>
+        <section id="greeting">Hello, {{ $store.state.user.username }}!</section>
       </div> 
       <hr/>
       <div class="nav-links">
@@ -29,9 +29,6 @@
     <main>
     <router-view class="view" v-bind:search="searchTerm" v-bind:searchTag="searchTag"/>  
     </main>
-    <footer>
-
-    </footer>
   </div>
 </template>
 
@@ -47,7 +44,11 @@ export default {
   }
 };
 </script>
+
 <style>
+/* importation of all fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Holtwood+One+SC&family=Quicksand:wght@300;400;500&display=swap');
+
 /* organizes the homepage */
 #app{
   display: grid;
@@ -56,7 +57,7 @@ export default {
   grid-template-areas: 
     "nav head"
     "nav main"
-    "nav foot";
+    "nav main";
   grid-template-rows: 1fr 4fr 30px;
   grid-template-columns: 1fr 4fr;
 }
@@ -70,17 +71,32 @@ background: #FCD949;
 box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25); 
 }
 
+h1 {
+  font-family: 'Holtwood One SC', serif;
+  color: #5A1850;
+}
+
 /* styling for navigation bar */
 nav {
   display: flex;
   flex-direction: column;
   grid-area: nav;
   background: #429698;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+}
+
+#logout-setting {
+  color: #9BC3FF;
+}
+
+#greeting {
+  color: azure;
 }
 
 /* styling for divider */
 hr {
-  width: 99%;
+  width: 99.5%;
   border: 1px solid #FFE473;
 }
 

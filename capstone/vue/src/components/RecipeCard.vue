@@ -28,15 +28,19 @@ export default {
 </script>
 
 <style>
+/* importation of all fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Holtwood+One+SC&family=Quicksand:wght@300;400;500&display=swap');
+
 .rcard {
   display: flex;
   flex-direction: row;
   width: 95%;
   height: 150px;
   margin: 20px;
-  background: lightcoral;
+  background: #F49494;
   align-items: center;
   border-radius: 10px;
+  filter: drop-shadow(7px 6px 8px rgba(0, 0, 0, 0.25));
 }
 
 .rinfo {
@@ -54,9 +58,19 @@ export default {
 .rcard .recipe-name {
   font-size: 1.5rem;
   text-align: center;
+  font-family: 'Holtwood One SC', serif;
+  flex-shrink: 1;
 }
 
 .rcard .recipe-description {
   font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  flex-shrink: 1;
+  text-align: center;
 }
+
+
+
+
 </style>
