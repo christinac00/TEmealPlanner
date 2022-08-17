@@ -8,17 +8,24 @@
     }"
     tag="div"
   >
-    <img v-if="recipe.image" v-bind:src="recipe.image" />
+    <img if="recipe.image" v-bind:src="recipe.image" />
     <div class="rinfo">
       <h2 class="recipe-name">{{ recipe.name }}</h2>
       <p class="recipe-description">{{ recipe.description }}</p>
-      <!-- <button type="submit" v-if="this.$state.store.user" v-on:click="saveRecipeToMyRecipes()">Save Recipe</button> -->
+      
     </div>
+    <!-- <button
+        type="submit"
+        v-if="$store.state.user"
+        v-on:click="saveRecipeToMyRecipes()"
+      >
+        Save Recipe
+      </button> -->
   </router-link>
 </template>
 
 <script>
-import RecipeService from '@/services/RecipeService'
+import RecipeService from "@/services/RecipeService";
 export default {
   name: "recipe-card",
   props: {
@@ -27,19 +34,25 @@ export default {
   },
   methods: {
     saveRecipeToMyRecipes() {
-      RecipeService.create(this.recipeId).then(response => {
-        if(response.status == 201) {
-          this.$router.push("/users/:id/recipes");
+      RecipeService.createUserRecipe(
+        this.$store.state.user.userId,
+        this.recipe.recipeId
+      ).then((response) => {
+        if (response.status == 201) {
+          this.$router.push({
+            name: "my-recipes",
+            params: { id: this.$route.params.userId },
+          });
         }
-      })
-    }
+      });
+    },
   },
 };
 </script>
 
 <style>
 /* importation of all fonts */
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Holtwood+One+SC&family=Quicksand:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Holtwood+One+SC&family=Quicksand:wght@300;400;500&display=swap");
 
 .rcard {
   display: flex;
@@ -47,7 +60,7 @@ export default {
   width: 95%;
   height: 150px;
   margin: 20px;
-  background: #F49494;
+  background: #f49494;
   align-items: center;
   border-radius: 10px;
   filter: drop-shadow(7px 6px 8px rgba(0, 0, 0, 0.25));
@@ -68,19 +81,15 @@ export default {
 .rcard .recipe-name {
   font-size: 1.5rem;
   text-align: center;
-  font-family: 'Holtwood One SC', serif;
+  font-family: "Holtwood One SC", serif;
   flex-shrink: 1;
 }
 
 .rcard .recipe-description {
   font-size: 1rem;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 500;
   flex-shrink: 1;
   text-align: center;
 }
-
-
-
-
 </style>

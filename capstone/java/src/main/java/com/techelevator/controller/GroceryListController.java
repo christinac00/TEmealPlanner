@@ -59,10 +59,17 @@ public class GroceryListController {
     }
 //    @RequestMapping(path = "/users/{userId}/grocery-list",method = RequestMethod.GET)
 //    public List<RecipeIngredientDetail> getGroceryList(@PathVariable int userId){
+<<<<<<< HEAD
 //        for (MealPlan mealPlan:  mealPlanDao.list(userId)){
 //
 //        }
 //    }
+=======
+//        for (MealPlan mealPlan:  mealPlanDao.list(userId)
+//
+//        }
+
+>>>>>>> 9343382fe09561d22ed960a2e74a5b530bb4a7b8
 
 
 
