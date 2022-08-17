@@ -13,10 +13,7 @@
       <recipe-card v-for="recipe in myRecipes" v-bind:userId="$route.params.id" v-bind:key="recipe.name"
       v-bind:recipe="recipe"
       />
-      <!-- <div class="recipe-row"  v-for="recipe in myRecipes" v-bind:key="recipe.name" >
-          <p> Recipes: {{ recipe.name }}</p>
-          <p> Instructions: {{ recipe.instructions }}</p>
-      </div> -->
+
 
   </div>
   

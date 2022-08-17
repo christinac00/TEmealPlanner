@@ -1,27 +1,28 @@
 <template>
-  <router-link
-    class="rcard"
-    :to="{
-      name: 'my-recipe-details',
-      params: { recipeId: recipe.recipeId },
-      query: { userId: userId },
-    }"
-    tag="div"
-  >
-    <img if="recipe.image" v-bind:src="recipe.image" />
-    <div class="rinfo">
-      <h2 class="recipe-name">{{ recipe.name }}</h2>
-      <p class="recipe-description">{{ recipe.description }}</p>
-      
-    </div>
-    <!-- <button
-        type="submit"
-        v-if="$store.state.user"
-        v-on:click="saveRecipeToMyRecipes()"
-      >
-        Save Recipe
-      </button> -->
-  </router-link>
+  <div>
+    <router-link
+      class="rcard"
+      :to="{
+        name: 'my-recipe-details',
+        params: { recipeId: recipe.recipeId },
+        query: { userId: userId },
+      }"
+      tag="div"
+    >
+      <img if="recipe.image" v-bind:src="recipe.image" />
+      <div class="rinfo">
+        <h2 class="recipe-name">{{ recipe.name }}</h2>
+        <p class="recipe-description">{{ recipe.description }}</p>
+      </div>
+    </router-link>
+    <button
+      type="submit"
+      v-if="Object.keys($store.state.user).length !== 0 && !userId"
+      v-on:click="saveRecipeToMyRecipes()"
+    >
+      Save Recipe
+    </button>
+  </div>
 </template>
 
 <script>
@@ -35,13 +36,13 @@ export default {
   methods: {
     saveRecipeToMyRecipes() {
       RecipeService.createUserRecipe(
-        this.$store.state.user.userId,
+        this.$store.state.user.id,
         this.recipe.recipeId
       ).then((response) => {
         if (response.status == 201) {
           this.$router.push({
             name: "my-recipes",
-            params: { id: this.$route.params.userId },
+            params: { id: this.$store.state.user.id},
           });
         }
       });
