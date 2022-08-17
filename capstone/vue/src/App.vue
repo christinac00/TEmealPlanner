@@ -115,7 +115,11 @@ hr {
   flex-basis: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
+  font-family: 'Holtwood One SC', serif;
+  font-size: 2rem;
+  color: #fff;
+  
 }
 
 main {

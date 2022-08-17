@@ -45,7 +45,7 @@ export default {
         this.myMealPlans = response.data;
         this.isLoading = false;
       });
-    },
+    }
   },
 };
 </script>

@@ -15,7 +15,7 @@
     <router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="$route.query.userId" >Edit Recipe</router-link>
 </div>
 
-<div>
+<div class="description-styling">
     <h2 class="description">Description</h2>
     <p class="description">{{ recipe.description }}</p>
 </div>
@@ -28,13 +28,13 @@
     <h2 class = "ingredients">Ingredients</h2>  
     <table>
         <tr>
-            <td>
+            <td class="td-headers">
                 Amount
             </td>
-            <td>
+            <td class="td-headers">
                 Units
             </td>
-            <td>
+            <td class="td-headers">
                 Name
             </td>
         </tr>
@@ -85,20 +85,36 @@ export default {
 }
 </script>
 <style>
+/* importation of all fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Holtwood+One+SC&family=Quicksand:wght@300;400;500&display=swap');
+
+h1 {
+    text-align: center;
+}
+
 .recipe-details-body{
     margin: 30px;
 }
 .icon{
-    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 200px;
+    width: auto;
     position: relative;
-    padding: 20px;
+    padding: 10px;
+    
+}
+
+.description-styling > h2 {
+    font-weight: 600;
 }
 
 .instruction-body, .description{
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
     white-space: pre;
-}
+    }
 
 table, tr, td {
     border: 1px solid;
@@ -108,6 +124,9 @@ table, tr, td {
 h2{
     font-family: 'Quicksand';
     text-decoration: underline;
+}
+.td-headers{
+    font-weight: 600;
 }
 
 
