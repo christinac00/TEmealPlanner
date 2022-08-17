@@ -46,10 +46,10 @@
     <div>
       <table>
         <tr>
-          <td>Amount:</td>
-          <td>Units:</td>
-          <td>Name:</td>
-          <td>Delete?</td>
+          <td>Amount </td>
+          <td>Units </td>
+          <td>Name </td>
+          <td>Delete? </td>
         </tr>
         <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
           <td>
@@ -208,4 +208,34 @@ export default {
 </script>
 
 <style>
+
+label{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+button{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+td{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  
+}
+form{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+}
+table{
+  border-collapse: collapse;
+  margin-bottom: 50px;
+}
+
+
 </style>

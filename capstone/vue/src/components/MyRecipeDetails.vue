@@ -81,18 +81,27 @@ export default {
 }
 </script>
 <style>
+.recipe-details-body{
+    margin: 30px;
+}
 .icon{
     width: 200px;
     height: 200px;
+    position: relative;
 }
 
-.instruction-body{
+.instruction-body, .description{
     font-family: sans-serif;
     white-space: pre;
 }
 
 table, tr, td {
     border: 1px solid;
+    
+}
+
+h2{
+    font-family: 'Quicksand'
 }
 
 
