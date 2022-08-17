@@ -5,8 +5,12 @@ import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.MealPlanDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.GroceryList;
+import com.techelevator.model.MealPlan;
+import com.techelevator.model.RecipeIngredientDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/recipes")
@@ -17,6 +21,7 @@ public class GroceryListController {
     private final MealPlanDao mealPlanDao;
     private final IngredientDao ingredientDao;
     private final GroceryListDao groceryListDao;
+
 
     public GroceryListController(RecipeDao recipeDao, MealPlanDao mealPlanDao, IngredientDao ingredientDao, GroceryListDao groceryListDao) {
         this.recipeDao = recipeDao;
@@ -51,6 +56,12 @@ public class GroceryListController {
     @RequestMapping(path = "/{recipeId}/grocery-list", method = RequestMethod.PUT)
     public GroceryList updateGroceryList(@RequestBody GroceryList groceryList) {
         return groceryListDao.updateGroceryList(groceryList);
+    }
+    @RequestMapping(path = "/users/{userId}/grocery-list",method = RequestMethod.GET)
+    public List<RecipeIngredientDetail> getGroceryList(@PathVariable int userId){
+        for (MealPlan mealPlan:  mealPlanDao.list(userId){
+
+        }
     }
 
 

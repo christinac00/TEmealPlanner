@@ -12,18 +12,28 @@
     <div class="rinfo">
       <h2 class="recipe-name">{{ recipe.name }}</h2>
       <p class="recipe-description">{{ recipe.description }}</p>
+      <button type="submit" v-if="this.state.store.user" v-on:click="saveRecipeToMyRecipes()">Save Recipe</button>
     </div>
   </router-link>
 </template>
 
 <script>
+import RecipeService from '@/services/RecipeService'
 export default {
   name: "recipe-card",
   props: {
     recipe: Object,
     userId: Number,
   },
-  methods: {},
+  methods: {
+    saveRecipeToMyRecipes() {
+      RecipeService.create(this.recipe).then(response => {
+        if(response.status == 201) {
+          this.$router.push("/users/:id/recipes");
+        }
+      })
+    }
+  },
 };
 </script>
 
