@@ -3,7 +3,7 @@
     
     <div class="field">
       <label for="recipe-name">Recipe Name</label>
-      <input type="text" name="recipe-name" v-model="recipe.name" />
+      <input class="recipe-name" type="text" name="recipe-name" v-model="recipe.name" />
     </div>
     <div class="field">
       <label for="Description">Description</label>
@@ -22,14 +22,8 @@
       <input class="imgURL" type="text" name="image" v-model="recipe.image" />
     </div>
 
-    <div class="actions">
-      <button class="btn" v-on:click.prevent="addIngredient" >
-        Add Ingredient
-      </button>
-      <button class="btn" v-on:click="deleteIngredient">
-        Delete Ingredient 
-      </button>
-    </div>
+    <h2 class="addedit">Add/ Edit Ingredients</h2>
+    
     <form >
       <div class="field">
         <label for="ingredient-amount">Amount</label>
@@ -45,14 +39,23 @@
       </div>
     </form>
 
+    <div class="actions">
+      <button class="btn" v-on:click.prevent="addIngredient" >
+        Add Ingredient
+      </button>
+      <button class="btn" v-on:click="deleteIngredient">
+        Delete Ingredient 
+      </button>
+    </div>
+
     <div>
       
       <label>Ingredients</label>
       <table>
         <tr>
-          <td>Amount </td>
-          <td>Units </td>
-          <td>Name </td>
+          <td class="td-headers">Amount </td>
+          <td class="td-headers">Units </td>
+          <td class="td-headers">Name </td>
           
         </tr>
         <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
@@ -205,11 +208,15 @@ export default {
 </script>
 
 <style>
-
+.addedit{
+  margin-top: 30px;
+}
 label{
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   margin-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   display: block;
 }
 
@@ -223,12 +230,13 @@ td{
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   padding: 5px;
+  text-align: center;
   
 }
 form{
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 15px;
 
 }
 table{
@@ -244,7 +252,18 @@ table{
   width: 100%;
 }
 .btn{
-  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.imgURL{
+  width: 75%;
+  height: 20px;
+}
+input.recipe-name{
+  width: 30%;
+  height: 20px;
+}
+.td-headers{
+  font-weight: 600;
 }
 
 </style>
