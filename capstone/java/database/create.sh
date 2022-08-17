@@ -9,6 +9,5 @@ psql -U postgres -d $DATABASE -f "$BASEDIR/data.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/user.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/recipes.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/ingredients.sql" &&
-psql -U postgres -d $DATABASE -f "$BASEDIR/recipe-ingredient.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/user-recipe.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/downloaded-recipes.sql"
