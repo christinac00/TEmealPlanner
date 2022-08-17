@@ -17,7 +17,7 @@
     </router-link>
     <button
       type="submit"
-      v-if="Object.keys($store.state.user).length !== 0 && !userId"
+      v-if="Object.keys($store.state.user).length !== 0 && !userId && !noButton"
       v-on:click="saveRecipeToMyRecipes()"
     >
       Save Recipe
@@ -32,6 +32,7 @@ export default {
   props: {
     recipe: Object,
     userId: Number,
+    noButton: Boolean,
   },
   methods: {
     saveRecipeToMyRecipes() {
