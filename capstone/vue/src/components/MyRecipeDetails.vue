@@ -7,9 +7,13 @@
     <h1 class="recipe-name">{{ recipe.name }}</h1>
 </div>
 
-<router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="$route.query.userId" >Edit Recipe</router-link>
+
 
 <img class="icon" v-if="recipe.image" v-bind:src="recipe.image"/>
+
+<div>
+    <router-link tag="button" class="btn editRecipe" :to="{name:'edit-recipe', params:{userId: $route.query.userId, recipeId:recipe.recipeId}}" v-if="$route.query.userId" >Edit Recipe</router-link>
+</div>
 
 <div>
     <h2 class="description">Description</h2>
@@ -21,7 +25,7 @@
 </div>
 <div>
   
-    <h2>Ingredients</h2>  
+    <h2 class = "ingredients">Ingredients</h2>  
     <table>
         <tr>
             <td>
@@ -88,6 +92,7 @@ export default {
     width: 200px;
     height: 200px;
     position: relative;
+    padding: 20px;
 }
 
 .instruction-body, .description{
@@ -101,9 +106,9 @@ table, tr, td {
 }
 
 h2{
-    font-family: 'Quicksand'
+    font-family: 'Quicksand';
+    text-decoration: underline;
 }
-
 
 
 </style>

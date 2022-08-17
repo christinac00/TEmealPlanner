@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit.prevent>
-    <h1>{{ $route.params.userId }} {{ $route.params.recipeId }}</h1>
+    
     <div class="field">
       <label for="recipe-name">Recipe Name</label>
       <input type="text" name="recipe-name" v-model="recipe.name" />
@@ -23,10 +23,10 @@
     </div>
 
     <div class="actions">
-      <button class="btn addIngredient" v-on:click.prevent="addIngredient" >
+      <button class="btn" v-on:click.prevent="addIngredient" >
         Add Ingredient
       </button>
-      <button class="btn deleteIngredient" v-on:click="deleteIngredient">
+      <button class="btn" v-on:click="deleteIngredient">
         Delete Ingredient 
       </button>
     </div>
@@ -46,6 +46,8 @@
     </form>
 
     <div>
+      
+      <label>Ingredients</label>
       <table>
         <tr>
           <td>Amount </td>
@@ -220,7 +222,7 @@ button{
 td{
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  
+  padding: 5px;
   
 }
 form{
@@ -240,6 +242,9 @@ table{
 .instructionsForm{
   height: 200px;
   width: 100%;
+}
+.btn{
+  margin-top: 20px;
 }
 
 </style>
