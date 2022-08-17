@@ -28,13 +28,13 @@
     <h2 class = "ingredients">Ingredients</h2>  
     <table>
         <tr>
-            <td>
+            <td class="td-headers">
                 Amount
             </td>
-            <td>
+            <td class="td-headers">
                 Units
             </td>
-            <td>
+            <td class="td-headers">
                 Name
             </td>
         </tr>
@@ -108,6 +108,9 @@ table, tr, td {
 h2{
     font-family: 'Quicksand';
     text-decoration: underline;
+}
+.td-headers{
+    font-weight: 600;
 }
 
 
