@@ -57,12 +57,12 @@ public class GroceryListController {
     public GroceryList updateGroceryList(@RequestBody GroceryList groceryList) {
         return groceryListDao.updateGroceryList(groceryList);
     }
-    @RequestMapping(path = "/users/{userId}/grocery-list",method = RequestMethod.GET)
-    public List<RecipeIngredientDetail> getGroceryList(@PathVariable int userId){
-        for (MealPlan mealPlan:  mealPlanDao.list(userId){
-
-        }
-    }
+//    @RequestMapping(path = "/users/{userId}/grocery-list",method = RequestMethod.GET)
+//    public List<RecipeIngredientDetail> getGroceryList(@PathVariable int userId){
+//        for (MealPlan mealPlan:  mealPlanDao.list(userId)){
+//
+//        }
+//    }
 
 
 

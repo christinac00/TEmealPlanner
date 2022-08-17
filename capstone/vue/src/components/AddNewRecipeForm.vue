@@ -7,17 +7,19 @@
     </div>
     <div class="field">
       <label for="Description">Description</label>
-      <input type="text" name="description" v-model="recipe.description" />
+      <textarea class="descriptionForm" v-model="recipe.description" ></textarea>
+      <!-- <input class="descriptionForm" type="text" name="description" v-model="recipe.description" /> -->
     </div>
 
     <div class="field">
       <label for="instructions">Instructions</label>
-      <input type="text" name="instructions" v-model="recipe.instructions" />
+      <textarea class="instructionsForm"  v-model="recipe.instructions"></textarea>
+      <!-- <input  type="text" name="instructions" v-model="recipe.instructions" /> -->
     </div>
 
     <div class="field">
       <label for="image">Image URL</label>
-      <input type="text" name="image" v-bind:src="recipe.image" />
+      <input class="imgURL" type="text" name="image" v-model="recipe.image" />
     </div>
 
     <div class="actions">
@@ -25,7 +27,7 @@
         Add Ingredient
       </button>
       <button class="btn deleteIngredient" v-on:click="deleteIngredient">
-        Delete Selected Ingredient(s)
+        Delete Ingredient 
       </button>
     </div>
     <form >
@@ -49,7 +51,7 @@
           <td>Amount </td>
           <td>Units </td>
           <td>Name </td>
-          <td>Delete? </td>
+          
         </tr>
         <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
           <td>
@@ -61,9 +63,7 @@
           <td>
             {{ ingredient.name }}
           </td>
-          <td>
-            <input type="checkbox" />
-          </td>
+          
         </tr>
       </table>
     </div>
@@ -98,6 +98,7 @@ export default {
         image: "",
         description: "",
         instructions: "",
+        ingredients: []
       },
       ingredient:{
         quantity:"",
@@ -137,6 +138,7 @@ export default {
                     image: "",
                     description: "",
                     instructions: "",
+                    ingredients: []
                   };
                   this.$router.push({
                     name: "my-recipes",
@@ -162,7 +164,7 @@ export default {
                       recipeId: this.$route.params.recipeId,
                     },
                     query: {
-                      userId: this.$route.query.userId,
+                      userId: this.$route.params.userId,
                     }
                   });
                 }
@@ -178,21 +180,14 @@ export default {
       });
     },
     deleteIngredient(){
-      recipeService.deleteIngredient(this.recipe.id).then((response)=>{
-
-        if(response.staus ===200){
-          alert("Ingredient removed from recipe");
-          this.$router.push({
-                    name: "my-recipe-details",
-                    params: {
-                      recipeId: this.$route.params.recipeId,
-                    },
-                    query: {
-                      userId: this.$route.query.userId,
-                    }
-                  });
-        }
+      this.recipe.ingredients = this.recipe.ingredients.filter((ingredient)=>{
+        return ingredient.name.toLowerCase() !== this.ingredient.name.toLowerCase()
       })
+        this.ingredient = {
+          quantity:"",
+          unit:"",
+          name:""
+        }
       
     },
     addIngredient(){
@@ -213,6 +208,7 @@ label{
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   margin-right: 10px;
+  display: block;
 }
 
 button{
@@ -225,6 +221,7 @@ td{
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   
+  
 }
 form{
   display: flex;
@@ -236,6 +233,13 @@ table{
   border-collapse: collapse;
   margin-bottom: 50px;
 }
-
+.descriptionForm {
+  height: 50px;
+  width: 100%;
+}
+.instructionsForm{
+  height: 200px;
+  width: 100%;
+}
 
 </style>

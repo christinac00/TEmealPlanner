@@ -25,13 +25,13 @@
     <table>
         <tr>
             <td>
-                amount:
+                Amount
             </td>
             <td>
-                units:
+                Units
             </td>
             <td>
-                name:
+                Name
             </td>
         </tr>
         <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
