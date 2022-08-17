@@ -21,25 +21,25 @@
     </div>
 
     <div class="actions">
-      <button class="btn addIngredient" v-show="isHidden">
+      <button class="btn addIngredient" v-on:click.prevent="addIngredient" >
         Add Ingredient
       </button>
       <button class="btn deleteIngredient" v-on:click="deleteIngredient">
         Delete Selected Ingredient(s)
       </button>
     </div>
-    <form v-show="!isHidden">
+    <form >
       <div class="field">
         <label for="ingredient-amount">Amount</label>
-        <input type="text" name="ingredient-amount" />
+        <input type="text" name="ingredient-amount" v-model="ingredient.quantity" />
       </div>
       <div class="field">
         <label for="ingredient-unit">Units</label>
-        <input type="text" name="ingredient-unit" />
+        <input type="text" name="ingredient-unit" v-model="ingredient.unit" />
       </div>
       <div class="field">
         <label for="ingredient-name">Ingredient Name</label>
-        <input type="text" name="ingredient-name" />
+        <input type="text" name="ingredient-name" v-model="ingredient.name" />
       </div>
     </form>
 
@@ -99,6 +99,11 @@ export default {
         description: "",
         instructions: "",
       },
+      ingredient:{
+        quantity:"",
+        unit:"",
+        name:""
+      }
     };
     
   },
@@ -173,7 +178,7 @@ export default {
       });
     },
     deleteIngredient(){
-      recipeService.deleteIngredient(this.recipe).then((response)=>{
+      recipeService.deleteIngredient(this.recipe.id).then((response)=>{
 
         if(response.staus ===200){
           alert("Ingredient removed from recipe");
@@ -191,7 +196,12 @@ export default {
       
     },
     addIngredient(){
-      
+        this.recipe.ingredients.push(this.ingredient)
+        this.ingredient = {
+          quantity:"",
+          unit:"",
+          name:""
+        }
     }
   },
 };

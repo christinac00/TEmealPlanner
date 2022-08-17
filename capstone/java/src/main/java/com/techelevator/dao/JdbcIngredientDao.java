@@ -25,6 +25,17 @@ public class JdbcIngredientDao implements IngredientDao{
     }
 
     @Override
+    public Ingredient getIngredientByName(String name){
+        Ingredient ingredient = null;
+        String sql = "SELECT * FROM ingredient WHERE name = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
+        if (results.next()) {
+            ingredient = mapRowToIngredient(results);
+        }
+        return ingredient;
+    }
+
+    @Override
     public void updateIngredient(Ingredient updatedIngredient) {
         String sql = "UPDATE ingredient SET name = ?, category = ? WHERE ingredient_id = ?;";
         jdbcTemplate.update(sql, updatedIngredient.getName(), updatedIngredient.getCategory(), updatedIngredient.getIngredientId());

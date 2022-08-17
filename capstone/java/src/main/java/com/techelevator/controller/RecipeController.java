@@ -1,9 +1,13 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.RecipeNotFoundException;
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
+import com.techelevator.model.RecipeDetail;
+import com.techelevator.model.RecipeIngredientDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +23,13 @@ public class RecipeController {
 
     private final UserDao userDao;
     private final RecipeDao recipeDao;
+    private final IngredientDao ingredientDao;
 
 
-    public RecipeController(UserDao UserDao, RecipeDao RecipeDao) {
+    public RecipeController(UserDao UserDao, RecipeDao RecipeDao, IngredientDao ingredientDao) {
         this.userDao = UserDao;
         this.recipeDao = RecipeDao;
+        this.ingredientDao = ingredientDao;
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
@@ -58,14 +64,31 @@ public class RecipeController {
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public Recipe create(@RequestBody Recipe recipe) {
-        return recipeDao.create(recipe);
+    public RecipeDetail create(@RequestBody RecipeDetail recipe) {
+        RecipeDetail recipeDetail=  recipeDao.create(recipe);
+        updateIngredients(recipe);
+
+        return recipeDetail;
+    }
+
+    private void updateIngredients(RecipeDetail recipeDetail) {
+        for(RecipeIngredientDetail ingredientDetail: recipeDetail.getIngredients()){
+            Ingredient ingredient = ingredientDao.getIngredientByName(ingredientDetail.getName());
+            if(ingredient == null){
+                ingredient= new Ingredient();
+                ingredient.setName(ingredientDetail.getName());
+                ingredient.setCategory("---");
+                ingredientDao.createIngredient(ingredient);
+            }
+        }
     }
 
     @RequestMapping(path = "/{recipeId}", method = RequestMethod.PUT)
-    public Recipe update(@PathVariable int recipeId, @RequestBody Recipe recipe) {
+    public RecipeDetail update(@PathVariable int recipeId, @RequestBody RecipeDetail recipe) {
         recipe.setRecipeId(recipeId);
-        return recipeDao.updateRecipe(recipe);
+        RecipeDetail recipeDetail = recipeDao.updateRecipe(recipe);
+        updateIngredients(recipe);
+        return recipeDetail;
     }
 
 

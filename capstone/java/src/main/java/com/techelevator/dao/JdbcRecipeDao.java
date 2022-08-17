@@ -68,7 +68,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
     //not quite clear on what this does
     @Override
-    public Recipe getDetails(int recipeId) {
+    public RecipeDetail getDetails(int recipeId) {
         RecipeDetail recipeDetail = new RecipeDetail();
         String sql = "SELECT r.recipe_id, r.name, r.image, r.description, r.instructions, i.name iname, i.category, ri.quantity, ri.unit FROM recipe r LEFT OUTER JOIN recipe_ingredient ri ON ri.recipe_id = r.recipe_id LEFT OUTER JOIN ingredient i ON i.ingredient_id = ri.ingredient_id WHERE r.recipe_id = ?;";
 
@@ -92,7 +92,7 @@ public class JdbcRecipeDao implements RecipeDao {
     //creates a new recipe
         //should be a transaction that creates the recipe and inserts it into the user_recipe with isCreated = true?
     @Override
-    public Recipe create(Recipe newRecipe) {
+    public RecipeDetail create(RecipeDetail newRecipe) {
         String insertRecipeSql = "INSERT INTO recipe (name, image, description, instructions) VALUES (?, ?, ?, ?) RETURNING recipe_id;";
         Integer newId = jdbcTemplate.queryForObject(insertRecipeSql, Integer.class, newRecipe.getName(), newRecipe.getImage(), newRecipe.getDescription(), newRecipe.getInstructions());
         return getDetails(newId);
@@ -101,7 +101,7 @@ public class JdbcRecipeDao implements RecipeDao {
 
 
     @Override
-    public Recipe updateRecipe(Recipe recipe) {
+    public RecipeDetail updateRecipe(RecipeDetail recipe) {
         String sql = "UPDATE recipe SET name = ?, instructions = ? WHERE recipe_id = ?;";
         return jdbcTemplate.update(sql, recipe.getName(), recipe.getInstructions(), recipe.getRecipeId()) ==1?getDetails(recipe.getRecipeId()):null;
 

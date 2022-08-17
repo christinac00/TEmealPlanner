@@ -12,6 +12,9 @@ public interface IngredientDao {
     //create a new ingredient
     Ingredient createIngredient(Ingredient newIngredient);
 
+    //get by name
+    Ingredient getIngredientByName(String name);
+
     //get ingredient by id
     Ingredient getIngredientById(int ingredientId);
 

@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Recipe;
+import com.techelevator.model.RecipeDetail;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ public interface RecipeDao {
 
     Recipe getDetails(int recipeId);
 
-    Recipe updateRecipe(Recipe recipe);
+    RecipeDetail updateRecipe(RecipeDetail recipe);
 
-    Recipe create(Recipe newRecipe);
+    RecipeDetail create(RecipeDetail newRecipe);
 
     //methods for SearchController
     List<Recipe> searchByTagName(String keyword);
