@@ -132,6 +132,25 @@ footer {
   grid-area: foot;
   background: #fcd949;
 }
+button {
+  color: white;
+  text-decoration: none;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 30px;
+  line-height: 30px;
+  display: inline-block;
+  position: relative;
+  border-radius: 20px;
+  background-image: linear-gradient(#335b71 45%, #03324c 55%);
+  box-shadow: 0 2px 2px #888888;
+  transition: color 0.3s, background-image 0.5s, ease-in-out;
+}
+button:hover {
+  background-image: linear-gradient(#b1ccda 49%, #96b4c5 51%);
+  color: #03324c;
+}
 
 /* 
 header styling
