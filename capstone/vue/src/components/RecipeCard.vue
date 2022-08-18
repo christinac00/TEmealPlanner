@@ -73,7 +73,7 @@ export default {
 .rcard > img {
   border-radius: 10px;
   height: 100%;
-  width: auto;
+  width: 25%;
   padding: 0 10px 0 0;
   margin-right: auto;
 }
