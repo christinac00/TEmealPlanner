@@ -51,37 +51,52 @@ export default {
   border-radius: 10px;
   padding: 10px;
   width: 95%;
-  margin: 20px;
-  background: #5a1850; /* display: flex; */
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #429698; /* display: flex; */
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.25));
 }
+
 .card > img {
   position: relative;
   right: -38%;
   width: 100px;
   border-radius: 60px;
 }
+
 .card .recipe-name {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .card .recipe-description {
   font-size: 1rem;
 }
+
 .meals-card {
   display: grid;
   grid-template-areas:
     "title description"
     "recipe recipe";
 }
+
 .plan-card {
   grid-area: recipe;
   display: flex;
   flex-direction: column;
+  width: 105%;
 }
+
 .plan-name {
   grid-area: title;
+  text-align: center;
 }
+
 .plan-description {
   grid-area: description;
+  font-family: 'Holtwood One SC', serif;
+  color: #fff;
+  font-size: 1.5rem;
 }
+
 </style>

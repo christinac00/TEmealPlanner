@@ -1,7 +1,7 @@
 <template>
   <div class="meal-plans">
     <div class="loading" v-if="isLoading">
-      <img src="../assets/your-food-is-being-prepared.gif" />
+      <img src="../assets/a-little-pinch.gif" />
     </div>
     <div class="planner-header">
       <h1>My Meal Plans</h1>
@@ -55,8 +55,6 @@ export default {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background: #f39b37;
-  border-radius: 10px;
 }
 
 .planner-header {
@@ -78,8 +76,7 @@ export default {
   border-bottom: 10px, solid;
 }
 
-.btn-addPlan {
-  
+.loading {
 }
 
 </style>

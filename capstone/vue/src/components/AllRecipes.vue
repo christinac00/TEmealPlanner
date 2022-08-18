@@ -1,7 +1,7 @@
 <template>
     <div class="recipes">
         <div class="loading" v-if="isLoading">
-    <img src="../assets/your-food-is-being-prepared.gif" />
+    <img src="../assets/cooking-bear.gif" />
     </div>
        <div class="recipe-header">
           <h1>Recipe Library</h1> 

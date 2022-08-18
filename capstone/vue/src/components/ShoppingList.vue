@@ -11,12 +11,12 @@
   <li>Milk</li>
   <li>Bread</li>
   <li>Avocado</li>
-  <li>bagels</li>
-  <li>yogurt</li>
-  <li>lettuce</li>
-  <li>cucumber</li>
-  <li>tomatoes</li>
-  <li>mayo</li>
+  <li>Bagels</li>
+  <li>Yogurt</li>
+  <li>Lettuce</li>
+  <li>Cucumber</li>
+  <li>Tomatoes</li>
+  <li>Mayo</li>
   
 </ul>
   </div>
@@ -29,5 +29,10 @@ name: "shopping-list"
 </script>
 
 <style>
+ul {
+  font-family: 'Hind', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
 
 </style>
