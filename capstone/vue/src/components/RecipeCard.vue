@@ -78,7 +78,7 @@ export default {
   margin-right: auto;
 }
 .rcard .recipe-name {
-  font-size: 1.25rem;
+  font-size: 1.5vw;
   text-align: center;
   font-family: "Holtwood One SC", serif; 
   display: block;
@@ -86,7 +86,7 @@ export default {
 }
 
 .rcard .recipe-description {
-  font-size: 1rem;
+  font-size: 1.1vw;
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
   text-align: center;

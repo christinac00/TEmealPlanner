@@ -8,14 +8,17 @@
       <input class="search-bar" type="text" placeholder="Search by Tag" v-model="searchTag"> 
     </header>
     <nav class="left-panel">
+     
       <div class="login" v-if="Object.keys($store.state.user).length === 0">
         <router-link v-bind:to="{ name: 'login' }">Login</router-link>
       </div>
-      <div class="login" v-else>
+      <div class="login" v-else> 
+        <img id="logo" src="@/assets/TEMP-Logo-2.png" alt="">
         <router-link id="logout-setting" v-bind:to="{ name: 'logout' }">Logout</router-link>
         <section id="greeting">Hello, {{ $store.state.user.username }}!</section>
+        <hr/>
       </div> 
-      <hr/>
+      
       <div class="nav-links">
         <router-link id="home" v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link id="browse-my-recipes" v-bind:to="{ name: 'my-recipes', params: {id: $store.state.user.id}  }">My Recipes</router-link>
@@ -88,7 +91,14 @@ nav {
   font-weight: 500;
 }
 
+#logo {
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #logout-setting {
+  text-align: center;
   color: #9BC3FF;
 }
 
@@ -98,8 +108,8 @@ nav {
 
 /* styling for divider */
 hr {
-  width: 99.5%;
-  border: 1px solid #FFE473;
+  width: 20vw;
+  border: 2px solid #FFE473;
 }
 
 /* styling for login */
@@ -120,7 +130,7 @@ hr {
   align-items: center;
   justify-content: space-between;
   font-family: 'Holtwood One SC', serif;
-  font-size: 1.25rem;
+  font-size: 1.25vw;
 }
 
 main {
