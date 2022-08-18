@@ -92,7 +92,7 @@ nav {
 }
 
 #logo {
-  width: 220px;
+  width: 20vw;
   margin-left: auto;
   margin-right: auto;
 }

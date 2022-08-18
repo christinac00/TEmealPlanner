@@ -33,7 +33,8 @@ public class UserRecipeController {
 
 
     @GetMapping("/users/{id}/recipes")
-    public List<Recipe> getMyRecipes(@PathVariable int id) throws RecipeNotFoundException{
+    public List<Recipe> getMyRecipes(@PathVariable int id) throws RecipeNotFoundException, InterruptedException {
+        Thread.sleep(3000);
         UserRecipe userRecipe= new UserRecipe();
             userRecipe.setUser_id(id);
             return userRecipeDao.myRecipesList(id);

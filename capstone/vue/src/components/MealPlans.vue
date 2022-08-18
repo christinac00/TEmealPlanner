@@ -1,8 +1,9 @@
 <template>
   <div class="meal-plans">
     <div class="loading" v-if="isLoading">
-      <img src="../assets/a-little-pinch.gif" />
+      <img id="eating-bear" src="../assets/eating-bear.gif" />
     </div>
+    <div v-else>
     <div class="planner-header">
       <h1>My Meal Plans</h1>
     </div>
@@ -19,6 +20,7 @@
       v-bind:key="plan.name"
       v-bind:plan="plan"
     />
+  </div>
   </div>
 </template>
 
@@ -76,7 +78,11 @@ export default {
   border-bottom: 10px, solid;
 }
 
-.loading {
+#eating-bear {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 </style>

@@ -36,7 +36,8 @@ public class MealPlanController {
     //list all meal plans
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
-    public List<MealPlan> getAllMealPlans(@PathVariable int id) {
+    public List<MealPlan> getAllMealPlans(@PathVariable int id) throws InterruptedException {
+        Thread.sleep(3000);
         return dao.list(id);
     }
 
