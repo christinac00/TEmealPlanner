@@ -8,7 +8,7 @@
     </div>
     <router-link
       tag="button"
-      class="btn addPlan"
+      class="btn-addPlan"
       :to="{ name: 'add-plan', params: { userId: $route.params.id } }"
       v-if="!isLoading"
       >Add New Meal Plan</router-link
@@ -78,5 +78,8 @@ export default {
   border-bottom: 10px, solid;
 }
 
-.btn
+.btn-addPlan {
+  
+}
+
 </style>
