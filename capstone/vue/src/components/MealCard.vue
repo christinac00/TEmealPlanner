@@ -38,7 +38,7 @@ export default {
   created() {
     RecipeService.getFilteredRecipes().then((response) => {
         const shuffled = response.data.sort(() => {
-            0.5 - Math.random()
+           return 0.5 - Math.random()
         })
     this.planRecipes = shuffled.slice(0,3);
     });
