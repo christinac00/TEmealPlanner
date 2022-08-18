@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent>
+  <form class="form" v-on:submit.prevent>
     
     <div class="field">
       <label for="recipe-name">Recipe Name</label>
@@ -58,14 +58,14 @@
           <td class="td-headers">Name </td>
           
         </tr>
-        <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
-          <td>
+        <tr class="col-name" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
+          <td class="c1">
             {{ ingredient.quantity }}
           </td>
-          <td>
+          <td class="c2">
             {{ ingredient.unit }}
           </td>
-          <td>
+          <td class="c3">
             {{ ingredient.name }}
           </td>
           
@@ -237,8 +237,9 @@ form{
   display: flex;
   flex-direction: column;
   margin: 15px;
-
+  
 }
+
 table{
   border-collapse: collapse;
   margin-bottom: 50px;
@@ -264,6 +265,13 @@ input.recipe-name{
 }
 .td-headers{
   font-weight: 600;
+  background-color: mediumslateblue;
+}
+.col-name:nth-child(odd){
+  background-color:bisque
+}
+input, textarea{
+  background-color: bisque;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class=addNewRecipe>
       <h1>Add New Recipe</h1>
       <add-new-recipe-form></add-new-recipe-form>
     
@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style>
+.addNewRecipe{
+    background-color: lavender;
+}
 
 </style>
