@@ -268,10 +268,10 @@ input.recipe-name{
   background-color: mediumslateblue;
 }
 .col-name:nth-child(odd){
-  background-color:bisque
+  background-color:floralwhite
 }
 input, textarea{
-  background-color: bisque;
+  background-color:floralwhite;
 }
 
 </style>

@@ -38,7 +38,7 @@
                 Name
             </td>
         </tr>
-        <tr v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
+        <tr class="col-name" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
             <td>
                 {{ ingredient.quantity}}
 
@@ -127,6 +127,7 @@ h2{
 .td-headers{
     font-weight: 600;
 }
+
 
 
 </style>
