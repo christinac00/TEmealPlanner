@@ -59,39 +59,47 @@ export default {
 .rcard {
   display: flex;
   flex-direction: row;
-  width: 95%;
-  height: 150px;
-  margin: 20px;
+  width: 90%;
+  height: 175px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   background: #f49494;
   align-items: center;
   border-radius: 10px;
   filter: drop-shadow(7px 6px 8px rgba(0, 0, 0, 0.25));
 }
 
-.rinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-grow: 1;
-}
 .rcard > img {
   border-radius: 10px;
   height: 100%;
+  width: auto;
   padding: 0 10px 0 0;
   margin-right: auto;
 }
 .rcard .recipe-name {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
-  font-family: "Holtwood One SC", serif;
-  flex-shrink: 1;
+  font-family: "Holtwood One SC", serif; 
+  display: block;
+  height: 50px;
 }
 
 .rcard .recipe-description {
   font-size: 1rem;
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
-  flex-shrink: 1;
   text-align: center;
+  display: block;
+  height: 100px;
+}
+
+button {
+  margin-top: 5px;
+  margin-left: 54px;
+}
+
+.rcard:hover {
+   background: #f39b37;
 }
 </style>

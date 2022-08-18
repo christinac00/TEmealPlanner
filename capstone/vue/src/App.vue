@@ -58,7 +58,7 @@ export default {
     "nav main"
     "nav main";
   grid-template-rows: 1fr 4fr 30px;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
 }
 
 /* styling for header */
@@ -70,9 +70,12 @@ background: #FCD949;
 box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25); 
 }
 
+header > h1 {
+   color: #5A1850;
+}
+
 h1 {
   font-family: 'Holtwood One SC', serif;
-  color: #5A1850;
 }
 
 /* styling for navigation bar */
@@ -115,11 +118,9 @@ hr {
   flex-basis: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-family: 'Holtwood One SC', serif;
-  font-size: 2rem;
-  color: #fff;
-  
+  font-size: 1.25rem;
 }
 
 main {

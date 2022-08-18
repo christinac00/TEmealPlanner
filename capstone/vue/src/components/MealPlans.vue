@@ -53,16 +53,18 @@ export default {
 <style>
 .meal-plans {
   width: 90%;
-  margin: 50px auto;
-  background: lightcoral;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f39b37;
+  border-radius: 10px;
 }
 
 .planner-header {
   text-align: center;
   font-size: 20px;
-  color: rgb(168, 64, 64);
-  margin-bottom: 40px;
+  color: #256d6e;
 }
+
 .recipe-row {
   display: flex;
   flex-direction: row;
@@ -71,7 +73,10 @@ export default {
   flex-flow: wrap;
   margin-left: 40px;
 }
+
 .recipe-row #p {
   border-bottom: 10px, solid;
 }
+
+.btn
 </style>

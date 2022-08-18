@@ -113,8 +113,7 @@ h1 {
 .instruction-body, .description{
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
-    white-space: pre;
-    }
+    white-space: pre;}
 
 table, tr, td {
     border: 1px solid;
